@@ -11,12 +11,17 @@ Las historias de usuario, son pequeñas descripciones de los requerimientos de u
 elementos:
 
 • Título
+
 • Descripción
+
 • Criterios de aceptación
 
 Actividad 1. Iniciar un app ->
 
 -Version de Android > 80%.
+
 -Nombre de la App -> Travelling.
+
 -Usar el dominio de la empresa www.travelWorld.es -> com.travel_world.traveling.
+
 -Subirlo a GitHub.
