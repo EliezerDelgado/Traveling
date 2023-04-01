@@ -18,7 +18,7 @@ elementos:
 
 Actividad 1. Iniciar un app ->
 
--Version de Android > 80%.
+-Version de Android > 80% -> Andorid 6.0 Marshmallow.
 
 -Nombre de la App -> Travelling.
 
