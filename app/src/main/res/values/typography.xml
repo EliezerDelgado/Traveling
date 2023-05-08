@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.Traveling.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/andika</item>
+        <item name="android:textSize">89sp</item>
+    </style>
+    <style name="TextAppearance.Traveling.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="fontFamily">@font/andika</item>
+        <item name="android:textSize">56sp</item>
+    </style>
+    <style name="TextAppearance.Traveling.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/andika</item>
+        <item name="android:textSize">45sp</item>
+    </style>
+    <style name="TextAppearance.Traveling.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/andika</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+    <style name="TextAppearance.Traveling.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/andika</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+    <style name="TextAppearance.Traveling.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/andika</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+    <style name="TextAppearance.Traveling.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">@font/andika</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+    <style name="TextAppearance.Traveling.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/andika</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="TextAppearance.Traveling.Body1.Inverse">
+        <item name="fontFamily">@font/andika</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/material_dynamic_tertiary90</item>
+    </style>
+    <style name="TextAppearance.Traveling.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/andika</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="TextAppearance.Traveling.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/andika</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+</resources>

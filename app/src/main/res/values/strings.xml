@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Traveling</string>
+    <string name="titleOnboard_text">Tu App de Viajes</string>
+    <string name="bodytextOnboard_text">Hola, estamos buscando a millones de usuarios con inquietudes y ganas de viajar. Si eres tu? No lo dudes accede a nuestra app y descubriras miles de destinos y facilidades para alquilar coches, ver el tiempo...</string>
+    <string name="buttonOnBoarding_next_text">next</string>
 </resources>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    app:layoutDescription="@xml/onboarding_scene">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/appCompactImageViewOnboard"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_onboarding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"  />
+
+    <LinearLayout
+        android:id="@+id/linearOnboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/appCompactImageViewOnboard"
+        app:layout_constraintEnd_toEndOf="@+id/appCompactImageViewOnboard"
+        app:layout_constraintStart_toStartOf="@+id/appCompactImageViewOnboard"
+        app:layout_constraintTop_toTopOf="@+id/appCompactImageViewOnboard">
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/titleOnboard"
+            style="?attr/travelingH4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/titleOnboard_text" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/bodytextOnboard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/bodytextOnboard_text" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="400dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/nomads_moto" />
+    </LinearLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonOnBoarding_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:textColor="@color/white"
+        android:visibility="visible"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/buttonOnBoarding_next_text"/>
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
