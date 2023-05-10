@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/title_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_home_text"
+        style="?attr/travelingH4"
+        android:layout_marginHorizontal="@dimen/marginshort"
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="bottom"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linear_home_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/marginshort"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_home"
+        android:weightSum="1">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_home_camera"
+            style="@style/Button.TravelingWorld.Icon"
+            android:backgroundTint="@color/blue_light"
+            app:icon="@drawable/ic_action_camera"
+            android:layout_weight="0.2"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_home_favorite"
+            style="@style/Button.TravelingWorld.Icon"
+            android:backgroundTint="@color/purple_light"
+            app:icon="@drawable/ic_action_favorite"
+            android:layout_weight="0.2"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_home_landscape"
+            style="@style/Button.TravelingWorld.Icon"
+            android:backgroundTint="@color/rose_light"
+            app:icon="@drawable/ic_action_landscape"
+            android:layout_weight="0.2"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_home_face"
+            style="@style/Button.TravelingWorld.Icon"
+            android:backgroundTint="@color/yellow_light"
+            app:icon="@drawable/ic_action_face"
+            android:layout_weight="0.2"
+            />
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_los_angeles"
+        style="@style/CardViewTravelingWorld"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linear_home_button">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_card_view_los_angeles"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageview_home_los_angeles"
+                style="@style/ImagenCardViewTravelingWorld"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@drawable/image_container1" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textview_body_home_los_angeles"
+                style="@style/TextCardView.TravelingWorld.Body"
+                android:text="@string/textview_body_home_los_angeles_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageview_home_los_angeles" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textview_title_home_los_angeles"
+                style="@style/TextCardView.TravelingWorld.Title"
+                android:text="@string/textview_title_home_los_angeles_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textview_body_home_los_angeles" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_beach"
+        style="@style/CardViewTravelingWorld"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_view_los_angeles">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_card_view_beach"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageview_home_beach"
+                style="@style/ImagenCardViewTravelingWorld"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@drawable/image_container2" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textview_body_home_beach"
+                style="@style/TextCardView.TravelingWorld.Body"
+                android:text="@string/textview_body_home_los_angeles_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageview_home_beach" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textview_title_home_beach"
+                style="@style/TextCardView.TravelingWorld.Title"
+                android:text="@string/textview_title_home_los_angeles_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textview_body_home_beach" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

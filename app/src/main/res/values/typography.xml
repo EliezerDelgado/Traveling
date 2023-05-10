@@ -2,22 +2,27 @@
 <resources>
     <style name="TextAppearance.Traveling.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
         <item name="fontFamily">@font/andika</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textSize">89sp</item>
     </style>
     <style name="TextAppearance.Traveling.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
         <item name="fontFamily">@font/andika</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textSize">56sp</item>
     </style>
     <style name="TextAppearance.Traveling.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
         <item name="fontFamily">@font/andika</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textSize">45sp</item>
     </style>
     <style name="TextAppearance.Traveling.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
         <item name="fontFamily">@font/andika</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textSize">32sp</item>
     </style>
     <style name="TextAppearance.Traveling.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="fontFamily">@font/andika</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textSize">22sp</item>
     </style>
     <style name="TextAppearance.Traveling.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
@@ -31,7 +36,7 @@
     <style name="TextAppearance.Traveling.Body1" parent="TextAppearance.MaterialComponents.Body1">
         <item name="fontFamily">@font/andika</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/gray</item>
     </style>
     <style name="TextAppearance.Traveling.Body1.Inverse">
         <item name="fontFamily">@font/andika</item>
