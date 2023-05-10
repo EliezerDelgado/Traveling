@@ -75,7 +75,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/image_container1" />
+                android:src="@drawable/image_container1" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textview_body_home_los_angeles"
@@ -112,7 +112,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@drawable/image_container2" />
+                android:src="@drawable/image_container2" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textview_body_home_beach"
