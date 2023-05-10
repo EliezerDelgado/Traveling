@@ -25,3 +25,11 @@ Actividad 1. Iniciar un app ->
 -Usar el dominio de la empresa www.travelWorld.es -> com.travel_world.traveling.
 
 -Subirlo a GitHub.
+
+Actividad 2. Vistas declarativas XML
+
+-Construir Onboarding
+
+-Contruir Home
+
+-Uso de style, attributes, drawables, animaciones y  CoordinatorLayout
