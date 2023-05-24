@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="travelingH4" format="reference"/>
-    <attr name="travelingBody1" format="reference"/>
+    <attr name="travelingTxtH4" format="reference"/>
+    <attr name="travelingTxtBody1" format="reference"/>
+    <attr name="travelingBtIcon" format="reference"/>
+    <attr name="travelingCV" format="reference"/>
+    <attr name="travelingTxtCVTittle" format="reference"/>
+    <attr name="travelingTxtCVBody" format="reference"/>
+    <attr name="travelingImgCV" format="reference"/>
 </resources>

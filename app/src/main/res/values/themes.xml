@@ -12,7 +12,15 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="travelingH4">@style/TextAppearance.Traveling.Headline4</item>
-        <item name="travelingBody1">@style/TextAppearance.Traveling.Body1</item>
+        <!-- Text attr -->
+        <item name="travelingTxtH4">@style/TextAppearance.Traveling.Headline4</item>
+        <item name="travelingTxtBody1">@style/TextAppearance.Traveling.Body1</item>
+        <!-- Button attr -->
+        <item name="travelingBtIcon">@style/Button.TravelingWorld.Icon</item>
+        <!-- Card view attr -->
+        <item name="travelingCV">@style/CardViewTravelingWorld</item>
+        <item name="travelingImgCV">@style/ImagenCardViewTravelingWorld</item>
+        <item name="travelingTxtCVBody">@style/TextCardViewBody</item>
+        <item name="travelingTxtCVTittle">@style/TextCardViewTitle</item>
     </style>
 </resources>

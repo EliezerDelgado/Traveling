@@ -32,7 +32,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/titleOnboard"
-            style="?attr/travelingH4"
+            style="?attr/travelingTxtH4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            style="?attr/travelingBody1"
+            style="?attr/travelingTxtBody1"
             android:text="@string/bodytextOnboard_text" />
 
         <ImageView

@@ -4,7 +4,6 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">10dp</item>
     </style>
-
     <style name="Button.TravelingWorld.Icon" parent="Widget.MaterialComponents.Button">
         <item name="android:layout_width">80dp</item>
         <item name="android:layout_height">70dp</item>
@@ -21,11 +20,11 @@
         <item name="cardCornerRadius">12dp</item>
         <item name="cardElevation">6dp</item>
     </style>
-    <style name="TextCardView.TravelingWorld.Body" parent="TextAppearance.Traveling.Body1">
+    <style name="TextCardViewBody" parent="TextAppearance.Traveling.Body1">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
-    <style name="TextCardView.TravelingWorld.Title" parent="TextAppearance.Traveling.Headline4">
+    <style name="TextCardViewTitle" parent="TextAppearance.Traveling.Headline4">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
