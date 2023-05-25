@@ -2,4 +2,5 @@
 <resources>
     <dimen name="marginshort">10dp</dimen>
     <dimen name="marginhigh">40dp</dimen>
+    <dimen name="button_big">82dp</dimen>
 </resources>

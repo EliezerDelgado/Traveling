@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <attr name="travelingColorTextHyperLinks" format="color"/>
     <attr name="travelingTxtH4" format="reference"/>
     <attr name="travelingTxtBody1" format="reference"/>
     <attr name="travelingBtIcon" format="reference"/>
@@ -7,4 +8,5 @@
     <attr name="travelingTxtCVTittle" format="reference"/>
     <attr name="travelingTxtCVBody" format="reference"/>
     <attr name="travelingImgCV" format="reference"/>
+    <attr name="travelingHiperLinkText" format="reference"/>
 </resources>

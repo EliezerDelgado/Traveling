@@ -12,5 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <!-- Color Text attr -->
+        <item name="travelingColorTextHyperLinks">@color/black</item>
     </style>
 </resources>

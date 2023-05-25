@@ -6,4 +6,14 @@
     <string name="title_home_text">Upcoming meetups</string>
     <string name="textview_body_home_los_angeles_text">USA, Los Angeles - 2 Weeks</string>
     <string name="textview_title_home_los_angeles_text">City of Los Angeles</string>
+    <string name="title_Login_text">Login</string>
+    <string name="nameLogin_hint">Login</string>
+    <string name="passwordLogin_hint">Password\n</string>
+    <string name="buttonLogin_text"><![CDATA[Login ➜]]></string>
+    <string name="forgotTextLogin_text">Forgot password</string>
+    <string name="forgotButtonLogin_text">Get new</string>
+    <string name="registerTextLogin_text">Do you have an account?</string>
+    <string name="registerButtonLogin_text">Create new</string>
+    <string name="button_login_forgot_onclick">The button forgot will be implemented soon</string>
+    <string name="button_login_register_onclick">The button register will be implemented soon</string>
 </resources>
