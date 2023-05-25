@@ -25,7 +25,6 @@ public class LoginActivity extends AppCompatActivity {
     }
     public void onClick(View view)
     {
-        String name = loginBinding.getUser().getName();
         switch (view.getId())
         {
             case R.id.button_login_forgot:
