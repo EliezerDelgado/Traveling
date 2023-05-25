@@ -33,3 +33,13 @@ Actividad 2. Vistas declarativas XML
 -Contruir Home
 
 -Uso de style, attributes, drawables, animaciones y  CoordinatorLayout
+
+Activdad 3. Vistas complejas  dinámicas
+
+-Añadido estilos y atributos
+
+-Login Activity con ConstraintLayouty Data binding. 
+
+-usuario y password son Inputs layouts
+
+Se muestra un SnackBar con get new y create new
