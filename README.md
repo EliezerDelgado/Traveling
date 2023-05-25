@@ -42,4 +42,4 @@ Activdad 3. Vistas complejas  dinámicas
 
 -usuario y password son Inputs layouts
 
-Se muestra un SnackBar con get new y create new
+-Se muestra un SnackBar con get new y create new
