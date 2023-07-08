@@ -20,4 +20,6 @@
     <string name="last_name_sign_up_hint">¿Y tu apellido?</string>
     <string name="confirm_signup_text">Me apunto</string>
     <string name="ages_range_sign_up_hint">¿Cuantos años tienes?</string>
+    <string name="privacy_text_signup_text">Política de Privacidad\n</string>
+    <string name="privacy_button_signup_text">Ver Condiciones</string>
 </resources>
