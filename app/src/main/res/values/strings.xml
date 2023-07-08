@@ -16,4 +16,6 @@
     <string name="registerButtonLogin_text">Create new</string>
     <string name="button_login_forgot_onclick">The button forgot will be implemented soon</string>
     <string name="button_login_register_onclick">The button register will be implemented soon</string>
+    <string name="name_sign_up_hint">¿Como te llama?</string>
+    <string name="last_name_sign_up_hint">¿Y tu apellido?</string>
 </resources>
