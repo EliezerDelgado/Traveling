@@ -16,6 +16,7 @@
         app:endIconMode="custom"
         app:endIconDrawable="@drawable/ic_eye"
         android:background="@drawable/light_cyan_shape"
+        app:errorEnabled="true"
         style="@style/TextInputLayoutTravelingWorld"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +37,7 @@
         style="@style/TextInputLayoutTravelingWorld"
         app:startIconDrawable="@drawable/ic_face"
         app:endIconMode="custom"
+        app:errorEnabled="true"
         app:endIconDrawable="@drawable/ic_eye"
         android:background="@drawable/light_cyan_shape"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,15 +51,41 @@
             android:backgroundTint="@android:color/transparent" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.AppCompatSpinner
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ages_range_signup"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/spinner"
+        android:layout_height="wrap_content"
+        android:hint="@string/ages_range_sign_up_hint"
         android:layout_margin="@dimen/marginshort"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+        app:endIconMode="dropdown_menu"
+        app:endIconTint="@color/black"
+        android:textColorHint="@color/black"
+        app:errorEnabled="true"
+        app:endIconDrawable="@drawable/ic_arrow_down"
         android:background="@drawable/light_cyan_shape"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/last_name_signup"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/last_name_signup">
+        <AutoCompleteTextView
+            android:id="@+id/ages_range_list_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:backgroundTint="@android:color/transparent" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/confirm_signup"
+        android:layout_width="250dp"
+        android:layout_height="@dimen/button_medium"
+        android:backgroundTint="@color/yellow"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:fontFamily="@font/andika"
+        android:enabled="false"
+        android:layout_marginBottom="@dimen/marginlarge"
+        android:text="@string/confirm_signup_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

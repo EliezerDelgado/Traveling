@@ -28,6 +28,6 @@ public class SignUpActivity extends AppCompatActivity {
     }
     private void setValueSpinnerAges() {
         adapterSpinnerAges = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, arrayAges);
-        binding.agesRangeSignup.setAdapter(adapterSpinnerAges);
+        binding.agesRangeListSignup.setAdapter(adapterSpinnerAges);
     }
 }

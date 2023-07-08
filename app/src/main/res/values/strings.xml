@@ -18,4 +18,6 @@
     <string name="button_login_register_onclick">The button register will be implemented soon</string>
     <string name="name_sign_up_hint">¿Como te llama?</string>
     <string name="last_name_sign_up_hint">¿Y tu apellido?</string>
+    <string name="confirm_signup_text">Me apunto</string>
+    <string name="ages_range_sign_up_hint">¿Cuantos años tienes?</string>
 </resources>
