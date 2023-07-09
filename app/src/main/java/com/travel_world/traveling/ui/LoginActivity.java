@@ -1,4 +1,4 @@
-package com.travel_world.traveling;
+package com.travel_world.traveling.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.travel_world.traveling.R;
+import com.travel_world.traveling.data.model.User;
 import com.travel_world.traveling.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {

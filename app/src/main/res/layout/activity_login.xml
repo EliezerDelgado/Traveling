@@ -7,13 +7,13 @@
     <data>
         <variable
             name="user"
-            type="com.travel_world.traveling.User"/>
+            type="com.travel_world.traveling.data.model.User"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".LoginActivity">
+        tools:context=".ui.LoginActivity">
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imagenview_city_tour_login"
             android:layout_width="0dp"

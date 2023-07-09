@@ -1,4 +1,4 @@
-package com.travel_world.traveling;
+package com.travel_world.traveling.data.model;
 
 public class User {
     private String name;

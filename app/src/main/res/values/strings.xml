@@ -22,4 +22,7 @@
     <string name="ages_range_sign_up_hint">¿Cuantos años tienes?</string>
     <string name="privacy_text_signup_text">Política de Privacidad\n</string>
     <string name="privacy_button_signup_text">Ver Condiciones</string>
+    <string name="error_name_signup">Ups, no creo que sea correcto, revísalo</string>
+    <string name="error_last_name_signup">Ups, no creo que sea correcto, revísalo</string>
+    <string name="error_agesRange_lower_years">Esta app no es para ti</string>
 </resources>

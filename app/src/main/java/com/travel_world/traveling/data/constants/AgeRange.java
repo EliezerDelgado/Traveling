@@ -1,4 +1,4 @@
-package com.travel_world.traveling;
+package com.travel_world.traveling.data.constants;
 public abstract class AgeRange{
     public final static String BABY = "0-5";
     public final static String CHILD = "6-11";
