@@ -5,7 +5,6 @@ import static com.travel_world.traveling.data.constants.AgeRange.*;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
@@ -19,10 +18,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.travel_world.traveling.R;
-import com.travel_world.traveling.data.constants.MyPermission;
 import com.travel_world.traveling.data.constants.UserRegex;
 import com.travel_world.traveling.databinding.ActivitySignUpBinding;
 import com.travel_world.traveling.utils.Intents;
+import com.travel_world.traveling.utils.AskPermissions;
 import com.travel_world.traveling.utils.UtilsStrings;
 
 import java.util.ArrayList;
@@ -43,30 +42,18 @@ public class SignUpActivity extends AppCompatActivity {
         setBarColor();
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        permission();
         arrayAges = new ArrayList<>(Arrays.asList(BABY,CHILD,TEENAGER,ADULT));
         setValueSpinnerAges();
         buttonListener();
         inputListener();
     }
-
-    private void permission() {
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.CAMERA}, MyPermission.CAMERA_PERMISSION_CODE);
-
-        }
-    }
-
     private void buttonListener() {
         int i = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.CAMERA) ;
         int j = PackageManager.PERMISSION_GRANTED;
         binding.photoButtonSignup.setOnClickListener(v -> {
-            if(ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED)
+            AskPermissions.askPermissionCamera(this);
+            if(AskPermissions.isPermissionCameraOn(this))
                 resultCamera.launch(Intents.openCamera(this));
             else
                 Toast.makeText(this, getString(R.string.error_permission_camera), Toast.LENGTH_SHORT).show();
