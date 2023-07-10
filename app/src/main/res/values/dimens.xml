@@ -6,4 +6,5 @@
     <dimen name="spinner">58dp</dimen>
     <dimen name="button_medium">60dp</dimen>
     <dimen name="marginlarge">60dp</dimen>
+    <dimen name="perfil_photo_dimen">120dp</dimen>
 </resources>

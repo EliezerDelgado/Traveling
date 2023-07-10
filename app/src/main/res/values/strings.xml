@@ -25,4 +25,5 @@
     <string name="error_name_signup">Ups, no creo que sea correcto, revísalo</string>
     <string name="error_last_name_signup">Ups, no creo que sea correcto, revísalo</string>
     <string name="error_agesRange_lower_years">Esta app no es para ti</string>
+    <string name="error_permission_camera">Necesita darle permiso de camara</string>
 </resources>
