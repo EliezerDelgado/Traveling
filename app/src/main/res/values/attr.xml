@@ -9,4 +9,5 @@
     <attr name="travelingTxtCVBody" format="reference"/>
     <attr name="travelingImgCV" format="reference"/>
     <attr name="travelingHiperLinkText" format="reference"/>
+    <attr name="travelingTextInputLayout" format="reference"/>
 </resources>

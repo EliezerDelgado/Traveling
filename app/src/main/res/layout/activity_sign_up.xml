@@ -36,7 +36,7 @@
         app:endIconDrawable="@drawable/ic_eye"
         android:background="@drawable/light_cyan_shape"
         app:errorEnabled="true"
-        style="@style/TextInputLayoutTravelingWorld"
+        style="?attr/travelingTextInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/photo_button_signup">
@@ -54,7 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/last_name_sign_up_hint"
-        style="@style/TextInputLayoutTravelingWorld"
+        style="?attr/travelingTextInputLayout"
         app:startIconDrawable="@drawable/ic_face"
         app:endIconMode="custom"
         app:errorEnabled="true"

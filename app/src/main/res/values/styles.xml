@@ -5,29 +5,25 @@
         <item name="cornerSize">10dp</item>
     </style>
     <style name="Button.TravelingWorld.Icon" parent="Widget.MaterialComponents.Button">
-        <item name="android:layout_width">80dp</item>
-        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:minHeight">70dp</item>
+        <item name="android:minWidth">70dp</item>
         <item name="shapeAppearance">@style/ShapeAppearance.TravelingWorld.Rounded</item>
         <item name="iconSize">@android:dimen/app_icon_size</item>
         <item name="iconTintMode">multiply</item>
         <item name="android:layout_margin">10dp</item>
     </style>
     <style name="CardViewTravelingWorld">
-        <item name="android:layout_height">260dp</item>
-        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:layout_marginHorizontal" tools:targetApi="o">40dp</item>
         <item name="cardCornerRadius">12dp</item>
         <item name="cardElevation">6dp</item>
     </style>
-    <style name="TextCardViewBody" parent="TextAppearance.Traveling.Body1">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-    <style name="TextCardViewTitle" parent="TextAppearance.Traveling.Headline4">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
+    <style name="TextCardViewBody" parent="TextAppearance.Traveling.Body1"/>
+
+    <style name="TextCardViewTitle" parent="TextAppearance.Traveling.Headline4"/>
+
     <style name="ImagenCardViewTravelingWorld">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">0dp</item>

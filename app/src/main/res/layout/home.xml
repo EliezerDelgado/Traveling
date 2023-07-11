@@ -59,6 +59,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view_los_angeles"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/card_view_medium_size"
         style="?attr/travelingCV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,6 +81,8 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textview_body_home_los_angeles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 style="?attr/travelingTxtCVBody"
                 android:text="@string/textview_body_home_los_angeles_text"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -87,6 +91,8 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textview_title_home_los_angeles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 style="?attr/travelingTxtCVTittle"
                 android:text="@string/textview_title_home_los_angeles_text"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -96,6 +102,8 @@
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view_beach"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/card_view_medium_size"
         style="?attr/travelingCV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -116,6 +124,8 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textview_body_home_beach"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 style="?attr/travelingTxtCVBody"
                 android:text="@string/textview_body_home_los_angeles_text"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -124,6 +134,8 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/textview_title_home_beach"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 style="?attr/travelingTxtCVTittle"
                 android:text="@string/textview_title_home_los_angeles_text"
                 app:layout_constraintEnd_toEndOf="parent"

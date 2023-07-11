@@ -25,5 +25,6 @@
         <item name="travelingTxtCVBody">@style/TextCardViewBody</item>
         <item name="travelingTxtCVTittle">@style/TextCardViewTitle</item>
         <item name="travelingHiperLinkText">@style/HyperLinksTextTravelingWorld</item>
+        <item name="travelingTextInputLayout">@style/TextInputLayoutTravelingWorld</item>
     </style>
 </resources>

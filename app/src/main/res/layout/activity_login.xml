@@ -50,7 +50,7 @@
             app:layout_constraintStart_toStartOf="parent"
             android:hint="@string/nameLogin_hint"
             android:layout_margin="@dimen/marginshort"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="?attr/travelingTextInputLayout"
             app:layout_constraintTop_toBottomOf="@+id/title_login">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -71,7 +71,7 @@
             android:layout_margin="@dimen/marginshort"
             app:endIconMode="custom"
             app:endIconDrawable="@drawable/ic_lock"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="?attr/travelingTextInputLayout"
             app:layout_constraintTop_toBottomOf="@+id/name_login">
 
             <com.google.android.material.textfield.TextInputEditText
