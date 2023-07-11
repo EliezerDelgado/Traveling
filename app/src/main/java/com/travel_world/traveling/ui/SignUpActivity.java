@@ -148,6 +148,9 @@ public class SignUpActivity extends AppCompatActivity {
                 getResources().getColor(R.color.teal_700,getTheme()))
         );
         getSupportActionBar().setTitle(getString(R.string.sign_up_activty_name));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
         getWindow().setStatusBarColor(getResources().getColor(R.color.teal_900,getTheme()));
     }
 
