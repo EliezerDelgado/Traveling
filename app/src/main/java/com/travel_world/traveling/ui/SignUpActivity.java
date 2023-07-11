@@ -147,6 +147,7 @@ public class SignUpActivity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(
                 getResources().getColor(R.color.teal_700,getTheme()))
         );
+        getSupportActionBar().setTitle(getString(R.string.sign_up_activty_name));
         getWindow().setStatusBarColor(getResources().getColor(R.color.teal_900,getTheme()));
     }
 
