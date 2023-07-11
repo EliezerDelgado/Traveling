@@ -81,6 +81,7 @@ public class SignUpActivity extends AppCompatActivity {
                     binding.nameSignup.setError(getString(R.string.error_name_signup));
                 else
                     binding.nameSignup.setError(null);
+                isAllFineToConfirm();
             }
         });
 
@@ -101,6 +102,7 @@ public class SignUpActivity extends AppCompatActivity {
                     binding.lastNameSignup.setError(getString(R.string.error_last_name_signup));
                 else
                     binding.lastNameSignup.setError(null);
+                isAllFineToConfirm();
             }
         });
         binding.agesRangeListSignup.addTextChangedListener(new TextWatcher() {
@@ -124,6 +126,21 @@ public class SignUpActivity extends AppCompatActivity {
                     binding.agesRangeSignup.setError(null);
             }
         });
+    }
+
+    private void isAllFineToConfirm() {
+        String name = binding.nameTextSignup.getEditableText().toString();
+        String lastName = binding.lastNameTextSignup.getEditableText().toString();
+        boolean correctName = binding.nameSignup.getError() == null;
+        boolean correctLastName = binding.lastNameSignup.getError() == null;
+        if(!name.isEmpty()
+                && !lastName.isEmpty()
+                && correctName
+                && correctLastName)
+            binding.confirmSignup.setEnabled(true);
+        else
+            binding.confirmSignup.setEnabled(false);
+
     }
 
     private void setBarColor() {

@@ -43,3 +43,13 @@ Activdad 3. Vistas complejas  dinámicas
 -usuario y password son Inputs layouts
 
 -Se muestra un SnackBar con get new y create new
+
+ACTIVIDAD 4. Intents implícitos
+
+-Sign Up cuenta con un ConstraintLayout y con ViewBinding.
+
+-Los 3 widgets para Name LastName y AgesRange son Inputs layouts y con control de errores
+
+-El boton Confirm SignUp esta desactivado.
+
+-
