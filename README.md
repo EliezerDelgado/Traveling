@@ -1,10 +1,10 @@
-Historia de Usuario
+istoria de Usuario
 
 Introducción
 
 En el desarrollo de software se utilizan metodologías Scrum/Kanban para la coordinación entre los equipos. Para el desarrollo de
-las prácticas vamos hacerlas siguiendo el ejercicio como si nos encontráramos en una empresa que sigue dicha metodología.
-El objetivo no es conocer en profundidad la metodología, pero si vamos a realizar las actividades como si fueran Historias de
+las prácticas vamos a hacerlas siguiendo el ejercicio como si nos encontráramos en una empresa que sigue dicha metodología.
+El objetivo no es conocer en profundidad la metodología, pero sí vamos a realizar las actividades como si fueran Historias de
 usuario.
 
 Las historias de usuario, son pequeñas descripciones de los requerimientos de un cliente y están formadas por los siguientes
@@ -18,7 +18,7 @@ elementos:
 
 Actividad 1. Iniciar un app ->
 
--Version de Android > 80% -> Andorid 6.0 Marshmallow.
+-Versión de Android > 80% -> Andorid 6.0 Marshmallow.
 
 -Nombre de la App -> Travelling.
 
@@ -30,15 +30,15 @@ Actividad 2. Vistas declarativas XML
 
 -Construir Onboarding
 
--Contruir Home
+-Construir Home
 
 -Uso de style, attributes, drawables, animaciones y  CoordinatorLayout
 
-Activdad 3. Vistas complejas  dinámicas
+Actividad 3. Vistas complejas  dinámicas
 
--Añadido estilos y atributos
+-Añadidos estilos y atributos
 
--Login Activity con ConstraintLayouty Data binding. 
+-Login Activity con ConstraintLayouty Data binding.
 
 -usuario y password son Inputs layouts
 
@@ -50,6 +50,10 @@ ACTIVIDAD 4. Intents implícitos
 
 -Los 3 widgets para Name LastName y AgesRange son Inputs layouts y con control de errores
 
--El boton Confirm SignUp esta desactivado.
+-El botón Confirm SignUp estará desactivado hasta que tenga el apellido y el nombre correctamente introducido.
 
--
+-Los tres input muestras sus errores correctamente.
+
+-En la imagen hay un icono de cámara, y si pulsa a la imagen entras en la cámara
+
+-El botón "Ver Condiciones" lleva a la web de developers
