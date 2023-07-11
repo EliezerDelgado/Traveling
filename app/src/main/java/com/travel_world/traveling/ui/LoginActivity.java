@@ -2,6 +2,7 @@ package com.travel_world.traveling.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 
@@ -20,6 +21,10 @@ public class LoginActivity extends AppCompatActivity {
         loginBinding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(loginBinding.getRoot());
         setBindRepo();
+        setActionBarOff();
+    }
+    private void setActionBarOff() {
+        getSupportActionBar().hide();
     }
 
     private void setBindRepo() {
