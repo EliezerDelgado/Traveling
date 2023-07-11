@@ -98,9 +98,9 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if(!UtilsStrings.rergularExpressions(s.toString(), UserRegex.REGEX_LAST_NAME))
-                    binding.nameSignup.setError(getString(R.string.error_last_name_signup));
+                    binding.lastNameSignup.setError(getString(R.string.error_last_name_signup));
                 else
-                    binding.nameSignup.setError(null);
+                    binding.lastNameSignup.setError(null);
             }
         });
         binding.agesRangeListSignup.addTextChangedListener(new TextWatcher() {
