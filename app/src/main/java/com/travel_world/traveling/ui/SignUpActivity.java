@@ -1,15 +1,12 @@
 package com.travel_world.traveling.ui;
-
-import static com.travel_world.traveling.data.constants.AgeRange.*;
+import static com.travel_world.traveling.data.constants.Keys.KEY_USER;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
@@ -19,6 +16,7 @@ import android.widget.Toast;
 
 import com.travel_world.traveling.R;
 import com.travel_world.traveling.data.constants.UserRegex;
+import com.travel_world.traveling.data.model.User;
 import com.travel_world.traveling.databinding.ActivitySignUpBinding;
 import com.travel_world.traveling.utils.Intents;
 import com.travel_world.traveling.utils.AskPermissions;
@@ -28,43 +26,65 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class SignUpActivity extends AppCompatActivity {
-    private ActivitySignUpBinding binding;
+    private ActivitySignUpBinding signupBinding;
     private ArrayAdapter adapterSpinnerAges;
     private  ArrayList<String> arrayAges;
 
     private ActivityResultLauncher<Intent> resultCamera = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             result -> {
-                binding.photoButtonSignup.setImageURI(Intents.getCameraImagenReturn());
+                signupBinding.buttonPhotoSignup.setImageURI(Intents.getCameraImagenReturn());
             });
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setBarColor();
-        binding = ActivitySignUpBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        arrayAges = new ArrayList<>(Arrays.asList(BABY,CHILD,TEENAGER,ADULT));
+        signupBinding = ActivitySignUpBinding.inflate(getLayoutInflater());
+        setContentView(signupBinding.getRoot());
+        arrayAges = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.age_range)));
         setValueSpinnerAges();
         buttonListener();
         inputListener();
     }
     private void buttonListener() {
-        int i = ContextCompat.checkSelfPermission(this,
-                Manifest.permission.CAMERA) ;
-        int j = PackageManager.PERMISSION_GRANTED;
-        binding.photoButtonSignup.setOnClickListener(v -> {
-            AskPermissions.askPermissionCamera(this);
-            if(AskPermissions.isPermissionCameraOn(this))
-                resultCamera.launch(Intents.openCamera(this));
-            else
-                Toast.makeText(this, getString(R.string.error_permission_camera), Toast.LENGTH_SHORT).show();
+        signupBinding.buttonPhotoSignup.setOnClickListener(v -> {
+            launchCamera();
+
         });
-        binding.privacyButtonSignup.setOnClickListener(v->{
-            startActivity(Intents.openPage(getString(R.string.web_developer_google)));
+        signupBinding.buttonPrivacySignup.setOnClickListener(v->
+            startActivity(Intents.openPage(getString(R.string.web_developer_google)))
+        );
+        signupBinding.buttonConfirmSignup.setOnClickListener(v->{
+            returnToLoginScreen();
         });
     }
 
+    private void returnToLoginScreen() {
+        User u = getUser();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(KEY_USER,u);
+        setResult(Activity.RESULT_OK,new Intent().putExtras(bundle));
+        finish();
+    }
+
+    private User getUser() {
+        User user = new User();
+        user.setName(signupBinding.nameTextSignup.getText().toString());
+        user.setLastName(signupBinding.lastNameTextSignup.getText().toString());
+        user.setPassword(signupBinding.lastNameTextSignup.getText().toString());
+        user.setAgeRange(signupBinding.agesRangeListSignup.getText().toString());
+        return user;
+    }
+
+    private void launchCamera() {
+        AskPermissions.askPermissionCamera(this);
+        if(AskPermissions.isPermissionCameraOn(this))
+            resultCamera.launch(Intents.openCamera(this));
+        else
+            Toast.makeText(this, getString(R.string.error_permission_camera), Toast.LENGTH_SHORT).show();
+    }
+
     private void inputListener() {
-        binding.nameTextSignup.addTextChangedListener(new TextWatcher() {
+        signupBinding.nameTextSignup.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -78,14 +98,14 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if(!UtilsStrings.rergularExpressions(s.toString(), UserRegex.REGEX_NAME))
-                    binding.nameSignup.setError(getString(R.string.error_name_signup));
+                    signupBinding.nameSignup.setError(getString(R.string.error_name_signup));
                 else
-                    binding.nameSignup.setError(null);
+                    signupBinding.nameSignup.setError(null);
                 isAllFineToConfirm();
             }
         });
 
-        binding.lastNameTextSignup.addTextChangedListener(new TextWatcher() {
+        signupBinding.lastNameTextSignup.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -99,13 +119,13 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if(!UtilsStrings.rergularExpressions(s.toString(), UserRegex.REGEX_LAST_NAME))
-                    binding.lastNameSignup.setError(getString(R.string.error_last_name_signup));
+                    signupBinding.lastNameSignup.setError(getString(R.string.error_last_name_signup));
                 else
-                    binding.lastNameSignup.setError(null);
+                    signupBinding.lastNameSignup.setError(null);
                 isAllFineToConfirm();
             }
         });
-        binding.agesRangeListSignup.addTextChangedListener(new TextWatcher() {
+        signupBinding.agesRangeListSignup.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -118,28 +138,28 @@ public class SignUpActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (arrayAges.indexOf(s.toString()) < arrayAges.indexOf(ADULT) && s.toString() != "")
+                if (Integer.getInteger(s.toString().split("-")[0]) < 18)
                 {
-                    binding.agesRangeSignup.setError(getResources().getText(R.string.error_agesRange_lower_years));
+                    signupBinding.agesRangeSignup.setError(getResources().getText(R.string.error_agesRange_lower_years));
                 }
                 else
-                    binding.agesRangeSignup.setError(null);
+                    signupBinding.agesRangeSignup.setError(null);
             }
         });
     }
 
     private void isAllFineToConfirm() {
-        String name = binding.nameTextSignup.getEditableText().toString();
-        String lastName = binding.lastNameTextSignup.getEditableText().toString();
-        boolean correctName = binding.nameSignup.getError() == null;
-        boolean correctLastName = binding.lastNameSignup.getError() == null;
+        String name = signupBinding.nameTextSignup.getEditableText().toString();
+        String lastName = signupBinding.lastNameTextSignup.getEditableText().toString();
+        boolean correctName = signupBinding.nameSignup.getError() == null;
+        boolean correctLastName = signupBinding.lastNameSignup.getError() == null;
         if(!name.isEmpty()
                 && !lastName.isEmpty()
                 && correctName
                 && correctLastName)
-            binding.confirmSignup.setEnabled(true);
+            signupBinding.buttonConfirmSignup.setEnabled(true);
         else
-            binding.confirmSignup.setEnabled(false);
+            signupBinding.buttonConfirmSignup.setEnabled(false);
 
     }
 
@@ -155,7 +175,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void setValueSpinnerAges() {
-        adapterSpinnerAges = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, arrayAges);
-        binding.agesRangeListSignup.setAdapter(adapterSpinnerAges);
+        adapterSpinnerAges =  ArrayAdapter.createFromResource(this,R.array.age_range,android.R.layout.simple_spinner_dropdown_item);
+        signupBinding.agesRangeListSignup.setAdapter(adapterSpinnerAges);
     }
 }

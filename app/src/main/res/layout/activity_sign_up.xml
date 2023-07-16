@@ -8,7 +8,7 @@
     android:background="@color/celeste">
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/photo_button_signup"
+        android:id="@+id/button_photo_signup"
         android:layout_width="@dimen/perfil_photo_dimen"
         android:layout_height="@dimen/perfil_photo_dimen"
         android:scaleType="centerCrop"
@@ -96,7 +96,7 @@
             android:backgroundTint="@android:color/transparent" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/confirm_signup"
+        android:id="@+id/button_confirm_signup"
         android:layout_width="250dp"
         android:layout_height="@dimen/button_medium"
         android:backgroundTint="@color/yellow"
@@ -125,7 +125,7 @@
             android:layout_marginRight="10dp"
             android:text="@string/privacy_text_signup_text"/>
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/privacy_button_signup"
+            android:id="@+id/button_privacy_signup"
             android:layout_width="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_height="wrap_content"

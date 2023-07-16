@@ -1,6 +1,11 @@
 package com.travel_world.traveling.data.model;
 
-public class User {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class User implements Parcelable {
     private String name;
     private String lastName;
     private String password;
@@ -18,6 +23,25 @@ public class User {
         this.password = password;
         this.ageRange = ageRange;
     }
+
+    protected User(Parcel in) {
+        name = in.readString();
+        lastName = in.readString();
+        password = in.readString();
+        ageRange = in.readString();
+    }
+
+    public static final Creator<User> CREATOR = new Creator<User>() {
+        @Override
+        public User createFromParcel(Parcel in) {
+            return new User(in);
+        }
+
+        @Override
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -49,5 +73,18 @@ public class User {
 
     public void setAgeRange(String ageRange) {
         this.ageRange = ageRange;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeString(this.name);
+        dest.writeString(this.lastName);
+        dest.writeString(this.password);
+        dest.writeString(this.ageRange);
     }
 }

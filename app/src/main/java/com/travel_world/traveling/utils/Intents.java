@@ -1,13 +1,24 @@
 package com.travel_world.traveling.utils;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Intents {
     private static Uri cameraImagenReturn;
+
+    public static Uri getCameraImagenReturn()
+    {
+        Uri u = cameraImagenReturn;
+        cameraImagenReturn = null;
+        return u;
+    }
 
     public static Intent openCamera(Context context) {
         ContentValues values = new ContentValues();
@@ -18,15 +29,18 @@ public class Intents {
         intent.putExtra(MediaStore.EXTRA_OUTPUT, cameraImagenReturn);
         return intent;
     }
-    public static Uri getCameraImagenReturn()
-    {
-        Uri u = cameraImagenReturn;
-        cameraImagenReturn = null;
-        return u;
-    }
     public static Intent openPage(String page)
     {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(page));
-        return intent;
+        return new Intent(Intent.ACTION_VIEW, Uri.parse(page));
+    }
+
+    public static <T> Intent intentActivity(Context context, Class<T> activity)
+    {
+        return new Intent(context,activity);
+    }
+
+    public static <T> Intent intentActivityWithExtras(Context context,  Class<T> activity, Bundle bundle)
+    {
+        return new Intent(context,activity.getClass()).putExtras(bundle);
     }
 }
