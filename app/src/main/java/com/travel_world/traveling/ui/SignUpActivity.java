@@ -138,7 +138,7 @@ public class SignUpActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (Integer.getInteger(s.toString().split("-")[0]) < 18)
+                if (arrayAges.indexOf(s.toString()) < arrayAges.indexOf(getResources().getString(R.string.age_range_adult)) && s.toString() != "")
                 {
                     signupBinding.agesRangeSignup.setError(getResources().getText(R.string.error_agesRange_lower_years));
                 }

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="age_range">
-    <string name="baby">0-5</string>
-    <string name="child">6-11</string>
-    <string name="teenager">12-17</string>
-    <string name="adult">18-99</string>
-    </string-array>
+    <string name="age_range_baby">0-5</string>
+    <string name="age_range_child">6-11</string>
+    <string name="age_range_teenager">12-17</string>
+    <string name="age_range_adult">18-99</string>
 </resources>

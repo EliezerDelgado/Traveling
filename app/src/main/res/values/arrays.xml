@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="age_range">
+        <item>@string/age_range_baby</item>
+        <item>@string/age_range_child</item>
+        <item>@string/age_range_teenager</item>
+        <item>@string/age_range_adult</item>
+    </string-array>
+</resources>
