@@ -1,6 +1,7 @@
 package com.travel_world.traveling.ui;
 
 import static com.travel_world.traveling.data.constants.Keys.KEY_USER;
+import static com.travel_world.traveling.data.constants.Tags.TAG_GET_EXTRAS_SUCCESS;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,11 +22,13 @@ public class HomeActivity extends AppCompatActivity {
         homeBinding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(homeBinding.getRoot());
         setActionBarOff();
+        getIntentExtras();
     }
     private void getIntentExtras() {
         if(getIntent().getExtras() != null){
             Bundle bundle = getIntent().getExtras();
             user = bundle.getParcelable(KEY_USER);
+            Log.d(TAG_GET_EXTRAS_SUCCESS,user.getName());
         }
     }
     private void setActionBarOff() {
