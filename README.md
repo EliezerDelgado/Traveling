@@ -64,4 +64,10 @@ ACTIVIDAD 5. Activities – Intents explícitos
 
 -Se accede al home correctamente.
 
--El boton Create new lleva al 
+-El botón "Create new" lleva al Activity Registro
+
+-El botón "Me apunto" lleva al Activity Login
+
+-Si acertamos username y password el boton "Login->" nos lleva a la Activity Home
+
+-En la pantalla Home nos llega un log con el nombre con el tag "EXTRAS_SUCCESS"
