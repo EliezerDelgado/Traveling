@@ -40,12 +40,13 @@ public class LoginActivity extends AppCompatActivity {
         user = new User();
         setBindRepo();
         buttonListener();
+        inputListener();
         setActionBarOff();
     }
 
     private void buttonListener() {
         loginBinding.buttonLoginRegister.setOnClickListener(v ->
-            resultRegister.launch(Intents.intentActivity(this, SignUpActivity.class))
+            resultRegister.launch(Intents.intentActivity(this, RegisterActivity.class))
         );
         loginBinding.buttonLogin.setOnClickListener(v->
                 startActivityToHomeActivity()

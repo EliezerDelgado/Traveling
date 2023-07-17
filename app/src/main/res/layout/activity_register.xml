@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.SignUpActivity"
+    tools:context=".ui.RegisterActivity"
     android:background="@color/celeste">
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/button_photo_signup"
+        android:id="@+id/button_photo_register"
         android:layout_width="@dimen/perfil_photo_dimen"
         android:layout_height="@dimen/perfil_photo_dimen"
         android:scaleType="centerCrop"
@@ -18,19 +18,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/camera_signup"
+        android:id="@+id/camera_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_camera"
-        app:layout_constraintEnd_toEndOf="@+id/button_photo_signup"
-        app:layout_constraintStart_toStartOf="@+id/button_photo_signup"
-        app:layout_constraintBottom_toBottomOf="@+id/button_photo_signup"/>
+        app:layout_constraintEnd_toEndOf="@+id/button_photo_register"
+        app:layout_constraintStart_toStartOf="@+id/button_photo_register"
+        app:layout_constraintBottom_toBottomOf="@+id/button_photo_register"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/name_signup"
+        android:id="@+id/name_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/name_sign_up_hint"
+        android:hint="@string/name_register_hint"
         app:startIconDrawable="@drawable/ic_face"
         app:endIconMode="custom"
         app:endIconDrawable="@drawable/ic_eye"
@@ -39,10 +39,10 @@
         style="?attr/travelingTextInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_photo_signup">
+        app:layout_constraintTop_toBottomOf="@+id/button_photo_register">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/name_text_signup"
+            android:id="@+id/name_text_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -50,10 +50,10 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/last_name_signup"
+        android:id="@+id/last_name_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/last_name_sign_up_hint"
+        android:hint="@string/last_name_register_hint"
         style="?attr/travelingTextInputLayout"
         app:startIconDrawable="@drawable/ic_face"
         app:endIconMode="custom"
@@ -62,10 +62,10 @@
         android:background="@drawable/light_cyan_shape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_signup">
+        app:layout_constraintTop_toBottomOf="@+id/name_register">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/last_name_text_signup"
+            android:id="@+id/last_name_text_register"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="text"
@@ -73,10 +73,10 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ages_range_signup"
+        android:id="@+id/ages_range_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/ages_range_sign_up_hint"
+        android:hint="@string/ages_range_register_hint"
         android:layout_margin="@dimen/marginshort"
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
         app:endIconMode="dropdown_menu"
@@ -87,16 +87,16 @@
         android:background="@drawable/light_cyan_shape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/last_name_signup">
+        app:layout_constraintTop_toBottomOf="@+id/last_name_register">
         <AutoCompleteTextView
-            android:id="@+id/ages_range_list_signup"
+            android:id="@+id/ages_range_list_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none"
             android:backgroundTint="@android:color/transparent" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_confirm_signup"
+        android:id="@+id/button_confirm_register"
         android:layout_width="250dp"
         android:layout_height="@dimen/button_medium"
         android:backgroundTint="@color/yellow"
@@ -105,12 +105,12 @@
         android:fontFamily="@font/andika"
         android:enabled="false"
         android:layout_marginBottom="@dimen/marginlarge"
-        android:text="@string/confirm_signup_text"
+        android:text="@string/confirm_register_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/linear_layout_privacy_signup"/>
+        app:layout_constraintBottom_toTopOf="@+id/linear_layout_privacy_register"/>
     <LinearLayout
-        android:id="@+id/linear_layout_privacy_signup"
+        android:id="@+id/linear_layout_privacy_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -119,17 +119,17 @@
         android:layout_marginBottom="@dimen/marginshort">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/privacy_text_signup"
+            android:id="@+id/privacy_text_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:text="@string/privacy_text_signup_text"/>
+            android:text="@string/privacy_text_register_text"/>
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_privacy_signup"
+            android:id="@+id/button_privacy_register"
             android:layout_width="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_height="wrap_content"
-            android:text="@string/privacy_button_signup_text"
+            android:text="@string/privacy_button_register_text"
             android:background="@android:color/transparent"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

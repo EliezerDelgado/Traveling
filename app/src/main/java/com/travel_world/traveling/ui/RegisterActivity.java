@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.travel_world.traveling.R;
 import com.travel_world.traveling.data.constants.UserRegex;
 import com.travel_world.traveling.data.model.User;
-import com.travel_world.traveling.databinding.ActivitySignUpBinding;
+import com.travel_world.traveling.databinding.ActivityRegisterBinding;
 import com.travel_world.traveling.utils.Intents;
 import com.travel_world.traveling.utils.AskPermissions;
 import com.travel_world.traveling.utils.UtilsStrings;
@@ -25,35 +25,35 @@ import com.travel_world.traveling.utils.UtilsStrings;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class SignUpActivity extends AppCompatActivity {
-    private ActivitySignUpBinding signupBinding;
+public class RegisterActivity extends AppCompatActivity {
+    private ActivityRegisterBinding registerBinding;
     private ArrayAdapter adapterSpinnerAges;
     private  ArrayList<String> arrayAges;
 
     private ActivityResultLauncher<Intent> resultCamera = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             result -> {
-                signupBinding.buttonPhotoSignup.setImageURI(Intents.getCameraImagenReturn());
+                registerBinding.buttonPhotoRegister.setImageURI(Intents.getCameraImagenReturn());
             });
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setBar();
-        signupBinding = ActivitySignUpBinding.inflate(getLayoutInflater());
-        setContentView(signupBinding.getRoot());
+        registerBinding = ActivityRegisterBinding.inflate(getLayoutInflater());
+        setContentView(registerBinding.getRoot());
         arrayAges = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.age_range)));
         setValueSpinnerAges();
         buttonListener();
         inputListener();
     }
     private void buttonListener() {
-        signupBinding.buttonPhotoSignup.setOnClickListener(v -> {
+        registerBinding.buttonPhotoRegister.setOnClickListener(v -> {
             launchCamera();
 
         });
-        signupBinding.buttonPrivacySignup.setOnClickListener(v->
-            startActivity(Intents.openPage(getString(R.string.web_developer_google)))
+        registerBinding.buttonPrivacyRegister.setOnClickListener(v->
+                startActivity(Intents.openPage(getString(R.string.web_developer_google)))
         );
-        signupBinding.buttonConfirmSignup.setOnClickListener(v->{
+        registerBinding.buttonConfirmRegister.setOnClickListener(v->{
             returnToLoginScreen();
         });
     }
@@ -68,10 +68,10 @@ public class SignUpActivity extends AppCompatActivity {
 
     private User getUser() {
         User user = new User();
-        user.setName(signupBinding.nameTextSignup.getText().toString());
-        user.setLastName(signupBinding.lastNameTextSignup.getText().toString());
-        user.setPassword(signupBinding.lastNameTextSignup.getText().toString());
-        user.setAgeRange(signupBinding.agesRangeListSignup.getText().toString());
+        user.setName(registerBinding.nameTextRegister.getText().toString());
+        user.setLastName(registerBinding.lastNameTextRegister.getText().toString());
+        user.setPassword(registerBinding.lastNameTextRegister.getText().toString());
+        user.setAgeRange(registerBinding.agesRangeListRegister.getText().toString());
         return user;
     }
 
@@ -84,7 +84,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void inputListener() {
-        signupBinding.nameTextSignup.addTextChangedListener(new TextWatcher() {
+        registerBinding.nameTextRegister.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -98,14 +98,14 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if(!UtilsStrings.rergularExpressions(s.toString(), UserRegex.REGEX_NAME))
-                    signupBinding.nameSignup.setError(getString(R.string.error_name_signup));
+                    registerBinding.nameRegister.setError(getString(R.string.error_name_register));
                 else
-                    signupBinding.nameSignup.setError(null);
+                    registerBinding.nameRegister.setError(null);
                 isAllFineToConfirm();
             }
         });
 
-        signupBinding.lastNameTextSignup.addTextChangedListener(new TextWatcher() {
+        registerBinding.lastNameTextRegister.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -119,13 +119,13 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if(!UtilsStrings.rergularExpressions(s.toString(), UserRegex.REGEX_LAST_NAME))
-                    signupBinding.lastNameSignup.setError(getString(R.string.error_last_name_signup));
+                    registerBinding.lastNameRegister.setError(getString(R.string.error_last_name_register));
                 else
-                    signupBinding.lastNameSignup.setError(null);
+                    registerBinding.lastNameRegister.setError(null);
                 isAllFineToConfirm();
             }
         });
-        signupBinding.agesRangeListSignup.addTextChangedListener(new TextWatcher() {
+        registerBinding.agesRangeListRegister.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -139,29 +139,29 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if (arrayAges.indexOf(s.toString()) < arrayAges.indexOf(getResources().getString(R.string.age_range_adult)) && !s.toString().isEmpty())
-                    signupBinding.agesRangeSignup.setError(getResources().getText(R.string.error_agesRange_lower_years));
+                    registerBinding.agesRangeRegister.setError(getResources().getText(R.string.error_agesRange_lower_years));
 
                 else
-                    signupBinding.agesRangeSignup.setError(null);
+                    registerBinding.agesRangeRegister.setError(null);
                 isAllFineToConfirm();
             }
         });
     }
 
     private void isAllFineToConfirm() {
-        boolean correctName = signupBinding.nameSignup.getError() == null
-                && !signupBinding.nameTextSignup.getText().toString().isEmpty();
+        boolean correctName = registerBinding.nameRegister.getError() == null
+                && !registerBinding.nameTextRegister.getText().toString().isEmpty();
 
-        boolean correctLastName = signupBinding.lastNameSignup.getError() == null
-                && !signupBinding.lastNameTextSignup.getText().toString().isEmpty();
+        boolean correctLastName = registerBinding.lastNameRegister.getError() == null
+                && !registerBinding.lastNameTextRegister.getText().toString().isEmpty();
 
-        boolean correctAgeRange = signupBinding.agesRangeSignup.getError() == null
-                && !signupBinding.agesRangeListSignup.getText().toString().isEmpty();
+        boolean correctAgeRange = registerBinding.agesRangeRegister.getError() == null
+                && !registerBinding.agesRangeListRegister.getText().toString().isEmpty();
 
         if(correctName && correctLastName    && correctAgeRange)
-            signupBinding.buttonConfirmSignup.setEnabled(true);
+            registerBinding.buttonConfirmRegister.setEnabled(true);
         else
-            signupBinding.buttonConfirmSignup.setEnabled(false);
+            registerBinding.buttonConfirmRegister.setEnabled(false);
 
     }
 
@@ -169,7 +169,7 @@ public class SignUpActivity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(
                 getResources().getColor(R.color.teal_700,getTheme()))
         );
-        getSupportActionBar().setTitle(getString(R.string.sign_up_activity_sign_up_name));
+        getSupportActionBar().setTitle(getString(R.string.activity_register_name));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
@@ -178,6 +178,6 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void setValueSpinnerAges() {
         adapterSpinnerAges =  ArrayAdapter.createFromResource(this,R.array.age_range,android.R.layout.simple_spinner_dropdown_item);
-        signupBinding.agesRangeListSignup.setAdapter(adapterSpinnerAges);
+        registerBinding.agesRangeListRegister.setAdapter(adapterSpinnerAges);
     }
 }

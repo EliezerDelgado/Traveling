@@ -57,3 +57,11 @@ ACTIVIDAD 4. Intents implícitos
 -En la imagen hay un icono de cámara, y si pulsa a la imagen entras en la cámara
 
 -El botón "Ver Condiciones" lleva a la web de developers
+
+ACTIVIDAD 5. Activities – Intents explícitos
+
+-El botón de login, por defecto debe estar deshabilitado hasta tengamos escrito username y password.
+
+-Se accede al home correctamente.
+
+-El boton Create new lleva al 

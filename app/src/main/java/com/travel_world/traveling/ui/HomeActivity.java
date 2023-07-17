@@ -36,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(
                 getResources().getColor(R.color.teal_700,getTheme()))
         );
-        getSupportActionBar().setTitle(getString(R.string.sign_up_activity_home_name));
+        getSupportActionBar().setTitle(getString(R.string.activity_home_name));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_dehaze);
