@@ -37,8 +37,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         loginBinding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(loginBinding.getRoot());
-        buttonListener();
+        user = new User();
         setBindRepo();
+        buttonListener();
         setActionBarOff();
     }
 

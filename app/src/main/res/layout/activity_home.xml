@@ -6,5 +6,5 @@
     android:layout_height="match_parent"
     tools:context=".ui.HomeActivity">
 
-   <include layout="@layout/onboarding"/>
+   <include layout="@layout/home"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

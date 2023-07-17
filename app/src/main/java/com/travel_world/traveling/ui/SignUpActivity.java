@@ -139,24 +139,26 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if (arrayAges.indexOf(s.toString()) < arrayAges.indexOf(getResources().getString(R.string.age_range_adult)) && !s.toString().isEmpty())
-                {
                     signupBinding.agesRangeSignup.setError(getResources().getText(R.string.error_agesRange_lower_years));
-                }
+
                 else
                     signupBinding.agesRangeSignup.setError(null);
+                isAllFineToConfirm();
             }
         });
     }
 
     private void isAllFineToConfirm() {
-        String name = signupBinding.nameTextSignup.getEditableText().toString();
-        String lastName = signupBinding.lastNameTextSignup.getEditableText().toString();
-        boolean correctName = signupBinding.nameSignup.getError() == null;
-        boolean correctLastName = signupBinding.lastNameSignup.getError() == null;
-        if(!name.isEmpty()
-                && !lastName.isEmpty()
-                && correctName
-                && correctLastName)
+        boolean correctName = signupBinding.nameSignup.getError() == null
+                && !signupBinding.nameTextSignup.getText().toString().isEmpty();
+
+        boolean correctLastName = signupBinding.lastNameSignup.getError() == null
+                && !signupBinding.lastNameTextSignup.getText().toString().isEmpty();
+
+        boolean correctAgeRange = signupBinding.agesRangeSignup.getError() == null
+                && !signupBinding.agesRangeListSignup.getText().toString().isEmpty();
+
+        if(correctName && correctLastName    && correctAgeRange)
             signupBinding.buttonConfirmSignup.setEnabled(true);
         else
             signupBinding.buttonConfirmSignup.setEnabled(false);
