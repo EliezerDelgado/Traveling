@@ -5,6 +5,7 @@ import static com.travel_world.traveling.data.constants.Tags.TAG_GET_EXTRAS_SUCC
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -19,9 +20,9 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setBar();
         homeBinding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(homeBinding.getRoot());
-        setActionBarOff();
         getIntentExtras();
     }
     private void getIntentExtras() {
@@ -31,7 +32,15 @@ public class HomeActivity extends AppCompatActivity {
             Log.d(TAG_GET_EXTRAS_SUCCESS,user.getName());
         }
     }
-    private void setActionBarOff() {
-        getSupportActionBar().hide();
+    private void setBar() {
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(
+                getResources().getColor(R.color.teal_700,getTheme()))
+        );
+        getSupportActionBar().setTitle(getString(R.string.sign_up_activity_home_name));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_dehaze);
+        getWindow().setStatusBarColor(getResources().getColor(R.color.teal_900,getTheme()));
     }
+
 }

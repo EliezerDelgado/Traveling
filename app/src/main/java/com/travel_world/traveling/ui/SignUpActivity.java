@@ -37,7 +37,7 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setBarColor();
+        setBar();
         signupBinding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(signupBinding.getRoot());
         arrayAges = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.age_range)));
@@ -165,11 +165,11 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-    private void setBarColor() {
+    private void setBar() {
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(
                 getResources().getColor(R.color.teal_700,getTheme()))
         );
-        getSupportActionBar().setTitle(getString(R.string.sign_up_activty_name));
+        getSupportActionBar().setTitle(getString(R.string.sign_up_activity_sign_up_name));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);

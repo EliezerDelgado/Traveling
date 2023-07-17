@@ -26,6 +26,7 @@
     <string name="error_last_name_signup">Ups, no creo que sea correcto, revísalo</string>
     <string name="error_agesRange_lower_years">Esta app no es para ti</string>
     <string name="error_permission_camera">Necesita darle permiso de camara</string>
-    <string name="sign_up_activty_name">Registro</string>
+    <string name="sign_up_activity_sign_up_name">Registro</string>
     <string name="error_login_incorrect_login_or_password">El login o la contraseña es incorrecto</string>
+    <string name="sign_up_activity_home_name">Home</string>
 </resources>

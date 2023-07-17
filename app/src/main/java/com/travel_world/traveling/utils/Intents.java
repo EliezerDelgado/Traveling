@@ -41,6 +41,6 @@ public class Intents {
 
     public static <T> Intent intentActivityWithExtras(Context context,  Class<T> activity, Bundle bundle)
     {
-        return new Intent(context,activity.getClass()).putExtras(bundle);
+        return new Intent(context,activity).putExtras(bundle);
     }
 }
