@@ -14,7 +14,7 @@
           android:layout_height="?attr/actionBarSize"
           app:menu="@menu/home_menu"
           app:navigationIcon="@drawable/ic_dehaze"
-          app:theme="@style/ToolBarStyleTravelingWorld"
+          app:theme="?attr/travelingToolbar"
           app:title="@string/activity_home_name" />
    </com.google.android.material.appbar.AppBarLayout>
    <androidx.constraintlayout.widget.ConstraintLayout

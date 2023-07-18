@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_back"
-            app:theme="@style/ToolBarStyleTravelingWorld"
+            app:theme="?attr/travelingToolbar"
             app:title="@string/activity_register_name" />
     </com.google.android.material.appbar.AppBarLayout>
 

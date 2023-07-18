@@ -10,4 +10,5 @@
     <attr name="travelingImgCV" format="reference"/>
     <attr name="travelingHiperLinkText" format="reference"/>
     <attr name="travelingTextInputLayout" format="reference"/>
+    <attr name="travelingToolbar" format="reference"/>
 </resources>
