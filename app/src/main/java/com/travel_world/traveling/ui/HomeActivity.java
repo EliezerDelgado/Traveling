@@ -5,13 +5,13 @@ import static com.travel_world.traveling.data.constants.Tags.TAG_GET_EXTRAS_SUCC
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.travel_world.traveling.R;
 import com.travel_world.traveling.data.model.User;
 import com.travel_world.traveling.databinding.ActivityHomeBinding;
+import com.travel_world.traveling.utils.Intents;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -20,10 +20,10 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setBar();
         homeBinding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(homeBinding.getRoot());
         getIntentExtras();
+        toolbarListener();
     }
     private void getIntentExtras() {
         if(getIntent().getExtras() != null){
@@ -32,15 +32,16 @@ public class HomeActivity extends AppCompatActivity {
             Log.d(TAG_GET_EXTRAS_SUCCESS,user.getName());
         }
     }
-    private void setBar() {
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(
-                getResources().getColor(R.color.teal_700,getTheme()))
-        );
-        getSupportActionBar().setTitle(getString(R.string.activity_home_name));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_dehaze);
-        getWindow().setStatusBarColor(getResources().getColor(R.color.teal_900,getTheme()));
+    private void toolbarListener() {
+        homeBinding.homeToolbar.setOnMenuItemClickListener(item ->{
+            if(item.getItemId() == R.id.menu_castle)
+            {
+                startActivity(Intents.openPage(getResources().getString(R.string.web_eurodisney)));
+            } else if (item.getItemId() == R.id.menu_car) {
+                startActivity(Intents.intentActivity(this, LilaActivity.class));
+            }
+            return true;
+        });
     }
 
 }

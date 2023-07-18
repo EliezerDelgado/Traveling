@@ -37,7 +37,6 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setBar();
         registerBinding = ActivityRegisterBinding.inflate(getLayoutInflater());
         setContentView(registerBinding.getRoot());
         arrayAges = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.age_range)));
@@ -164,18 +163,6 @@ public class RegisterActivity extends AppCompatActivity {
             registerBinding.buttonConfirmRegister.setEnabled(false);
 
     }
-
-    private void setBar() {
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(
-                getResources().getColor(R.color.teal_700,getTheme()))
-        );
-        getSupportActionBar().setTitle(getString(R.string.activity_register_name));
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
-        getWindow().setStatusBarColor(getResources().getColor(R.color.teal_900,getTheme()));
-    }
-
     private void setValueSpinnerAges() {
         adapterSpinnerAges =  ArrayAdapter.createFromResource(this,R.array.age_range,android.R.layout.simple_spinner_dropdown_item);
         registerBinding.agesRangeListRegister.setAdapter(adapterSpinnerAges);

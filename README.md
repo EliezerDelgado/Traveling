@@ -71,3 +71,11 @@ ACTIVIDAD 5. Activities – Intents explícitos
 -Si acertamos username y password el boton "Login->" nos lleva a la Activity Home
 
 -En la pantalla Home nos llega un log con el nombre con el tag "EXTRAS_SUCCESS"
+
+ACTIVIDAD 5.1 Toolbar
+
+-RegisterActivity y HomeActivity tiene toolbar.
+
+-La toolbar de HomeActivity tiene un menu con dos iconos
+
+-El icono de 

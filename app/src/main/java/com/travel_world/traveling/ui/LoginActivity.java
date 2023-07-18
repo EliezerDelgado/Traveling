@@ -41,7 +41,6 @@ public class LoginActivity extends AppCompatActivity {
         setBindRepo();
         buttonListener();
         inputListener();
-        setActionBarOff();
     }
 
     private void buttonListener() {
@@ -107,9 +106,6 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void setActionBarOff() {
-        getSupportActionBar().hide();
-    }
 
     private void setBindRepo() {
         loginBinding.setUser(new User());

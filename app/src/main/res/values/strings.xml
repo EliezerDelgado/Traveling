@@ -29,4 +29,6 @@
     <string name="activity_register_name">Registro</string>
     <string name="error_login_incorrect_login_or_password">El login o la contraseña es incorrecto</string>
     <string name="activity_home_name">Home</string>
+    <string name="menu_castle_title">Eurodisney</string>
+    <string name="menu_car_title">Alquila un coche</string>
 </resources>
