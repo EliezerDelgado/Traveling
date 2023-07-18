@@ -78,4 +78,6 @@ ACTIVIDAD 5.1 Toolbar
 
 -La toolbar de HomeActivity tiene un menu con dos iconos
 
--El icono de 
+-El icono de castillo lleva a Eurodisney
+
+-El icono de coche abre un activity de color lila
