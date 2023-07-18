@@ -2,6 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/menu_castle" android:title="@string/menu_castle_title"  app:showAsAction="withText" />
-    <item android:id="@+id/menu_car" android:title="@string/menu_car_title" app:showAsAction="withText"  />
+    <item android:id="@+id/menu_castle" android:title="@string/menu_castle_title"  app:showAsAction="always" android:icon="@drawable/ic_castle"/>
+    <item android:id="@+id/menu_car" android:title="@string/menu_car_title"  app:showAsAction="always" android:icon="@drawable/ic_car" />
 </menu>
