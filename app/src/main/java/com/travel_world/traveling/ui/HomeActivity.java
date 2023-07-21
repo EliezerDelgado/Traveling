@@ -7,7 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.travel_world.traveling.R;
 import com.travel_world.traveling.data.model.User;
 import com.travel_world.traveling.databinding.ActivityHomeBinding;
@@ -29,7 +32,7 @@ public class HomeActivity extends AppCompatActivity {
         if(getIntent().getExtras() != null){
             Bundle bundle = getIntent().getExtras();
             user = bundle.getParcelable(KEY_USER);
-            Log.d(TAG_GET_EXTRAS_SUCCESS,user.getName());
+            showMensage(user);
         }
     }
     private void toolbarListener() {
@@ -44,4 +47,9 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+    private void showMensage(User user)
+    {
+        Snackbar.make(homeBinding.coordinatorlayoutHome, getString(R.string.user_name_description)+": "+user.getName()+"  "+getString(R.string.user_password_description)+": "+user.getPassword(),
+                BaseTransientBottomBar.LENGTH_SHORT).show();
+    }
 }

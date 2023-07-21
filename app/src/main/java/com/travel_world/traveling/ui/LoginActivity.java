@@ -12,12 +12,12 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.travel_world.traveling.R;
 import com.travel_world.traveling.data.model.User;
 import com.travel_world.traveling.databinding.ActivityLoginBinding;
+import com.travel_world.traveling.utils.AlertDialogs;
 import com.travel_world.traveling.utils.Intents;
 
 public class LoginActivity extends AppCompatActivity {
@@ -60,8 +60,16 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(Intents.intentActivityWithExtras(this, HomeActivity.class, bundle));
         }
         else
-            Toast.makeText(this, getResources().getText(R.string.error_login_incorrect_login_or_password), Toast.LENGTH_SHORT).show();
+            showErrorLoginMessage();
 
+    }
+
+    private void showErrorLoginMessage()
+    {
+        AlertDialogs.createSimpleInformativeDialog(this,
+                getResources().getString(R.string.error_login_incorrect_login_or_password),
+                getResources().getString(R.string.confirm_message_login)
+        ).show();
     }
 
     private void inputListener() {
