@@ -81,3 +81,9 @@ ACTIVIDAD 5.1 Toolbar
 -El icono de castillo lleva a Eurodisney
 
 -El icono de coche abre un activity de color lila
+
+ACTIVIDAD 5.2 Alertas - SnackBar
+
+-se muestra un Dialogo de alerta avisando de que algo anda mal en el login activity
+
+-se muestra un snackbar dando los datos pasados desde el login activity en el home activity
