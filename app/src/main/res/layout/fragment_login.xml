@@ -3,6 +3,139 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.LoginFragment">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imagenview_city_tour_login"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/nomads_city_tour"
+            app:layout_constraintBottom_toTopOf="@+id/separator_imagen"
+            app:layout_constraintDimensionRatio="8:9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/separator_imagen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.45"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/title_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_Login_text"
+            style="?attr/travelingTxtH4"
+            android:layout_marginHorizontal="@dimen/marginshort"
+            app:layout_constraintStart_toStartOf="parent"
+            android:gravity="bottom"
+            app:layout_constraintTop_toBottomOf="@+id/separator_imagen" />
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/name_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="@string/nameLogin_hint"
+            android:layout_margin="@dimen/marginshort"
+            style="?attr/travelingTextInputLayout"
+            app:layout_constraintTop_toBottomOf="@+id/title_login">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name_text_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={user.name}"
+                android:inputType="text"
+                android:backgroundTint="@android:color/transparent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:hint="@string/passwordLogin_hint"
+            android:layout_margin="@dimen/marginshort"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/ic_lock"
+            style="?attr/travelingTextInputLayout"
+            app:layout_constraintTop_toBottomOf="@+id/name_login">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password_text_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={user.password}"
+                android:inputType="textPassword"
+                android:backgroundTint="@android:color/transparent" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_big"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/buttonLogin_text"
+            android:backgroundTint="@color/black"
+            android:textColor="@color/white"
+            android:layout_margin="@dimen/marginshort"
+            android:enabled="false"
+            app:layout_constraintTop_toBottomOf="@+id/password_login"
+            />
+        <LinearLayout
+            android:id="@+id/forgot_lineal_layout_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/forgot_text_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?attr/travelingTxtBody1"
+                android:layout_margin="@dimen/marginshort"
+                android:text="@string/forgotTextLogin_text"
+                />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_login_forgot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?attr/travelingHiperLinkText"
+                android:text="@string/forgotButtonLogin_text"
+                android:onClick="onClick"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/register_lineal_layout_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/forgot_lineal_layout_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:gravity="center">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/register_text_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?attr/travelingTxtBody1"
+                android:layout_margin="@dimen/marginshort"
+                android:text="@string/registerTextLogin_text"
+                />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button_login_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/registerButtonLogin_text"
+                style="?attr/travelingHiperLinkText"
+                android:onClick="onClick"/>
+        </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
