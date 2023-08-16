@@ -89,7 +89,7 @@ public class LoginFragment extends Fragment {
                 startActivityToHomeActivity()
         );
         binding.buttonLoginForgot.setOnClickListener(v->{
-            Snackbar.make(getView(),getString(R.string.button_login_forgot_onclick),Snackbar.LENGTH_LONG).show();
+            Snackbar.make(binding.constraintLayoutLoginFragment,getString(R.string.button_login_forgot_onclick),Snackbar.LENGTH_LONG).show();
         });
     }
 

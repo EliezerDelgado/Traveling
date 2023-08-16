@@ -87,3 +87,11 @@ ACTIVIDAD 5.2 Alertas - SnackBar
 -se muestra un Dialogo de alerta avisando de que algo anda mal en el login activity
 
 -se muestra un snackbar dando los datos pasados desde el login activity en el home activity
+
+ACTIVIDAD 6 Fragments
+
+-Crear dos fragments LoginFragment y RegisterFragment y pasar las logicas de las activity a los fragment
+
+-LoginFragment y RegisterFragment Conectarlos con su Activity para cambiar la visibilidad de la toolbar y RegisterFragment le pase el result al LoginFragment.
+
+-crear HomeFragment y pasar la logica del activity y pasar los argumentos que recibia para mostrar el mensaje(Snackbar).
