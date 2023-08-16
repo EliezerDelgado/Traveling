@@ -20,13 +20,35 @@ import com.travel_world.traveling.databinding.ActivityLoginBinding;
 import com.travel_world.traveling.utils.AlertDialogs;
 import com.travel_world.traveling.utils.Intents;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements OnListenerLogin, OnListenerRegister {
 
-    private ActivityLoginBinding loginBinding;
+    private ActivityLoginBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loginBinding = ActivityLoginBinding.inflate(getLayoutInflater());
-        setContentView(loginBinding.getRoot());
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        addFragments();
+    }
+    private void addFragments()
+    {
+        getSupportFragmentManager().beginTransaction().add(binding.loginFragmentLayout.getId(),new LoginFragment())
+            .commitAllowingStateLoss();
+    }
+
+    @Override
+    public void remplaceFragmentRegister() {
+        getSupportFragmentManager().beginTransaction().replace(binding.loginFragmentLayout.getId(),new RegisterFragment()).addToBackStack(null)
+                .commitAllowingStateLoss();
+    }
+
+    @Override
+    public void ocultToolbar() {
+        binding.barLayoutLogin.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showToolbar() {
+        binding.barLayoutLogin.setVisibility(View.VISIBLE);
     }
 }

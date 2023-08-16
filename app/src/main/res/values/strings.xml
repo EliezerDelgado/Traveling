@@ -26,7 +26,7 @@
     <string name="error_last_name_register">Ups, no creo que sea correcto, revísalo</string>
     <string name="error_agesRange_lower_years">Esta app no es para ti</string>
     <string name="error_permission_camera">Necesita darle permiso de camara</string>
-    <string name="activity_register_name">Registro</string>
+    <string name="fragment_register_name">Registro</string>
     <string name="error_login_incorrect_login_or_password">El login o la contraseña es incorrecto verifique sus datos</string>
     <string name="activity_home_name">Home</string>
     <string name="menu_castle_title">Eurodisney</string>
@@ -36,4 +36,8 @@
     <string name="confirm_message_login">Entendido</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="activity_login_toolbar_tittle">Activity Login</string>
+    <string name="button_photo_register_content_description">Boton para cambiar la imagen</string>
+    <string name="ages_range_list_register_content_description">Lista de rango de años para el usuario</string>
+    <string name="empty_text"> </string>
 </resources>

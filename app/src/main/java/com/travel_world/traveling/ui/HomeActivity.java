@@ -1,7 +1,6 @@
 package com.travel_world.traveling.ui;
 
 import static com.travel_world.traveling.data.constants.Keys.KEY_USER;
-import static com.travel_world.traveling.data.constants.Tags.TAG_GET_EXTRAS_SUCCESS;
 
 import androidx.appcompat.app.AppCompatActivity;
 

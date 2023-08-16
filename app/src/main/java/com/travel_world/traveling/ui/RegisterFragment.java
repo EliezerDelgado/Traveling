@@ -1,5 +1,6 @@
 package com.travel_world.traveling.ui;
 import static com.travel_world.traveling.data.constants.Keys.KEY_USER;
+import static com.travel_world.traveling.data.constants.Keys.RESULT_LOGIN;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -8,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -38,13 +40,11 @@ public class RegisterFragment extends Fragment {
             result -> {
                 binding.buttonPhotoRegister.setImageURI(Intents.getCameraImagenReturn());
             });
+
+    private OnListenerRegister listener;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        arrayAges = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.age_range)));
-        setValueSpinnerAges();
-        buttonListener();
-        inputListener();
     }
 
     @Nullable
@@ -52,6 +52,32 @@ public class RegisterFragment extends Fragment {
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentRegisterBinding.inflate(inflater,container,false);
         return binding.getRoot();
+    }
+
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if(context instanceof OnListenerRegister)
+            listener = (OnListenerRegister) context;
+        else
+            throw  new ClassCastException(context + " must implement listener");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        listener.showToolbar();
+        arrayAges = new ArrayList<>(Arrays.asList(getResources().getStringArray(R.array.age_range)));
+        setValueSpinnerAges();
+        buttonListener();
+        inputListener();
     }
 
     private void buttonListener() {
@@ -68,9 +94,14 @@ public class RegisterFragment extends Fragment {
     }
 
     private void returnToLoginScreen() {
-        User u = getUser();
-        Bundle bundle = new Bundle();
-        bundle.putParcelable(KEY_USER,u);
+        if (isAdded() && getActivity() != null) {
+            User u = getUser();
+            Bundle bundle = new Bundle();
+            bundle.putParcelable(KEY_USER,u);
+            getParentFragmentManager().setFragmentResult(RESULT_LOGIN,bundle);
+            getActivity().onBackPressed();
+        }
+
         /*
         setResult(Activity.RESULT_OK,new Intent().putExtras(bundle));
         finish();

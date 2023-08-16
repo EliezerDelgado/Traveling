@@ -1,19 +1,18 @@
 package com.travel_world.traveling.ui;
 
 import static com.travel_world.traveling.data.constants.Keys.KEY_USER;
+import static com.travel_world.traveling.data.constants.Keys.RESULT_LOGIN;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,15 +25,18 @@ import com.travel_world.traveling.utils.AlertDialogs;
 import com.travel_world.traveling.utils.Intents;
 
 public class LoginFragment extends Fragment {
+
     private User user;
     private FragmentLoginBinding binding;
+    /*
     private ActivityResultLauncher<Intent> resultRegister = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if( result.getResultCode() == Activity.RESULT_OK)
                 {
                     this.user = result.getData().getExtras().getParcelable(KEY_USER);
                 }
-            });
+            });*/
+    private OnListenerLogin listener;
 
 
     @Override
@@ -52,18 +54,43 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        listener.ocultToolbar();
         user = new User();
         buttonListener();
         inputListener();
     }
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if(context instanceof OnListenerLogin)
+            listener = (OnListenerLogin) context;
+        else
+            throw  new ClassCastException(context + " must implement listener");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
+
     private void buttonListener() {
         binding.buttonLoginRegister.setOnClickListener(v ->
-                resultRegister.launch(Intents.intentActivity(requireContext(), RegisterFragment.class))
-        );
+        {
+            listener.remplaceFragmentRegister();
+            getParentFragmentManager().setFragmentResultListener(RESULT_LOGIN, this, (requestKey, result) -> {
+                user = result.getParcelable(KEY_USER);
+                Log.d("ELI", user.getName());
+            });
+            //resultRegister.launch(Intents.intentActivity(requireContext(), RegisterFragment.class));
+        });
         binding.buttonLogin.setOnClickListener(v->
                 startActivityToHomeActivity()
         );
+        binding.buttonLoginForgot.setOnClickListener(v->{
+            Snackbar.make(getView(),getString(R.string.button_login_forgot_onclick),Snackbar.LENGTH_LONG).show();
+        });
     }
 
     private void startActivityToHomeActivity() {
@@ -132,7 +159,6 @@ public class LoginFragment extends Fragment {
         switch (view.getId())
         {
             case R.id.button_login_forgot:
-                Snackbar.make(view,getString(R.string.button_login_forgot_onclick),Snackbar.LENGTH_LONG).show();
                 break;
             case R.id.button_login_register:
                 Snackbar.make(view,getString(R.string.button_login_register_onclick),Snackbar.LENGTH_LONG).show();
