@@ -1,4 +1,4 @@
-package com.travel_world.traveling.ui;
+package com.travel_world.traveling.feature;
 
 import androidx.appcompat.app.AppCompatActivity;
 

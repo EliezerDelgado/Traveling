@@ -1,4 +1,4 @@
-package com.travel_world.traveling.ui;
+package com.travel_world.traveling.feature.home.fragments;
 
 import android.os.Bundle;
 
@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.travel_world.traveling.R;
-import com.travel_world.traveling.data.model.User;
+import com.travel_world.traveling.domain.User;
 import com.travel_world.traveling.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {

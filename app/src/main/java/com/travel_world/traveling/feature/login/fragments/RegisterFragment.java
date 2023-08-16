@@ -1,4 +1,4 @@
-package com.travel_world.traveling.ui;
+package com.travel_world.traveling.feature.login.fragments;
 
 import static com.travel_world.traveling.data.constants.Keys.KEY_USER;
 import static com.travel_world.traveling.data.constants.Keys.RESULT_LOGIN;
@@ -22,8 +22,9 @@ import androidx.fragment.app.Fragment;
 
 import com.travel_world.traveling.R;
 import com.travel_world.traveling.data.constants.UserRegex;
-import com.travel_world.traveling.data.model.User;
+import com.travel_world.traveling.domain.User;
 import com.travel_world.traveling.databinding.FragmentRegisterBinding;
+import com.travel_world.traveling.feature.login.interfaces.OnListenerRegister;
 import com.travel_world.traveling.utils.AskPermissions;
 import com.travel_world.traveling.utils.Intents;
 import com.travel_world.traveling.utils.UtilsStrings;

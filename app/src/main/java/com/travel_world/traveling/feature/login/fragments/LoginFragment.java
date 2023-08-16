@@ -1,4 +1,4 @@
-package com.travel_world.traveling.ui;
+package com.travel_world.traveling.feature.login.fragments;
 
 import static com.travel_world.traveling.data.constants.Keys.KEY_USER;
 import static com.travel_world.traveling.data.constants.Keys.RESULT_LOGIN;
@@ -18,8 +18,10 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.travel_world.traveling.R;
-import com.travel_world.traveling.data.model.User;
+import com.travel_world.traveling.domain.User;
 import com.travel_world.traveling.databinding.FragmentLoginBinding;
+import com.travel_world.traveling.feature.login.interfaces.OnListenerLogin;
+import com.travel_world.traveling.feature.home.activity.HomeActivity;
 import com.travel_world.traveling.utils.AlertDialogs;
 import com.travel_world.traveling.utils.Intents;
 

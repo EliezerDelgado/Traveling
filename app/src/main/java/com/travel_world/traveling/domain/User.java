@@ -1,4 +1,4 @@
-package com.travel_world.traveling.data.model;
+package com.travel_world.traveling.domain;
 
 import android.os.Parcel;
 import android.os.Parcelable;
