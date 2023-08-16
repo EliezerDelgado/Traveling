@@ -1,14 +1,8 @@
 package com.travel_world.traveling.ui;
+
 import static com.travel_world.traveling.data.constants.Keys.KEY_USER;
 import static com.travel_world.traveling.data.constants.Keys.RESULT_LOGIN;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,12 +14,18 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.travel_world.traveling.R;
 import com.travel_world.traveling.data.constants.UserRegex;
 import com.travel_world.traveling.data.model.User;
 import com.travel_world.traveling.databinding.FragmentRegisterBinding;
-import com.travel_world.traveling.utils.Intents;
 import com.travel_world.traveling.utils.AskPermissions;
+import com.travel_world.traveling.utils.Intents;
 import com.travel_world.traveling.utils.UtilsStrings;
 
 import java.util.ArrayList;

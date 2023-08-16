@@ -15,13 +15,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.travel_world.traveling.R;
 import com.travel_world.traveling.data.model.User;
 import com.travel_world.traveling.databinding.FragmentHomeBinding;
-import com.travel_world.traveling.utils.Intents;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class HomeFragment extends Fragment {
     private static final String ARG_USER = "arg_user";
     private FragmentHomeBinding binding;
@@ -29,7 +23,6 @@ public class HomeFragment extends Fragment {
 
     public HomeFragment() {
     }
-    // TODO: Rename and change types and number of parameters
     public static HomeFragment newInstance(User user) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();

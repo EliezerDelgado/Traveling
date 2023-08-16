@@ -5,17 +5,16 @@ import static com.travel_world.traveling.data.constants.Keys.RESULT_LOGIN;
 
 import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.travel_world.traveling.R;
@@ -28,14 +27,6 @@ public class LoginFragment extends Fragment {
 
     private User user;
     private FragmentLoginBinding binding;
-    /*
-    private ActivityResultLauncher<Intent> resultRegister = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                if( result.getResultCode() == Activity.RESULT_OK)
-                {
-                    this.user = result.getData().getExtras().getParcelable(KEY_USER);
-                }
-            });*/
     private OnListenerLogin listener;
 
 
@@ -83,7 +74,6 @@ public class LoginFragment extends Fragment {
                 user = result.getParcelable(KEY_USER);
                 Log.d("ELI", user.getName());
             });
-            //resultRegister.launch(Intents.intentActivity(requireContext(), RegisterFragment.class));
         });
         binding.buttonLogin.setOnClickListener(v->
                 startActivityToHomeActivity()
