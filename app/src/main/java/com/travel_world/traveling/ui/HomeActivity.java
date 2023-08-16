@@ -5,8 +5,6 @@ import static com.travel_world.traveling.data.constants.Keys.KEY_USER;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
@@ -17,13 +15,13 @@ import com.travel_world.traveling.utils.Intents;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private ActivityHomeBinding homeBinding;
+    private ActivityHomeBinding binding;
     private User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        homeBinding = ActivityHomeBinding.inflate(getLayoutInflater());
-        setContentView(homeBinding.getRoot());
+        binding = ActivityHomeBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         getIntentExtras();
         toolbarListener();
     }
@@ -31,11 +29,17 @@ public class HomeActivity extends AppCompatActivity {
         if(getIntent().getExtras() != null){
             Bundle bundle = getIntent().getExtras();
             user = bundle.getParcelable(KEY_USER);
-            showMensage(user);
+            addFragmentManager(user);
         }
     }
+    private void addFragmentManager(User user)
+    {
+        getSupportFragmentManager().beginTransaction().add(binding.homeFragmentLayout.getId(),HomeFragment.newInstance(user))
+                .commitAllowingStateLoss();
+    }
+
     private void toolbarListener() {
-        homeBinding.homeToolbar.setOnMenuItemClickListener(item ->{
+        binding.homeToolbar.setOnMenuItemClickListener(item ->{
             if(item.getItemId() == R.id.menu_castle)
             {
                 startActivity(Intents.openPage(getResources().getString(R.string.web_eurodisney)));
@@ -44,11 +48,5 @@ public class HomeActivity extends AppCompatActivity {
             }
             return true;
         });
-    }
-
-    private void showMensage(User user)
-    {
-        Snackbar.make(homeBinding.coordinatorlayoutHome, getString(R.string.user_name_description)+": "+user.getName()+"  "+getString(R.string.user_password_description)+": "+user.getPassword(),
-                BaseTransientBottomBar.LENGTH_SHORT).show();
     }
 }
