@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:text="@string/title_home_text"
             style="?attr/travelingTxtH4"
-            android:layout_marginHorizontal="@dimen/marginshort"
+            android:layout_marginHorizontal="@dimen/short_margin"
             app:layout_constraintStart_toStartOf="parent"
             android:gravity="bottom"
             app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +26,7 @@
             android:id="@+id/linear_home_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/marginshort"
+            android:layout_marginHorizontal="@dimen/short_margin"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

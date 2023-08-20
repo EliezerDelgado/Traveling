@@ -42,5 +42,8 @@
     <string name="empty_text"> </string>
     <string name="title_onboarding_two_text">Find Your Match!</string>
     <string name="bodytext_onboarding_two_text">We\'ve helped millions across the nation find their perfect match... and you\'re next!</string>
-    <string name="buttonOnBoarding_skip_text">Skip</string>
+    <string name="button_onboarding_skip_text">Skip</string>
+    <string name="title_onboarding_three_text">Find the Perfect Roommate</string>
+    <string name="bodytext_onboarding_three_text">"We've helped millions across the nation find their perfect match.. and you're next! "</string>
+    <string name="button_onboarding_long_in_text">Long in ↓</string>
 </resources>

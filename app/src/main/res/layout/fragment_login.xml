@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:text="@string/title_Login_text"
             style="?attr/travelingTxtH4"
-            android:layout_marginHorizontal="@dimen/marginshort"
+            android:layout_marginHorizontal="@dimen/short_margin"
             app:layout_constraintStart_toStartOf="parent"
             android:gravity="bottom"
             app:layout_constraintTop_toBottomOf="@+id/separator_imagen" />
@@ -42,7 +42,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:hint="@string/nameLogin_hint"
-            android:layout_margin="@dimen/marginshort"
+            android:layout_margin="@dimen/short_margin"
             style="?attr/travelingTextInputLayout"
             app:layout_constraintTop_toBottomOf="@+id/title_login">
 
@@ -62,7 +62,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:hint="@string/passwordLogin_hint"
-            android:layout_margin="@dimen/marginshort"
+            android:layout_margin="@dimen/short_margin"
             app:endIconMode="custom"
             app:endIconDrawable="@drawable/ic_lock"
             style="?attr/travelingTextInputLayout"
@@ -85,7 +85,7 @@
             android:text="@string/buttonLogin_text"
             android:backgroundTint="@color/black"
             android:textColor="@color/white"
-            android:layout_margin="@dimen/marginshort"
+            android:layout_margin="@dimen/short_margin"
             android:enabled="false"
             app:layout_constraintTop_toBottomOf="@+id/password_login"
             />
@@ -103,7 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?attr/travelingTxtBody1"
-                android:layout_margin="@dimen/marginshort"
+                android:layout_margin="@dimen/short_margin"
                 android:text="@string/forgotTextLogin_text"
                 />
             <com.google.android.material.button.MaterialButton
@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?attr/travelingTxtBody1"
-                android:layout_margin="@dimen/marginshort"
+                android:layout_margin="@dimen/short_margin"
                 android:text="@string/registerTextLogin_text"
                 />
             <com.google.android.material.button.MaterialButton

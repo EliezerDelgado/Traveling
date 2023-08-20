@@ -80,7 +80,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/marginshort"
+        android:layout_margin="@dimen/short_margin"
         android:background="@drawable/light_cyan_shape"
         android:hint="@string/ages_range_register_hint"
         android:textColorHint="@color/black"
@@ -120,7 +120,7 @@
         android:id="@+id/linear_layout_privacy_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/marginshort"
+        android:layout_marginBottom="@dimen/short_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

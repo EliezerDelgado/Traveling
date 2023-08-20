@@ -37,7 +37,7 @@
         <item name="android:backgroundTint">@android:color/transparent</item>
     </style>
     <style name="TextInputLayoutTravelingWorld" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-      <item name="android:layout_margin">@dimen/marginshort</item>
+      <item name="android:layout_margin">@dimen/short_margin</item>
         <item name="android:textColorHint">@color/black</item>
         <item name="startIconTint">@color/black</item>
         <item name="endIconTint">@color/black</item>

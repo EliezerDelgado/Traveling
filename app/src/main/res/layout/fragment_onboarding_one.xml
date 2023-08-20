@@ -11,7 +11,7 @@
         android:id="@+id/appCompactImageViewOnboard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         android:src="@drawable/background_onboarding"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:layout_marginTop="@dimen/long_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/appCompactImageViewOnboard"
         app:layout_constraintEnd_toEndOf="@+id/appCompactImageViewOnboard"
         app:layout_constraintStart_toStartOf="@+id/appCompactImageViewOnboard"
         app:layout_constraintTop_toTopOf="@+id/appCompactImageViewOnboard">
