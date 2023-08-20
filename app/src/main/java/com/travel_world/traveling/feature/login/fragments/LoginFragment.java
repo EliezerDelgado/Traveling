@@ -146,15 +146,11 @@ public class LoginFragment extends Fragment {
             }
         });
     }
-    public void onClick(View view)
-    {
-        switch (view.getId())
-        {
-            case R.id.button_login_forgot:
-                break;
-            case R.id.button_login_register:
-                Snackbar.make(view,getString(R.string.button_login_register_onclick),Snackbar.LENGTH_LONG).show();
-                break;
-        }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binding = null;
+        user = null;
+        listener = null;
     }
 }

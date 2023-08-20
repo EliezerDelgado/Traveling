@@ -42,4 +42,9 @@ public class LoginActivity extends AppCompatActivity implements OnListenerLogin,
     public void showToolbar() {
         binding.barLayoutLogin.setVisibility(View.VISIBLE);
     }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
 }

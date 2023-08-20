@@ -211,4 +211,11 @@ public class RegisterFragment extends Fragment {
         adapterSpinnerAges =  ArrayAdapter.createFromResource(requireContext(),R.array.age_range,android.R.layout.simple_spinner_dropdown_item);
         binding.agesRangeListRegister.setAdapter(adapterSpinnerAges);
     }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binding = null;
+        arrayAges = null;
+        listener = null;
+    }
 }

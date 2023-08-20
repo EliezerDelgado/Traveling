@@ -59,4 +59,10 @@ public class HomeFragment extends Fragment {
         Snackbar.make(binding.coordinatorlayoutHome, getString(R.string.user_name_description)+": "+user.getName()+"  "+getString(R.string.user_password_description)+": "+user.getPassword(),
                 BaseTransientBottomBar.LENGTH_SHORT).show();
     }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        binding = null;
+        user = null;
+    }
 }

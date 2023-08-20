@@ -10,21 +10,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.travel_world.traveling.R;
 import com.travel_world.traveling.databinding.FragmentOnboardingOneBinding;
-import com.travel_world.traveling.feature.login.interfaces.OnListenerLogin;
-import com.travel_world.traveling.feature.onboarding.interfaces.OnboardingViewPager2Next;
+import com.travel_world.traveling.feature.onboarding.interfaces.OnboardingViewPager2;
 
 public class OnboardingOneFragment extends Fragment {
 
     private FragmentOnboardingOneBinding binding;
-    private OnboardingViewPager2Next listener;
+    private OnboardingViewPager2.Next listener;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if(context instanceof OnboardingViewPager2Next)
-            listener = (OnboardingViewPager2Next) context;
+        if(context instanceof OnboardingViewPager2.Next)
+            listener = (OnboardingViewPager2.Next) context;
         else
             throw  new ClassCastException(context + " must implement listener");
     }
@@ -52,5 +50,12 @@ public class OnboardingOneFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         binding.buttonOnboardingOneNext.setOnClickListener(v->listener.nextFragment());
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        listener = null;
+        binding = null;
     }
 }
