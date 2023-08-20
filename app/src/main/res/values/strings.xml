@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Traveling</string>
-    <string name="titleOnboard_text">Tu App de Viajes</string>
-    <string name="bodytextOnboard_text">Hola, estamos buscando a millones de usuarios con inquietudes y ganas de viajar. Si eres tu? No lo dudes accede a nuestra app y descubriras miles de destinos y facilidades para alquilar coches, ver el tiempo...</string>
-    <string name="buttonOnBoarding_next_text">next</string>
+    <string name="title_onboarding_one_text">Tu App de Viajes</string>
+    <string name="bodytext_onboarding_one_text">Hola, estamos buscando a millones de usuarios con inquietudes y ganas de viajar. Si eres tu? No lo dudes accede a nuestra app y descubriras miles de destinos y facilidades para alquilar coches, ver el tiempo...</string>
+    <string name="buttonOnBoarding_next_text">Next</string>
     <string name="title_home_text">Upcoming meetups</string>
     <string name="textview_body_home_los_angeles_text">USA, Los Angeles - 2 Weeks</string>
     <string name="textview_title_home_los_angeles_text">City of Los Angeles</string>
@@ -40,4 +40,7 @@
     <string name="button_photo_register_content_description">Boton para cambiar la imagen</string>
     <string name="ages_range_list_register_content_description">Lista de rango de años para el usuario</string>
     <string name="empty_text"> </string>
+    <string name="title_onboarding_two_text">Find Your Match!</string>
+    <string name="bodytext_onboarding_two_text">We\'ve helped millions across the nation find their perfect match... and you\'re next!</string>
+    <string name="buttonOnBoarding_skip_text">Skip</string>
 </resources>

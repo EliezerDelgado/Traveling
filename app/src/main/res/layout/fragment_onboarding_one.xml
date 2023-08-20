@@ -19,48 +19,48 @@
         app:layout_constraintTop_toTopOf="parent"  />
 
     <LinearLayout
-        android:id="@+id/linearOnboard"
+        android:id="@+id/linear_onboarding_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/appCompactImageViewOnboard"
+        android:layout_marginTop="@dimen/long_margin"
         app:layout_constraintEnd_toEndOf="@+id/appCompactImageViewOnboard"
         app:layout_constraintStart_toStartOf="@+id/appCompactImageViewOnboard"
         app:layout_constraintTop_toTopOf="@+id/appCompactImageViewOnboard">
 
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/titleOnboard"
+            android:id="@+id/title_onboarding_one"
             style="?attr/travelingTxtH4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/titleOnboard_text" />
+            android:text="@string/title_onboarding_one_text" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/bodytextOnboard"
+            android:id="@+id/bodytext_onboarding_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             style="?attr/travelingTxtBody1"
-            android:text="@string/bodytextOnboard_text" />
+            android:text="@string/bodytext_onboarding_one_text" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imagenview_onboarding_one"
             android:layout_width="wrap_content"
             android:layout_height="400dp"
             android:scaleType="fitCenter"
             android:src="@drawable/nomads_moto" />
     </LinearLayout>
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonOnBoarding_next"
+        android:id="@+id/button_onboarding_one_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:textColor="@color/white"
         android:visibility="visible"
-        android:layout_marginBottom="@dimen/marginhigh"
+        android:layout_marginBottom="@dimen/long_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

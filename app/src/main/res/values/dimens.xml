@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="marginshort">10dp</dimen>
-    <dimen name="marginhigh">40dp</dimen>
     <dimen name="button_big">82dp</dimen>
     <dimen name="spinner">58dp</dimen>
     <dimen name="button_medium">60dp</dimen>
     <dimen name="marginlarge">60dp</dimen>
     <dimen name="perfil_photo_dimen">120dp</dimen>
     <dimen name="card_view_medium_size">260dp</dimen>
+    <dimen name="long_margin">60dp</dimen>
 </resources>
