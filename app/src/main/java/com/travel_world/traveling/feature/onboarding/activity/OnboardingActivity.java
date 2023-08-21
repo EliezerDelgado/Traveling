@@ -27,7 +27,7 @@ public class OnboardingActivity extends AppCompatActivity implements OnboardingV
 
 
     private void createOnboardingViewPager2() {
-        adapterVP2 = new OnboardingPagerAdapter(this);
+        adapterVP2 = new OnboardingPagerAdapter(getSupportFragmentManager(),getLifecycle());
         adapterVP2.addFragment(new OnboardingOneFragment());
         adapterVP2.addFragment(new OnboardingTwoFragment());
         adapterVP2.addFragment(new OnboardingThreeFragment());
@@ -39,7 +39,7 @@ public class OnboardingActivity extends AppCompatActivity implements OnboardingV
     public void nextFragment()
     {
         int item = binding.onboardingViewpager2.getCurrentItem();
-        binding.onboardingViewpager2.setCurrentItem(++item);
+        binding.onboardingViewpager2.setCurrentItem(++item,true);
     }
 
     @Override

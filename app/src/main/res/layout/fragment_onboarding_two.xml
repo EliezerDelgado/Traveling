@@ -7,15 +7,19 @@
     tools:context=".feature.onboarding.fragments.OnboardingTwoFragment"
     android:background="@color/flesh_tone">
 
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linear_onboarding_two"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:orientation="vertical"
         android:layout_marginTop="@dimen/long_margin"
+        android:gravity="top"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linear_onboarding_button_two"
+        >
 
 
         <com.google.android.material.textview.MaterialTextView
@@ -36,10 +40,10 @@
 
         <ImageView
             android:id="@+id/imagenview_onboarding_two"
-            android:layout_width="wrap_content"
-            android:layout_height="300dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:scaleType="fitCenter"
-            android:src="@drawable/nomads_moto" />
+            android:src="@drawable/nomads_city_tour" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 <androidx.appcompat.widget.LinearLayoutCompat
     android:id="@+id/linear_onboarding_button_two"
