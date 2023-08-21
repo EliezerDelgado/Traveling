@@ -1,13 +1,17 @@
 package com.travel_world.traveling.feature.onboarding.interfaces;
 
 public interface OnboardingViewPager2 {
-    interface All extends Next,Skip{
+    interface FragmentManager extends Next,Skip, LoginIn {
 
     }
     interface Next {
-        void nextFragment();
+        void onNextClicked();
     }
     interface Skip {
-        void goLoginActivity();
+        void onSkipClicked();
+    }
+    interface LoginIn
+    {
+        void onLoginClicked();
     }
 }

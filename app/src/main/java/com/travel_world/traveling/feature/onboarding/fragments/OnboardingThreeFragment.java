@@ -11,18 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.travel_world.traveling.R;
 import com.travel_world.traveling.databinding.FragmentOnboardingThreeBinding;
 import com.travel_world.traveling.feature.onboarding.interfaces.OnboardingViewPager2;
 
 public class OnboardingThreeFragment extends Fragment {
     private FragmentOnboardingThreeBinding binding;
-    private OnboardingViewPager2.Skip listener;
+    private OnboardingViewPager2.LoginIn listener;
 
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if(context instanceof OnboardingViewPager2.Skip)
-            listener = (OnboardingViewPager2.Skip) context;
+        if(context instanceof OnboardingViewPager2.LoginIn)
+            listener = (OnboardingViewPager2.LoginIn) context;
         else
             throw  new ClassCastException(context + " must implement listener");
     }
@@ -49,7 +48,7 @@ public class OnboardingThreeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.buttonOnboardingTwoLongIn.setOnClickListener(v-> listener.goLoginActivity());
+        binding.buttonOnboardingTwoLongIn.setOnClickListener(v-> listener.onLoginClicked());
     }
     @Override
     public void onDestroy() {

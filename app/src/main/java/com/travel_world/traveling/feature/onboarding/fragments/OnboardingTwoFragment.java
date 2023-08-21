@@ -16,12 +16,12 @@ import com.travel_world.traveling.feature.onboarding.interfaces.OnboardingViewPa
 
 public class OnboardingTwoFragment extends Fragment {
     private FragmentOnboardingTwoBinding binding;
-    private OnboardingViewPager2.All listener;
+    private OnboardingViewPager2.FragmentManager listener;
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if(context instanceof OnboardingViewPager2.All)
-            listener = (OnboardingViewPager2.All) context;
+        if(context instanceof OnboardingViewPager2.FragmentManager)
+            listener = (OnboardingViewPager2.FragmentManager) context;
         else
             throw  new ClassCastException(context + " must implement listener");
     }
@@ -47,8 +47,8 @@ public class OnboardingTwoFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.buttonOnboardingTwoNext.setOnClickListener(v-> listener.nextFragment());
-        binding.buttonOnboardingTwoSkip.setOnClickListener(v-> listener.goLoginActivity());
+        binding.buttonOnboardingTwoNext.setOnClickListener(v-> listener.onNextClicked());
+        binding.buttonOnboardingTwoSkip.setOnClickListener(v-> listener.onSkipClicked());
     }
     @Override
     public void onDestroy() {

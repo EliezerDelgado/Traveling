@@ -13,7 +13,7 @@ import com.travel_world.traveling.feature.onboarding.fragments.OnboardingTwoFrag
 import com.travel_world.traveling.feature.onboarding.interfaces.OnboardingViewPager2;
 import com.travel_world.traveling.utils.Intents;
 
-public class OnboardingActivity extends AppCompatActivity implements OnboardingViewPager2.All {
+public class OnboardingActivity extends AppCompatActivity implements OnboardingViewPager2.FragmentManager {
 
     private  ActivityOnboardingBinding binding;
     private OnboardingPagerAdapter adapterVP2;
@@ -36,21 +36,30 @@ public class OnboardingActivity extends AppCompatActivity implements OnboardingV
     }
 
     @Override
-    public void nextFragment()
+    public void onNextClicked()
     {
         int item = binding.onboardingViewpager2.getCurrentItem();
         binding.onboardingViewpager2.setCurrentItem(++item,true);
     }
 
     @Override
-    public void goLoginActivity() {
-        startActivity(Intents.intentActivity(this, LoginActivity.class));
-        finish();
+    public void onSkipClicked() {
+        navigateToLoginActivity();
     }
     @Override
     public void onDestroy() {
         super.onDestroy();
         binding = null;
         adapterVP2 = null;
+    }
+
+    @Override
+    public void onLoginClicked() {
+        navigateToLoginActivity();
+    }
+
+    private void navigateToLoginActivity() {
+        startActivity(Intents.intentActivity(this, LoginActivity.class));
+        finish();
     }
 }

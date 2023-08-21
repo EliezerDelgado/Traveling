@@ -49,7 +49,7 @@ public class OnboardingOneFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.buttonOnboardingOneNext.setOnClickListener(v->listener.nextFragment());
+        binding.buttonOnboardingOneNext.setOnClickListener(v->listener.onNextClicked());
     }
 
     @Override
