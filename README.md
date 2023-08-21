@@ -95,3 +95,11 @@ ACTIVIDAD 6 Fragments
 -LoginFragment y RegisterFragment Conectarlos con su Activity para cambiar la visibilidad de la toolbar y RegisterFragment le pase el result al LoginFragment.
 
 -crear HomeFragment y pasar la logica del activity y pasar los argumentos que recibia para mostrar el mensaje(Snackbar).
+
+ACTIVIDAD 7. ViewPager
+
+-Creado activity Onboarding y su viewPager2 con sus fragment
+
+-Los next pasan a la siguiente pagina
+
+-El skip y el Login in pasa al Login Activity.
