@@ -100,6 +100,9 @@ ACTIVIDAD 7. ViewPager
 
 -Creado activity Onboarding y su viewPager2 con sus fragment
 
+-Libertad en usar otra imagen en el fragment segundo use otra imagen de mi proyecto "nomads_city_tour.png" y en el tercer fragment Onboarding use ->
+("https://stock.adobe.com/ar/images/confused-black-skin-girl-young-female-cartoon-character-standing-in-doubt-teenager-thinking-of-dilemma-isolated-puzzled-student-with-a-backpack-flat-vector-illustration-eps-10/461240702") 
+
 -Los next pasan a la siguiente pagina
 
 -El skip y el Login in pasa al Login Activity.
