@@ -28,9 +28,9 @@ public class OnboardingActivity extends AppCompatActivity implements OnboardingV
 
     private void createOnboardingViewPager2() {
         adapterVP2 = new OnboardingPagerAdapter(getSupportFragmentManager(),getLifecycle());
-        adapterVP2.addFragment(new OnboardingOneFragment());
-        adapterVP2.addFragment(new OnboardingTwoFragment());
-        adapterVP2.addFragment(new OnboardingThreeFragment());
+        adapterVP2.addFragment(OnboardingOneFragment.class);
+        adapterVP2.addFragment(OnboardingTwoFragment.class);
+        adapterVP2.addFragment(OnboardingThreeFragment.class);
         binding.onboardingViewpager2.setAdapter(adapterVP2);
         binding.onboardingViewpager2.setUserInputEnabled(false);
     }

@@ -9,7 +9,7 @@ import android.os.Bundle;
 import com.travel_world.traveling.R;
 import com.travel_world.traveling.domain.User;
 import com.travel_world.traveling.databinding.ActivityHomeBinding;
-import com.travel_world.traveling.feature.home.fragments.HomeFragment;
+import com.travel_world.traveling.feature.home.fragments.HomeContentFragment;
 import com.travel_world.traveling.feature.LilaActivity;
 import com.travel_world.traveling.utils.Intents;
 
@@ -34,7 +34,7 @@ public class HomeActivity extends AppCompatActivity {
     }
     private void addFragmentManager(User user)
     {
-        getSupportFragmentManager().beginTransaction().add(binding.homeFragmentLayout.getId(), HomeFragment.newInstance(user))
+        getSupportFragmentManager().beginTransaction().add(binding.homeFragmentLayout.getId(), HomeContentFragment.newInstance(user))
                 .commitAllowingStateLoss();
     }
 
