@@ -1,5 +1,8 @@
 package com.travel_world.traveling.feature.home.fragments;
 
+import android.content.res.Resources;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +15,7 @@ import android.view.ViewGroup;
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.travel_world.traveling.R;
 import com.travel_world.traveling.databinding.FragmentHomeContentBinding;
@@ -23,7 +27,6 @@ public class HomeContentFragment extends Fragment {
     private FragmentHomeContentBinding binding;
     private User user;
     private HomePagerAdapter pagerAdapter;
-
     public HomeContentFragment() {
         // Required empty public constructor
     }
@@ -57,7 +60,7 @@ public class HomeContentFragment extends Fragment {
             showMensage(user);
         setFragments();
         setContentView();
-        //createTabLayout();
+        createTabLayout();
     }
 
     private void showMensage(User user)
@@ -82,18 +85,50 @@ public class HomeContentFragment extends Fragment {
            {
                case 0:
                    tab.setIcon(R.drawable.ic_action_camera);
+                   tab.view.setBackgroundColor(getResources().getColor(R.color.blue_light, requireActivity().getTheme()));
+                   tab.select();
                    break;
                case 1:
                    tab.setIcon(R.drawable.ic_action_favorite);
+                   tab.view.setBackgroundColor(getResources().getColor(R.color.purple_light, requireActivity().getTheme()));
                    break;
                case 2:
                    tab.setIcon(R.drawable.ic_action_landscape);
+                   tab.view.setBackgroundColor(getResources().getColor(R.color.rose_light, requireActivity().getTheme()));
                    break;
                case 3:
                    tab.setIcon(R.drawable.ic_action_face);
+                   tab.view.setBackgroundColor(getResources().getColor(R.color.yellow_light, requireActivity().getTheme()));
                    break;
            }
         }).attach();
+        binding.homeContentTablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                Drawable icon = tab.getIcon();
+                icon.setColorFilter(getResources().getColor(R.color.white, requireContext().getTheme()), PorterDuff.Mode.SRC_ATOP);
+                tab.setIcon(icon);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                Drawable icon = tab.getIcon();
+                icon.setColorFilter(getResources().getColor(R.color.black, requireContext().getTheme()), PorterDuff.Mode.SRC_ATOP);
+                tab.setIcon(icon);
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                Drawable icon = tab.getIcon();
+                icon.setColorFilter(getResources().getColor(R.color.white, requireContext().getTheme()), PorterDuff.Mode.SRC_ATOP);
+                tab.setIcon(icon);
+            }
+        });
+        binding.homeContentTablayout.selectTab(
+                binding.homeContentTablayout.getTabAt(
+                        binding.homeContentViewpager2.getCurrentItem()
+                )
+        );
     }
 
     @Override

@@ -31,12 +31,23 @@ public class HomeActivity extends AppCompatActivity {
             user = bundle.getParcelable(KEY_USER);
             addFragmentManager(user);
         }
+        else
+        {
+            addFragmentManager();
+        }
     }
     private void addFragmentManager(User user)
     {
         getSupportFragmentManager().beginTransaction().add(binding.homeFragmentLayout.getId(), HomeContentFragment.newInstance(user))
                 .commitAllowingStateLoss();
     }
+    //Todo Eliminar
+    private void addFragmentManager()
+    {
+        getSupportFragmentManager().beginTransaction().add(binding.homeFragmentLayout.getId(), new HomeContentFragment())
+                .commitAllowingStateLoss();
+    }
+
 
     private void toolbarListener() {
         binding.homeToolbar.setOnMenuItemClickListener(item ->{

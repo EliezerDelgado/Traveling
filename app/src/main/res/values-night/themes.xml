@@ -9,10 +9,16 @@
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
+        <item name="tint">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <!-- Color Text attr -->
         <item name="travelingColorTextHyperLinks">@color/black</item>
+    </style>
+
+    <style name="ThemeOverlay.ViewPager.TabLayout" parent="">
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorOnSurface">@color/white</item>
     </style>
 </resources>
