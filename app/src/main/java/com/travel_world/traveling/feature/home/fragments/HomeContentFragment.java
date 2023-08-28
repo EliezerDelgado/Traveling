@@ -1,5 +1,6 @@
 package com.travel_world.traveling.feature.home.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.res.Resources;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -9,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,7 +81,9 @@ public class HomeContentFragment extends Fragment {
         binding.homeContentViewpager2.setAdapter(pagerAdapter);
     }
 
+    @SuppressLint("NewApi")
     private void createTabLayout() {
+        binding.homeContentTablayout.setTabIndicatorFullWidth(true);
         new TabLayoutMediator(binding.homeContentTablayout, binding.homeContentViewpager2, (tab, position) -> {
            switch (position)
            {
@@ -129,6 +133,7 @@ public class HomeContentFragment extends Fragment {
                         binding.homeContentViewpager2.getCurrentItem()
                 )
         );
+        binding.homeContentTablayout.setSelectedTabIndicator(binding.homeContentTablayout.getTabSelectedIndicator());
     }
 
     @Override
