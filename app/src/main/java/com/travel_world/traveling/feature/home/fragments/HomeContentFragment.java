@@ -144,6 +144,7 @@ public class HomeContentFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         binding = null;
+        pagerAdapter = null;
         user = null;
     }
 }
