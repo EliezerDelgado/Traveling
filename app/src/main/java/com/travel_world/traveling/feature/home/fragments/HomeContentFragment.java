@@ -90,19 +90,23 @@ public class HomeContentFragment extends Fragment {
                case 0:
                    tab.setIcon(R.drawable.ic_action_camera);
                    tab.view.setBackgroundColor(getResources().getColor(R.color.blue_light, requireActivity().getTheme()));
+                   tab.view.setY(tab.view.getY()-4F);
                    tab.select();
                    break;
                case 1:
                    tab.setIcon(R.drawable.ic_action_favorite);
                    tab.view.setBackgroundColor(getResources().getColor(R.color.purple_light, requireActivity().getTheme()));
+                   tab.view.setY(tab.view.getY()-4F);
                    break;
                case 2:
                    tab.setIcon(R.drawable.ic_action_landscape);
                    tab.view.setBackgroundColor(getResources().getColor(R.color.rose_light, requireActivity().getTheme()));
+                   tab.view.setY(tab.view.getY()-4F);
                    break;
                case 3:
                    tab.setIcon(R.drawable.ic_action_face);
                    tab.view.setBackgroundColor(getResources().getColor(R.color.yellow_light, requireActivity().getTheme()));
+                   tab.view.setY(tab.view.getY()-4F);
                    break;
            }
         }).attach();

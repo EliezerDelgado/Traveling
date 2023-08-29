@@ -114,5 +114,6 @@ ACTIVIDAD 8. Tabs - Pestañas
 -Cada tabItem tiene su icono y background con un color
 
 -tabIndicator desaparece cuando el tabItem tiene un color su background
+(Solucion Chapucera) reduci la view del tabItem en el eje y para que no ocultase el tabIndicator
 
 -El icono de cada tabItem cambia a color blanco cuando es seleccionado

@@ -20,8 +20,6 @@
         <activity
             android:name=".feature.onboarding.activity.OnboardingActivity"
             android:exported="true" >
-
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
