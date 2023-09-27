@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/yellow_light"
-    tools:context=".feature.home.fragments.HomeFavoriteFragment">
+    tools:context=".feature.home.fragments.HomeCarFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

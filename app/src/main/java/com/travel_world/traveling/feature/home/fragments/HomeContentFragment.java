@@ -1,7 +1,6 @@
 package com.travel_world.traveling.feature.home.fragments;
 
 import android.annotation.SuppressLint;
-import android.content.res.Resources;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,7 +71,7 @@ public class HomeContentFragment extends Fragment {
     private void setFragments() {
         pagerAdapter = new HomePagerAdapter(requireActivity());
         pagerAdapter.addFragment(HomeCameraFragment.class);
-        pagerAdapter.addFragment(HomeFavoriteFragment.class);
+        pagerAdapter.addFragment(HomeCarFragment.class);
         pagerAdapter.addFragment(HomeLandscapeFragment.class);
         pagerAdapter.addFragment(HomeFaceFragment.class);
     }
@@ -94,7 +92,7 @@ public class HomeContentFragment extends Fragment {
                    tab.select();
                    break;
                case 1:
-                   tab.setIcon(R.drawable.ic_action_favorite);
+                   tab.setIcon(R.drawable.ic_action_car);
                    tab.view.setBackgroundColor(getResources().getColor(R.color.purple_light, requireActivity().getTheme()));
                    tab.view.setY(tab.view.getY()-4F);
                    break;

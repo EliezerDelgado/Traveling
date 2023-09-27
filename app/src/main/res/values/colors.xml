@@ -19,4 +19,10 @@
     <color name="yellow_light">#F6FFCD</color>
     <color name="lila">#B666D2</color>
     <color name="flesh_tone">#FCD0B4</color>
+    <color name="peru">#cd853f</color>
+    <color name="cobalt">#0053A0</color>
+    <color name="amulet">#78AB78</color>
+    <color name="donkey_brown">#664c28</color>
+    <color name="dark_red">#870F00</color>
+    <color name="banana_yellow">#ffe135</color>
 </resources>
