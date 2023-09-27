@@ -15,7 +15,7 @@ import com.travel_world.traveling.databinding.FragmentHomeCarBinding;
 import com.travel_world.traveling.domain.CardCar;
 import com.travel_world.traveling.feature.home.adapter.CardsCarsAdapter;
 
-public class HomeCarFragment extends Fragment implements CardsCarsAdapter.OnClickListener {
+public class HomeCarFragment extends Fragment implements CardsCarsAdapter.OnCardCarClickListener {
 
     private FragmentHomeCarBinding binding;
 

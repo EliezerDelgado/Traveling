@@ -12,13 +12,13 @@ import java.util.ArrayList;
 
 public class CardsCarsAdapter extends RecyclerView.Adapter<ItemCarsViewHolder> {
     private ArrayList<CardCar> items;
-    private OnClickListener listener;
+    private OnCardCarClickListener listener;
 
-    public interface OnClickListener{
+    public interface OnCardCarClickListener {
         void info(CardCar cardCar);
     }
 
-    public CardsCarsAdapter(ArrayList<CardCar> items, OnClickListener listener) {
+    public CardsCarsAdapter(ArrayList<CardCar> items, OnCardCarClickListener listener) {
         this.items = items;
         this.listener = listener;
     }
