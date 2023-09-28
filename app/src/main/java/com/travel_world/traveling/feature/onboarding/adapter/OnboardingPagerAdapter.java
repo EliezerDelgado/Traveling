@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class OnboardingPagerAdapter extends FragmentStateAdapter {
 
-    private ArrayList<Class<? extends Fragment>> listFragmentClass = new ArrayList<>();
+    private final ArrayList<Class<? extends Fragment>> listFragmentClass = new ArrayList<>();
 
     public OnboardingPagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
         super(fragmentManager, lifecycle);
@@ -26,9 +26,7 @@ public class OnboardingPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         try {
             return (Fragment) listFragmentClass.get(position).newInstance();
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        } catch (InstantiationException e) {
+        } catch (IllegalAccessException | InstantiationException e) {
             throw new RuntimeException(e);
         }
     }

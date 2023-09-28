@@ -8,10 +8,6 @@ public class CardCar {
     private @DrawableRes int imgRes;
     private Car car;
     private boolean star;
-
-    public CardCar() {
-    }
-
     public CardCar(int colorRes, int imgRes,Car car) {
         this.colorRes = colorRes;
         this.imgRes = imgRes;

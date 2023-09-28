@@ -38,7 +38,7 @@ public class LoginFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentLoginBinding.inflate(inflater,container,false);
         return binding.getRoot();
@@ -74,26 +74,29 @@ public class LoginFragment extends Fragment {
             listener.remplaceFragmentRegister();
             getParentFragmentManager().setFragmentResultListener(RESULT_LOGIN, this, (requestKey, result) -> {
                 user = result.getParcelable(KEY_USER);
-                Log.d("ELI", user.getName());
+                if( user != null) {
+                    Log.d("ELI", user.getName());
+                }
             });
         });
         binding.buttonLogin.setOnClickListener(v->
                 startActivityToHomeActivity()
         );
-        binding.buttonLoginForgot.setOnClickListener(v->{
-            Snackbar.make(binding.constraintLayoutLoginFragment,getString(R.string.button_login_forgot_onclick),Snackbar.LENGTH_LONG).show();
-        });
+        binding.buttonLoginForgot.setOnClickListener(v->
+            Snackbar.make(binding.constraintLayoutLoginFragment,getString(R.string.button_login_forgot_onclick),Snackbar.LENGTH_LONG).show()
+        );
     }
 
     private void startActivityToHomeActivity() {
-        if(binding.nameTextLogin.getText().toString().equals(user.getName())
-                && binding.passwordTextLogin.getText().toString().equals(user.getPassword())) {
-            Bundle bundle = new Bundle();
-            bundle.putParcelable(KEY_USER, this.user);
-            startActivity(Intents.intentActivityWithExtras(requireContext(), HomeActivity.class, bundle));
+        if(binding.nameTextLogin.getText()!= null && binding.passwordTextLogin.getText() != null) {
+            if (binding.nameTextLogin.getText().toString().equals(user.getName())
+                    && binding.passwordTextLogin.getText().toString().equals(user.getPassword())) {
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(KEY_USER, this.user);
+                startActivity(Intents.intentActivityWithExtras(requireContext(), HomeActivity.class, bundle));
+            } else
+                showErrorLoginMessage();
         }
-        else
-            showErrorLoginMessage();
 
     }
 
@@ -119,10 +122,12 @@ public class LoginFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                binding.buttonLogin.setEnabled(
-                        !s.toString().isEmpty()
-                                && !binding.passwordTextLogin.getText().toString().isEmpty()
-                );
+                if(binding.passwordTextLogin.getText() != null) {
+                    binding.buttonLogin.setEnabled(
+                            !s.toString().isEmpty()
+                                    && !binding.passwordTextLogin.getText().toString().isEmpty()
+                    );
+                }
             }
         });
 
@@ -139,10 +144,12 @@ public class LoginFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                binding.buttonLogin.setEnabled(
-                        !s.toString().isEmpty()
-                                && !binding.nameTextLogin.getText().toString().isEmpty()
-                );
+                if(binding.nameTextLogin.getText() != null) {
+                    binding.buttonLogin.setEnabled(
+                            !s.toString().isEmpty()
+                                    && !binding.nameTextLogin.getText().toString().isEmpty()
+                    );
+                }
             }
         });
     }

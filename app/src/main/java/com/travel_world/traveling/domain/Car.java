@@ -3,8 +3,6 @@ package com.travel_world.traveling.domain;
 public class Car {
     private String name;
     private  float price;
-    public Car() {
-    }
 
     public Car(String name, float price) {
         this.name = name;

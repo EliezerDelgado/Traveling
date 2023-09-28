@@ -31,16 +31,16 @@ import com.travel_world.traveling.utils.UtilsStrings;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class RegisterFragment extends Fragment {
     private FragmentRegisterBinding binding;
-    private ArrayAdapter adapterSpinnerAges;
     private  ArrayList<String> arrayAges;
 
-    private ActivityResultLauncher<Intent> resultCamera = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                binding.buttonPhotoRegister.setImageURI(Intents.getCameraImagenReturn());
-            });
+    private final ActivityResultLauncher<Intent> resultCamera = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
+            result ->
+                binding.buttonPhotoRegister.setImageURI(Intents.getCameraImagenReturn())
+            );
 
     private OnListenerRegister listener;
     @Override
@@ -50,7 +50,7 @@ public class RegisterFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentRegisterBinding.inflate(inflater,container,false);
         return binding.getRoot();
     }
@@ -82,16 +82,15 @@ public class RegisterFragment extends Fragment {
     }
 
     private void buttonListener() {
-        binding.buttonPhotoRegister.setOnClickListener(v -> {
-            launchCamera();
-
-        });
+        binding.buttonPhotoRegister.setOnClickListener(v ->
+            launchCamera()
+        );
         binding.buttonPrivacyRegister.setOnClickListener(v->
                 startActivity(Intents.openPage(getString(R.string.web_developer_google)))
         );
-        binding.buttonConfirmRegister.setOnClickListener(v->{
-            returnToLoginScreen();
-        });
+        binding.buttonConfirmRegister.setOnClickListener(v->
+            returnToLoginScreen()
+        );
     }
 
     private void returnToLoginScreen() {
@@ -102,17 +101,12 @@ public class RegisterFragment extends Fragment {
             getParentFragmentManager().setFragmentResult(RESULT_LOGIN,bundle);
             getActivity().onBackPressed();
         }
-
-        /*
-        setResult(Activity.RESULT_OK,new Intent().putExtras(bundle));
-        finish();
-         */
     }
 
     private User getUser() {
         User user = new User();
-        user.setName(binding.nameTextRegister.getText().toString());
-        user.setLastName(binding.lastNameTextRegister.getText().toString());
+        user.setName(Objects.requireNonNull(binding.nameTextRegister.getText()).toString());
+        user.setLastName(Objects.requireNonNull(binding.lastNameTextRegister.getText()).toString());
         user.setPassword(binding.lastNameTextRegister.getText().toString());
         user.setAgeRange(binding.agesRangeListRegister.getText().toString());
         return user;
@@ -121,7 +115,7 @@ public class RegisterFragment extends Fragment {
     private void launchCamera() {
         AskPermissions.askPermissionCamera(getActivity());
         if(AskPermissions.isPermissionCameraOn(getActivity()))
-            resultCamera.launch(Intents.openCamera(getActivity()));
+            resultCamera.launch(Intents.openCamera(requireActivity()));
         else
             Toast.makeText(requireContext(), getString(R.string.error_permission_camera), Toast.LENGTH_SHORT).show();
     }
@@ -193,22 +187,17 @@ public class RegisterFragment extends Fragment {
 
     private void isAllFineToConfirm() {
         boolean correctName = binding.nameRegister.getError() == null
-                && !binding.nameTextRegister.getText().toString().isEmpty();
+                && !Objects.requireNonNull(binding.nameTextRegister.getText()).toString().isEmpty();
 
         boolean correctLastName = binding.lastNameRegister.getError() == null
-                && !binding.lastNameTextRegister.getText().toString().isEmpty();
+                && !Objects.requireNonNull(binding.lastNameTextRegister.getText()).toString().isEmpty();
 
         boolean correctAgeRange = binding.agesRangeRegister.getError() == null
                 && !binding.agesRangeListRegister.getText().toString().isEmpty();
-
-        if(correctName && correctLastName    && correctAgeRange)
-            binding.buttonConfirmRegister.setEnabled(true);
-        else
-            binding.buttonConfirmRegister.setEnabled(false);
-
+        binding.buttonConfirmRegister.setEnabled(correctName && correctLastName && correctAgeRange);
     }
     private void setValueSpinnerAges() {
-        adapterSpinnerAges =  ArrayAdapter.createFromResource(requireContext(),R.array.age_range,android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapterSpinnerAges = ArrayAdapter.createFromResource(requireContext(), R.array.age_range, android.R.layout.simple_spinner_dropdown_item);
         binding.agesRangeListRegister.setAdapter(adapterSpinnerAges);
     }
     @Override

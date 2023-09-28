@@ -47,7 +47,7 @@ public class HomeContentFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentHomeContentBinding.inflate(inflater,container,false);
         return binding.getRoot();
@@ -112,22 +112,28 @@ public class HomeContentFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 Drawable icon = tab.getIcon();
-                icon.setColorFilter(getResources().getColor(R.color.white, requireContext().getTheme()), PorterDuff.Mode.SRC_ATOP);
-                tab.setIcon(icon);
+                if(icon != null) {
+                    icon.setColorFilter(getResources().getColor(R.color.white, requireContext().getTheme()), PorterDuff.Mode.SRC_ATOP);
+                    tab.setIcon(icon);
+                }
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
                 Drawable icon = tab.getIcon();
-                icon.setColorFilter(getResources().getColor(R.color.black, requireContext().getTheme()), PorterDuff.Mode.SRC_ATOP);
-                tab.setIcon(icon);
+                if(icon != null) {
+                    icon.setColorFilter(getResources().getColor(R.color.black, requireContext().getTheme()), PorterDuff.Mode.SRC_ATOP);
+                    tab.setIcon(icon);
+                }
             }
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
                 Drawable icon = tab.getIcon();
-                icon.setColorFilter(getResources().getColor(R.color.white, requireContext().getTheme()), PorterDuff.Mode.SRC_ATOP);
-                tab.setIcon(icon);
+                if(icon != null) {
+                    icon.setColorFilter(getResources().getColor(R.color.white, requireContext().getTheme()), PorterDuff.Mode.SRC_ATOP);
+                    tab.setIcon(icon);
+                }
             }
         });
         binding.homeContentTablayout.selectTab(
