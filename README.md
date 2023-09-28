@@ -117,3 +117,9 @@ ACTIVIDAD 8. Tabs - Pestañas
 (Solucion Chapucera) reduci la view del tabItem en el eje y para que no ocultase el tabIndicator
 
 -El icono de cada tabItem cambia a color blanco cuando es seleccionado
+
+ACTIVIDAD 9. Listas - Recyclerview
+
+-En el fragment en la posicion 1 del ViewPager2 del home content se ha añadido un recycler view con sus cars
+
+-los cars estan hecho con un card view cuando son pulsados muestra un Toast del nombre del car
