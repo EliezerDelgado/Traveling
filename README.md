@@ -120,6 +120,6 @@ ACTIVIDAD 8. Tabs - Pestañas
 
 ACTIVIDAD 9. Listas - Recyclerview
 
--En el fragment en la posicion 1 del ViewPager2 del home content se ha añadido un recycler view con sus cars
+-En el fragment en la posición 1 del ViewPager2 del home content se ha añadido un recycler view con sus cars
 
--los cars estan hecho con un card view cuando son pulsados muestra un Toast del nombre del car
+-los cars están hecho con un card view cuando son pulsados muestra un Toast con el nombre del car
