@@ -18,7 +18,7 @@
         android:theme="@style/Theme.Traveling"
         tools:targetApi="31">
         <activity
-            android:name=".feature.onboarding.activity.OnboardingActivity"
+            android:name=".feature.login.fragments.onboarding.OnboardingFragment"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.travel_world.traveling.feature.onboarding.interfaces;
+package com.travel_world.traveling.feature.login.interfaces;
 
 public interface OnboardingViewPager2 {
     interface FragmentManager extends Next,Skip, LoginIn {

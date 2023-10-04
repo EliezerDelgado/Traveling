@@ -1,4 +1,4 @@
-package com.travel_world.traveling.feature.onboarding.fragments;
+package com.travel_world.traveling.feature.login.fragments.onboarding;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,17 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.travel_world.traveling.databinding.FragmentOnboardingThreeBinding;
-import com.travel_world.traveling.feature.onboarding.interfaces.OnboardingViewPager2;
+import com.travel_world.traveling.databinding.FragmentOnboardingTwoBinding;
+import com.travel_world.traveling.feature.login.interfaces.OnboardingViewPager2;
 
-public class OnboardingThreeFragment extends Fragment {
-    private FragmentOnboardingThreeBinding binding;
-    private OnboardingViewPager2.LoginIn listener;
-
+public class OnboardingTwoFragment extends Fragment {
+    private FragmentOnboardingTwoBinding binding;
+    private OnboardingViewPager2.FragmentManager listener;
+    @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if(context instanceof OnboardingViewPager2.LoginIn)
-            listener = (OnboardingViewPager2.LoginIn) context;
+        if(context instanceof OnboardingViewPager2.FragmentManager)
+            listener = (OnboardingViewPager2.FragmentManager) context;
         else
             throw  new ClassCastException(context + " must implement listener");
     }
@@ -32,7 +32,6 @@ public class OnboardingThreeFragment extends Fragment {
         listener = null;
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,14 +40,15 @@ public class OnboardingThreeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentOnboardingThreeBinding.inflate(inflater,container,false);
+        binding = FragmentOnboardingTwoBinding.inflate(inflater,container,false);
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.buttonOnboardingTwoLongIn.setOnClickListener(v-> listener.onLoginClicked());
+        binding.buttonOnboardingTwoNext.setOnClickListener(v-> listener.onNextClicked());
+        binding.buttonOnboardingTwoSkip.setOnClickListener(v-> listener.onSkipClicked());
     }
     @Override
     public void onDestroy() {

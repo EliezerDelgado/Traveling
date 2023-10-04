@@ -1,4 +1,4 @@
-package com.travel_world.traveling.feature.onboarding.adapter;
+package com.travel_world.traveling.feature.login.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
