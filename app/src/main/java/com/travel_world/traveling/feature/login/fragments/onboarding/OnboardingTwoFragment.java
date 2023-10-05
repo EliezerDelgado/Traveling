@@ -18,38 +18,30 @@ public class OnboardingTwoFragment extends Fragment {
     private FragmentOnboardingTwoBinding binding;
     private OnboardingViewPager2.FragmentManager listener;
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        if(context instanceof OnboardingViewPager2.FragmentManager)
-            listener = (OnboardingViewPager2.FragmentManager) context;
-        else
-            throw  new ClassCastException(context + " must implement listener");
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        listener = null;
-    }
-
-    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getParentFragment() instanceof OnboardingViewPager2.FragmentManager)
+            listener = (OnboardingViewPager2.FragmentManager) getParentFragment();
+        else
+            throw new ClassCastException(getParentFragment() + " must implement listener");
+
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentOnboardingTwoBinding.inflate(inflater,container,false);
+        binding = FragmentOnboardingTwoBinding.inflate(inflater, container, false);
+
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.buttonOnboardingTwoNext.setOnClickListener(v-> listener.onNextClicked());
-        binding.buttonOnboardingTwoSkip.setOnClickListener(v-> listener.onSkipClicked());
+        binding.buttonOnboardingTwoNext.setOnClickListener(v -> listener.onNextClicked());
+        binding.buttonOnboardingTwoSkip.setOnClickListener(v -> listener.onSkipClicked());
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,12 +14,30 @@ import android.view.ViewGroup;
 import com.travel_world.traveling.R;
 import com.travel_world.traveling.databinding.FragmentOnboardingBinding;
 import com.travel_world.traveling.feature.login.adapter.OnboardingPagerAdapter;
+import com.travel_world.traveling.feature.login.interfaces.OnListenerLogin;
 import com.travel_world.traveling.feature.login.interfaces.OnboardingViewPager2;
 
 public class OnboardingFragment extends Fragment implements OnboardingViewPager2.FragmentManager {
 
     private FragmentOnboardingBinding binding;
     private OnboardingPagerAdapter adapterVP2;
+    private OnListenerLogin listener;
+
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if(context instanceof OnListenerLogin)
+            listener = (OnListenerLogin) context;
+        else
+            throw  new ClassCastException(context + " must implement listener");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,11 +55,12 @@ public class OnboardingFragment extends Fragment implements OnboardingViewPager2
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        listener.ocultToolbar();
         createOnboardingViewPager2();
     }
 
     private void createOnboardingViewPager2() {
-        adapterVP2 = new OnboardingPagerAdapter(getParentFragmentManager(), getLifecycle());
+        adapterVP2 = new OnboardingPagerAdapter(this);
         adapterVP2.addFragment(OnboardingOneFragment.class);
         adapterVP2.addFragment(OnboardingTwoFragment.class);
         adapterVP2.addFragment(OnboardingThreeFragment.class);

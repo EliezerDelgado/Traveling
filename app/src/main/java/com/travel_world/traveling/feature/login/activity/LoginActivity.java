@@ -19,8 +19,9 @@ public class LoginActivity extends AppCompatActivity implements OnListenerLogin,
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        addFragments();
+        //addFragments();
     }
+    /*
     private void addFragments()
     {
         getSupportFragmentManager().beginTransaction().add(binding.loginFragmentLayout.getId(),new LoginFragment())
@@ -32,7 +33,7 @@ public class LoginActivity extends AppCompatActivity implements OnListenerLogin,
         getSupportFragmentManager().beginTransaction().replace(binding.loginFragmentLayout.getId(),new RegisterFragment()).addToBackStack(null)
                 .commitAllowingStateLoss();
     }
-
+*/
     @Override
     public void ocultToolbar() {
         binding.barLayoutLogin.setVisibility(View.GONE);

@@ -12,8 +12,8 @@ public class OnboardingPagerAdapter extends FragmentStateAdapter {
 
     private final ArrayList<Class<? extends Fragment>> listFragmentClass = new ArrayList<>();
 
-    public OnboardingPagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle) {
-        super(fragmentManager, lifecycle);
+    public OnboardingPagerAdapter(@NonNull Fragment fragment) {
+        super(fragment);
     }
 
 

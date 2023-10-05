@@ -19,6 +19,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.travel_world.traveling.R;
 import com.travel_world.traveling.data.constants.UserRegex;
@@ -96,10 +97,8 @@ public class RegisterFragment extends Fragment {
     private void returnToLoginScreen() {
         if (isAdded() && getActivity() != null) {
             User u = getUser();
-            Bundle bundle = new Bundle();
-            bundle.putParcelable(KEY_USER,u);
-            getParentFragmentManager().setFragmentResult(RESULT_LOGIN,bundle);
-            getActivity().onBackPressed();
+            NavHostFragment.findNavController(this).getCurrentBackStackEntry().getSavedStateHandle().set(RESULT_LOGIN, u);
+            NavHostFragment.findNavController(this).navigateUp();
         }
     }
 

@@ -15,15 +15,14 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.travel_world.traveling.R;
 import com.travel_world.traveling.domain.User;
 import com.travel_world.traveling.databinding.FragmentLoginBinding;
 import com.travel_world.traveling.feature.login.interfaces.OnListenerLogin;
-import com.travel_world.traveling.feature.home.activity.HomeActivity;
 import com.travel_world.traveling.utils.AlertDialogs;
-import com.travel_world.traveling.utils.Intents;
 
 public class LoginFragment extends Fragment {
 
@@ -71,29 +70,29 @@ public class LoginFragment extends Fragment {
     private void buttonListener() {
         binding.buttonLoginRegister.setOnClickListener(v ->
         {
-            listener.remplaceFragmentRegister();
-            getParentFragmentManager().setFragmentResultListener(RESULT_LOGIN, this, (requestKey, result) -> {
-                user = result.getParcelable(KEY_USER);
+            NavHostFragment.findNavController(this).navigate(R.id.action_loginFragment_to_registerFragment);
+            NavHostFragment.findNavController(this).getCurrentBackStackEntry().getSavedStateHandle().getLiveData(RESULT_LOGIN).observe(getViewLifecycleOwner(), o -> {
+                user = (User)o;
                 if( user != null) {
                     Log.d("ELI", user.getName());
                 }
             });
         });
         binding.buttonLogin.setOnClickListener(v->
-                startActivityToHomeActivity()
+                goToHomeActivity()
         );
         binding.buttonLoginForgot.setOnClickListener(v->
             Snackbar.make(binding.constraintLayoutLoginFragment,getString(R.string.button_login_forgot_onclick),Snackbar.LENGTH_LONG).show()
         );
     }
 
-    private void startActivityToHomeActivity() {
+    private void goToHomeActivity() {
         if(binding.nameTextLogin.getText()!= null && binding.passwordTextLogin.getText() != null) {
             if (binding.nameTextLogin.getText().toString().equals(user.getName())
                     && binding.passwordTextLogin.getText().toString().equals(user.getPassword())) {
                 Bundle bundle = new Bundle();
                 bundle.putParcelable(KEY_USER, this.user);
-                startActivity(Intents.intentActivityWithExtras(requireContext(), HomeActivity.class, bundle));
+                NavHostFragment.findNavController(this).navigate(R.id.action_loginFragment_to_homeActivity);
             } else
                 showErrorLoginMessage();
         }
