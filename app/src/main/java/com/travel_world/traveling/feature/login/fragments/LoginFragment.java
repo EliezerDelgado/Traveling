@@ -34,12 +34,14 @@ public class LoginFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        user = new User();
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentLoginBinding.inflate(inflater,container,false);
+
         return binding.getRoot();
     }
 
@@ -47,7 +49,6 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         listener.ocultToolbar();
-        user = new User();
         buttonListener();
         inputListener();
     }
@@ -71,7 +72,7 @@ public class LoginFragment extends Fragment {
         binding.buttonLoginRegister.setOnClickListener(v ->
         {
             NavHostFragment.findNavController(this).navigate(R.id.action_loginFragment_to_registerFragment);
-            NavHostFragment.findNavController(this).getCurrentBackStackEntry().getSavedStateHandle().getLiveData(RESULT_LOGIN).observe(getViewLifecycleOwner(), o -> {
+            NavHostFragment.findNavController(this).getCurrentBackStackEntry().getSavedStateHandle().getLiveData(RESULT_LOGIN).observe(requireActivity(), o -> {
                 user = (User)o;
                 if( user != null) {
                     Log.d("ELI", user.getName());
@@ -92,7 +93,7 @@ public class LoginFragment extends Fragment {
                     && binding.passwordTextLogin.getText().toString().equals(user.getPassword())) {
                 Bundle bundle = new Bundle();
                 bundle.putParcelable(KEY_USER, this.user);
-                NavHostFragment.findNavController(this).navigate(R.id.action_loginFragment_to_homeActivity);
+                NavHostFragment.findNavController(this).navigate(R.id.action_loginFragment_to_homeActivity,bundle);
             } else
                 showErrorLoginMessage();
         }

@@ -1,6 +1,5 @@
 package com.travel_world.traveling.feature.login.fragments;
 
-import static com.travel_world.traveling.data.constants.Keys.KEY_USER;
 import static com.travel_world.traveling.data.constants.Keys.RESULT_LOGIN;
 
 import android.content.Context;
@@ -95,11 +94,9 @@ public class RegisterFragment extends Fragment {
     }
 
     private void returnToLoginScreen() {
-        if (isAdded() && getActivity() != null) {
-            User u = getUser();
-            NavHostFragment.findNavController(this).getCurrentBackStackEntry().getSavedStateHandle().set(RESULT_LOGIN, u);
-            NavHostFragment.findNavController(this).navigateUp();
-        }
+        User u = getUser();
+        NavHostFragment.findNavController(this).getCurrentBackStackEntry().getSavedStateHandle().set(RESULT_LOGIN, u);
+        NavHostFragment.findNavController(this).navigateUp();
     }
 
     private User getUser() {
