@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navgraph_login"
-    app:startDestination="@id/onboard_fragment">
+    app:startDestination="@id/onboardFragment">
     <fragment
-        android:id="@+id/onboard_fragment"
+        android:id="@+id/onboardFragment"
         android:name="com.travel_world.traveling.feature.login.fragments.onboarding.OnboardingFragment"
         android:label="activity_login"
         tools:layout="@layout/fragment_onboarding" >
@@ -24,16 +24,27 @@
             app:destination="@id/registerFragment" />
         <action
             android:id="@+id/action_loginFragment_to_homeActivity"
-            app:destination="@id/homeActivity" />
+            app:destination="@id/homeActivity" >
+        </action>
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.travel_world.traveling.feature.login.fragments.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_loginFragment"
+            app:destination="@id/loginFragment" >
+        </action>
+    </fragment>
+
     <activity
         android:id="@+id/homeActivity"
         android:name="com.travel_world.traveling.feature.home.activity.HomeActivity"
         android:label="activity_home"
-        tools:layout="@layout/activity_home" />
+        tools:layout="@layout/activity_home" >
+        <argument
+            android:name="argUser"
+            app:argType="com.travel_world.traveling.domain.User"/>
+    </activity>
 </navigation>

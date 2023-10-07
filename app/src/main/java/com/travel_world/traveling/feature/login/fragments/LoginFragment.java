@@ -91,9 +91,8 @@ public class LoginFragment extends Fragment {
         if(binding.nameTextLogin.getText()!= null && binding.passwordTextLogin.getText() != null) {
             if (binding.nameTextLogin.getText().toString().equals(user.getName())
                     && binding.passwordTextLogin.getText().toString().equals(user.getPassword())) {
-                Bundle bundle = new Bundle();
-                bundle.putParcelable(KEY_USER, this.user);
-                NavHostFragment.findNavController(this).navigate(R.id.action_loginFragment_to_homeActivity,bundle);
+                LoginFragmentDirections.ActionLoginFragmentToHomeActivity action = LoginFragmentDirections.actionLoginFragmentToHomeActivity(user);
+                NavHostFragment.findNavController(this).navigate(action);
             } else
                 showErrorLoginMessage();
         }

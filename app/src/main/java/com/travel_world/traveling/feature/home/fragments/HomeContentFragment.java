@@ -21,6 +21,7 @@ import com.travel_world.traveling.R;
 import com.travel_world.traveling.databinding.FragmentHomeContentBinding;
 import com.travel_world.traveling.domain.User;
 import com.travel_world.traveling.feature.home.adapter.HomePagerAdapter;
+import com.travel_world.traveling.feature.home.viewmodel.UserHomeViewModel;
 
 public class HomeContentFragment extends Fragment {
     private static final String ARG_USER = "arg_user";
@@ -30,20 +31,9 @@ public class HomeContentFragment extends Fragment {
     public HomeContentFragment() {
         // Required empty public constructor
     }
-    public static HomeContentFragment newInstance(User paramuser) {
-        HomeContentFragment fragment = new HomeContentFragment();
-        Bundle args = new Bundle();
-        args.putParcelable(ARG_USER, paramuser);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            user = getArguments().getParcelable(ARG_USER);
-        }
     }
 
     @Override
@@ -56,8 +46,10 @@ public class HomeContentFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments() !=null)
+        if(!UserHomeViewModel.getInstance().getUser().getValue().equals(new User())) {
+            user = UserHomeViewModel.getInstance().getUser().getValue();
             showMensage(user);
+        }
         setFragments();
         setContentView();
         createTabLayout();
