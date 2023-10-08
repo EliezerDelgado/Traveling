@@ -123,3 +123,15 @@ ACTIVIDAD 9. Listas - Recyclerview
 -En el fragment en la posición 1 del ViewPager2 del home content se ha añadido un recycler view con sus cars
 
 -los cars están hecho con un card view cuando son pulsados muestra un Toast con el nombre del car
+
+ACTIVIDAD 10 – NAVEGACIÓN CON JETPACK-
+
+-solo tiene dos activitis con sus nav graph
+
+-el nav graph de login tiene su star destination el onBoardingFragment
+
+-cuando pasa al loginFragment realiza una animacion y cuando regresa del register hace la misma animacion
+
+-el login observa el resultado que le envia el register y tambien el login envia un user por argumento al homeActivity
+
+-el home tiene su nav graph
