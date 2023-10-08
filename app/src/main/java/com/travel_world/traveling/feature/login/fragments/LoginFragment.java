@@ -41,14 +41,13 @@ public class LoginFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentLoginBinding.inflate(inflater,container,false);
-
+        listener.ocultToolbar();
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        listener.ocultToolbar();
         buttonListener();
         inputListener();
     }
@@ -98,7 +97,6 @@ public class LoginFragment extends Fragment {
         }
 
     }
-
     private void showErrorLoginMessage()
     {
         AlertDialogs.createSimpleInformativeDialog(requireActivity(),

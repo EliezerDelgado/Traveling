@@ -21,6 +21,7 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
+            app:popExitAnim="@anim/slide_right_in_left"
             app:destination="@id/registerFragment" />
         <action
             android:id="@+id/action_loginFragment_to_homeActivity"
@@ -32,10 +33,6 @@
         android:name="com.travel_world.traveling.feature.login.fragments.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
-        <action
-            android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/loginFragment" >
-        </action>
     </fragment>
 
     <activity

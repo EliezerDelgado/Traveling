@@ -24,13 +24,9 @@ import com.travel_world.traveling.feature.home.adapter.HomePagerAdapter;
 import com.travel_world.traveling.feature.home.viewmodel.UserHomeViewModel;
 
 public class HomeContentFragment extends Fragment {
-    private static final String ARG_USER = "arg_user";
     private FragmentHomeContentBinding binding;
     private User user;
     private HomePagerAdapter pagerAdapter;
-    public HomeContentFragment() {
-        // Required empty public constructor
-    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

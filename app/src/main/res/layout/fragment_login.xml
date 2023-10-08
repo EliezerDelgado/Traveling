@@ -33,7 +33,7 @@
             android:layout_marginHorizontal="@dimen/short_margin"
             app:layout_constraintStart_toStartOf="parent"
             android:gravity="bottom"
-            app:layout_constraintTop_toBottomOf="@+id/separator_imagen" />
+            app:layout_constraintTop_toTopOf="@+id/separator_imagen" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/name_login"
