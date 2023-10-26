@@ -1,13 +1,21 @@
 package com.travel_world.traveling.feature.home.activity;
 
+import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+import static android.content.pm.PackageManager.PERMISSION_DENIED;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
 import static com.travel_world.traveling.data.constants.Keys.KEY_USER;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.Manifest;
+import android.content.Context;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.travel_world.traveling.R;
 import com.travel_world.traveling.domain.User;
@@ -43,6 +51,29 @@ public class HomeActivity extends AppCompatActivity {
             }
             return true;
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        permissionLocation();
+    }
+
+    private void permissionLocation()
+    {
+        if (ContextCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) == PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, ACCESS_COARSE_LOCATION) == PERMISSION_GRANTED) {
+            Toast.makeText(this, "Confirmado", Toast.LENGTH_SHORT).show();
+            //TODO
+        }
+        else if(shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION) && shouldShowRequestPermissionRationale(ACCESS_COARSE_LOCATION))
+        {
+            Toast.makeText(this, "NO Confirmado", Toast.LENGTH_SHORT).show();
+            //TODO
+        }
+        else
+        {
+            requestPermissions(new String[] { ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION  }, PERMISSION_GRANTED);
+        }
     }
     @Override
     public void onDestroy() {
