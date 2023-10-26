@@ -35,6 +35,12 @@ public class HomeActivity extends AppCompatActivity {
         getIntentExtras();
         toolbarListener();
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        permissionLocation();
+    }
+
     private void getIntentExtras() {
         if(getIntent().getExtras() != null){
             User u =HomeActivityArgs.fromBundle(getIntent().getExtras()).getArgUser();
@@ -51,12 +57,6 @@ public class HomeActivity extends AppCompatActivity {
             }
             return true;
         });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        permissionLocation();
     }
 
     private void permissionLocation()
