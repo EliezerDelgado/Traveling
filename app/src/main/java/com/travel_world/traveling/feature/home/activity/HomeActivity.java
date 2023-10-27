@@ -75,7 +75,7 @@ public class HomeActivity extends AppCompatActivity {
                     getString(R.string.error_permission_location), getString(R.string.universal_message_ok),
                     (dialog, which) -> {
                 finishAndRemoveTask();
-                System.exit(0);
+                System.exit(-1);
             }).show();
         }
         else
