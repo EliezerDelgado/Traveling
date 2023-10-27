@@ -135,3 +135,13 @@ ACTIVIDAD 10 – NAVEGACIÓN CON JETPACK-
 -el login observa el resultado que le envia el register y tambien el login envia un user por argumento al homeActivity
 
 -el home tiene su nav graph
+
+ACTIVIDAD 11 – PERMISOS
+
+-Cuando llega al activity Home te pide el permiso de Localización
+
+-Si lo rechaza sale de la aplicación
+
+-Si confirmas puedes continuar en el home
+
+-Si pulsa back te pedirá de nuevo que elijas 

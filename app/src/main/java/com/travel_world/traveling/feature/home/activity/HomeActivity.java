@@ -13,15 +13,19 @@ import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.Manifest;
+import android.app.Application;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.travel_world.traveling.R;
 import com.travel_world.traveling.domain.User;
 import com.travel_world.traveling.databinding.ActivityHomeBinding;
 import com.travel_world.traveling.feature.home.fragments.LilaFragment;
 import com.travel_world.traveling.feature.home.viewmodel.UserHomeViewModel;
+import com.travel_world.traveling.utils.AlertDialogs;
 import com.travel_world.traveling.utils.Intents;
 
 public class HomeActivity extends AppCompatActivity {
@@ -61,19 +65,21 @@ public class HomeActivity extends AppCompatActivity {
 
     private void permissionLocation()
     {
-        if (ContextCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) == PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, ACCESS_COARSE_LOCATION) == PERMISSION_GRANTED) {
-            Toast.makeText(this, "Confirmado", Toast.LENGTH_SHORT).show();
+        if (ContextCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) == PERMISSION_GRANTED
+                && ContextCompat.checkSelfPermission(this, ACCESS_COARSE_LOCATION) == PERMISSION_GRANTED) {
             //TODO
         }
         else if(shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION) && shouldShowRequestPermissionRationale(ACCESS_COARSE_LOCATION))
         {
-            Toast.makeText(this, "NO Confirmado", Toast.LENGTH_SHORT).show();
-            //TODO
+            AlertDialogs.createSimpleInformativeDialogWithOnCLickListener(this,
+                    getString(R.string.error_permission_location), getString(R.string.universal_message_ok),
+                    (dialog, which) -> {
+                finishAndRemoveTask();
+                System.exit(0);
+            }).show();
         }
         else
-        {
             requestPermissions(new String[] { ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION  }, PERMISSION_GRANTED);
-        }
     }
     @Override
     public void onDestroy() {

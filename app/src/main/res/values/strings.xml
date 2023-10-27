@@ -50,4 +50,6 @@
     <string name="home_face_position_text">3</string>
     <string name="home_mountain_position_text">2</string>
     <string name="home_car_name_text">Nombre</string>
+    <string name="error_permission_location">Necesita el permiso de ubicación</string>
+    <string name="universal_message_ok">Ok</string>
 </resources>
