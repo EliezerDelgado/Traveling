@@ -1,6 +1,5 @@
 package com.travel_world.traveling.feature.login.fragments;
 
-import static com.travel_world.traveling.data.constants.Keys.KEY_USER;
 import static com.travel_world.traveling.data.constants.Keys.RESULT_LOGIN;
 
 import android.content.Context;
@@ -19,16 +18,16 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.travel_world.traveling.R;
-import com.travel_world.traveling.domain.User;
 import com.travel_world.traveling.databinding.FragmentLoginBinding;
+import com.travel_world.traveling.domain.User;
 import com.travel_world.traveling.feature.login.interfaces.OnListenerLogin;
 import com.travel_world.traveling.utils.AlertDialogs;
 
 public class LoginFragment extends Fragment {
-
-    private User user;
     private FragmentLoginBinding binding;
     private OnListenerLogin listener;
+    private User user;
+
 
 
     @Override
@@ -74,7 +73,7 @@ public class LoginFragment extends Fragment {
             NavHostFragment.findNavController(this).getCurrentBackStackEntry().getSavedStateHandle().getLiveData(RESULT_LOGIN).observe(requireActivity(), o -> {
                 user = (User)o;
                 if( user != null) {
-                    Log.d("ELI", user.getName());
+                    Log.d("ELI",  user.getName());
                 }
             });
         });
@@ -92,8 +91,9 @@ public class LoginFragment extends Fragment {
                     && binding.passwordTextLogin.getText().toString().equals(user.getPassword())) {
                 LoginFragmentDirections.ActionLoginFragmentToHomeActivity action = LoginFragmentDirections.actionLoginFragmentToHomeActivity(user);
                 NavHostFragment.findNavController(this).navigate(action);
-            } else
+            } else {
                 showErrorLoginMessage();
+            }
         }
 
     }
@@ -154,7 +154,6 @@ public class LoginFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         binding = null;
-        user = null;
         listener = null;
     }
 }

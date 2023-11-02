@@ -2,28 +2,17 @@ package com.travel_world.traveling.feature.home.activity;
 
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
-import static android.content.pm.PackageManager.PERMISSION_DENIED;
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-import static com.travel_world.traveling.data.constants.Keys.KEY_USER;
 
+import android.os.Bundle;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
-import android.Manifest;
-import android.app.Application;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.widget.Toast;
-
-import com.google.android.material.snackbar.Snackbar;
 import com.travel_world.traveling.R;
-import com.travel_world.traveling.domain.User;
 import com.travel_world.traveling.databinding.ActivityHomeBinding;
-import com.travel_world.traveling.feature.home.fragments.LilaFragment;
+import com.travel_world.traveling.domain.User;
 import com.travel_world.traveling.feature.home.viewmodel.UserHomeViewModel;
 import com.travel_world.traveling.utils.AlertDialogs;
 import com.travel_world.traveling.utils.Intents;
@@ -31,6 +20,26 @@ import com.travel_world.traveling.utils.Intents;
 public class HomeActivity extends AppCompatActivity {
 
     private ActivityHomeBinding binding;
+    private final ActivityResultLauncher<String[]> locationPermissionRequest =
+            registerForActivityResult(new ActivityResultContracts
+                            .RequestMultiplePermissions(), result -> {
+                        Boolean fineLocationGranted = result.getOrDefault(
+                                ACCESS_FINE_LOCATION, false);
+                        Boolean coarseLocationGranted = result.getOrDefault(
+                                ACCESS_COARSE_LOCATION,false);
+                        if (fineLocationGranted != null && fineLocationGranted) {
+                            // Precise location access granted.
+                        } else if (coarseLocationGranted != null && coarseLocationGranted) {
+                        } else {
+                            AlertDialogs.createSimpleInformativeDialogWithOnCLickListener(this,
+                                getString(R.string.error_permission_location), getString(R.string.universal_message_ok),
+                                (dialog, which) -> {
+                                    finishAndRemoveTask();
+                                    finishAffinity();
+                                }).show();
+                        }
+                    }
+            );
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,10 +47,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         getIntentExtras();
         toolbarListener();
-    }
-    @Override
-    protected void onResume() {
-        super.onResume();
         permissionLocation();
     }
 
@@ -62,23 +67,12 @@ public class HomeActivity extends AppCompatActivity {
             return true;
         });
     }
-
     private void permissionLocation()
     {
-        if (ContextCompat.checkSelfPermission(this, ACCESS_FINE_LOCATION) == PERMISSION_GRANTED
-                && ContextCompat.checkSelfPermission(this, ACCESS_COARSE_LOCATION) == PERMISSION_GRANTED) {
-        }
-        else if(shouldShowRequestPermissionRationale(ACCESS_FINE_LOCATION) && shouldShowRequestPermissionRationale(ACCESS_COARSE_LOCATION))
-        {
-            AlertDialogs.createSimpleInformativeDialogWithOnCLickListener(this,
-                    getString(R.string.error_permission_location), getString(R.string.universal_message_ok),
-                    (dialog, which) -> {
-                finishAndRemoveTask();
-                System.exit(-1);
-            }).show();
-        }
-        else
-            requestPermissions(new String[] { ACCESS_FINE_LOCATION,ACCESS_COARSE_LOCATION  }, PERMISSION_GRANTED);
+        locationPermissionRequest.launch(new String[] {
+                ACCESS_FINE_LOCATION,
+                ACCESS_COARSE_LOCATION
+        });
     }
     @Override
     public void onDestroy() {
