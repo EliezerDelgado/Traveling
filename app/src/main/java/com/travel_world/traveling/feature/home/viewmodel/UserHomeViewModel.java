@@ -6,13 +6,20 @@ import androidx.lifecycle.ViewModel;
 import com.travel_world.traveling.domain.User;
 
 public class UserHomeViewModel extends ViewModel {
+
+    private MutableLiveData<User> user;
+    private static UserHomeViewModel instance;
     static {
         instance = new UserHomeViewModel();
+
+
     }
-    private MutableLiveData<User> user = new MutableLiveData<>();
-    private static UserHomeViewModel instance;
+    public static void start() {
+        instance = new UserHomeViewModel();
+    }
     private UserHomeViewModel()
     {
+        user = new MutableLiveData<>();
         user.setValue(new User());
     }
     public static UserHomeViewModel getInstance()
@@ -30,4 +37,5 @@ public class UserHomeViewModel extends ViewModel {
         user = null;
         instance = null;
     }
+
 }

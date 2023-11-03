@@ -34,8 +34,7 @@ public class HomeActivity extends AppCompatActivity {
                             AlertDialogs.createSimpleInformativeDialogWithOnCLickListener(this,
                                 getString(R.string.error_permission_location), getString(R.string.universal_message_ok),
                                 (dialog, which) -> {
-                                    finishAndRemoveTask();
-                                    finishAffinity();
+                                    finish();
                                 }).show();
                         }
                     }
@@ -43,6 +42,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        UserHomeViewModel.start();
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getIntentExtras();
