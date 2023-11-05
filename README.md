@@ -146,5 +146,10 @@ ACTIVIDAD 11 – PERMISOS
 
 -Si pulsa back te pedirá de nuevo que elijas 
 
+ACTIVIDAD 12 – Notificaciones
+
+-Si rechaza el permiso de localización ahora regresas al login y vuelve a pedirlo una vez mas
 
 -https://icon-icons.com/es/icono/iniciar-sesion/37128 icono notificacion del login.
+
+-cuando haces el login recibes una notificación de bienvenida.
