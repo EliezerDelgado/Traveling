@@ -1,8 +1,12 @@
 package com.travel_world.traveling.feature.login.fragments;
 
+import static com.travel_world.traveling.data.constants.Keys.CHANNEL_NOTIFICATION;
 import static com.travel_world.traveling.data.constants.Keys.RESULT_LOGIN;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,11 +17,15 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.travel_world.traveling.R;
+import com.travel_world.traveling.data.constants.Keys;
 import com.travel_world.traveling.databinding.FragmentLoginBinding;
 import com.travel_world.traveling.domain.User;
 import com.travel_world.traveling.feature.login.interfaces.OnListenerLogin;
@@ -29,7 +37,6 @@ public class LoginFragment extends Fragment {
     private User user;
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +46,7 @@ public class LoginFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentLoginBinding.inflate(inflater,container,false);
+        binding = FragmentLoginBinding.inflate(inflater, container, false);
         listener.ocultToolbar();
         return binding.getRoot();
     }
@@ -54,10 +61,10 @@ public class LoginFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if(context instanceof OnListenerLogin)
+        if (context instanceof OnListenerLogin)
             listener = (OnListenerLogin) context;
         else
-            throw  new ClassCastException(context + " must implement listener");
+            throw new ClassCastException(context + " must implement listener");
     }
 
     @Override
@@ -71,31 +78,46 @@ public class LoginFragment extends Fragment {
         {
             NavHostFragment.findNavController(this).navigate(R.id.action_loginFragment_to_registerFragment);
             NavHostFragment.findNavController(this).getCurrentBackStackEntry().getSavedStateHandle().getLiveData(RESULT_LOGIN).observe(requireActivity(), o -> {
-                user = (User)o;
-                if( user != null) {
-                    Log.d("ELI",  user.getName());
+                user = (User) o;
+                if (user != null) {
+                    Log.d("ELI", user.getName());
                 }
             });
         });
-        binding.buttonLogin.setOnClickListener(v->
+        binding.buttonLogin.setOnClickListener(v ->
                 goToHomeActivity()
         );
-        binding.buttonLoginForgot.setOnClickListener(v->
-            Snackbar.make(binding.constraintLayoutLoginFragment,getString(R.string.button_login_forgot_onclick),Snackbar.LENGTH_LONG).show()
+        binding.buttonLoginForgot.setOnClickListener(v ->
+                Snackbar.make(binding.constraintLayoutLoginFragment, getString(R.string.button_login_forgot_onclick), Snackbar.LENGTH_LONG).show()
         );
     }
 
     private void goToHomeActivity() {
-        if(binding.nameTextLogin.getText()!= null && binding.passwordTextLogin.getText() != null) {
+        if (binding.nameTextLogin.getText() != null && binding.passwordTextLogin.getText() != null) {
             if (binding.nameTextLogin.getText().toString().equals(user.getName())
                     && binding.passwordTextLogin.getText().toString().equals(user.getPassword())) {
                 LoginFragmentDirections.ActionLoginFragmentToHomeActivity action = LoginFragmentDirections.actionLoginFragmentToHomeActivity(user);
+                sendNotificationLoginSuccess();
                 NavHostFragment.findNavController(this).navigate(action);
             } else {
                 showErrorLoginMessage();
             }
         }
 
+    }
+
+    private void sendNotificationLoginSuccess() {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), CHANNEL_NOTIFICATION)
+                .setSmallIcon(R.drawable.ic_notifications_none)
+                .setContentTitle(getString(R.string.notification_login_success_title, user.getName()))
+                .setContentText(getString(R.string.notification_login_success_text))
+                .setLargeIcon( BitmapFactory.decodeResource(requireContext().getResources(),
+                        R.drawable.ic_login_success))
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(requireContext());
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+            notificationManager.notify(Keys.NOTIFICATION_ID_LOGIN_SUCCESS, builder.build());
+        }
     }
     private void showErrorLoginMessage()
     {

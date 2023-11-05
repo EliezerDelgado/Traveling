@@ -52,4 +52,8 @@
     <string name="home_car_name_text">Nombre</string>
     <string name="error_permission_location">Necesita el permiso de ubicación</string>
     <string name="universal_message_ok">Ok</string>
+    <string name="notification_login_success_title">Bienvenido %1$s</string>
+    <string name="notification_login_success_text">Nos alegra verte en este paraíso.</string>
+    <string name="channel_name">notification_channel_name</string>
+    <string name="channel_description">notification_channel_description</string>
 </resources>

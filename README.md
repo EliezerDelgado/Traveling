@@ -145,3 +145,6 @@ ACTIVIDAD 11 – PERMISOS
 -Si confirmas puedes continuar en el home
 
 -Si pulsa back te pedirá de nuevo que elijas 
+
+
+-https://icon-icons.com/es/icono/iniciar-sesion/37128 icono notificacion del login.
