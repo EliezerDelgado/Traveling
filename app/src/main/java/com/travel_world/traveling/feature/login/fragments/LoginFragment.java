@@ -43,15 +43,22 @@ public class LoginFragment extends Fragment {
     private FragmentLoginBinding binding;
     private OnListenerLogin listener;
     private User user;
+    private boolean showDialogPermission = true;
     private ActivityResultLauncher<String> notificationPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted ->
             {
                 if (!isGranted) {
                     if (Build.VERSION.SDK_INT >= 33) {
                         if (shouldShowRequestPermissionRationale(POST_NOTIFICATIONS)) {
-                            showNotificationPermissionRationale();
+                            if(showDialogPermission) {
+                                showNotificationPermissionRationale();
+                                showDialogPermission = false;
+                            }
                         } else {
-                            showSettingDialog();
+                            if(showDialogPermission) {
+                                showSettingDialog();
+                                showDialogPermission = false;
+                            }
                         }
                     }
                 } else {
@@ -146,17 +153,9 @@ public class LoginFragment extends Fragment {
                         R.drawable.ic_login_success))
                 .setPriority(NotificationCompat.PRIORITY_HIGH);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(requireContext());
-        if (ActivityCompat.checkSelfPermission(requireContext(), POST_NOTIFICATIONS) != PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
+        if (ActivityCompat.checkSelfPermission(requireContext(), POST_NOTIFICATIONS) == PERMISSION_GRANTED) {
+            notificationManager.notify(Keys.NOTIFICATION_ID_LOGIN_SUCCESS, builder.build());
         }
-        notificationManager.notify(Keys.NOTIFICATION_ID_LOGIN_SUCCESS, builder.build());
     }
 
     private void showErrorLoginMessage() {
