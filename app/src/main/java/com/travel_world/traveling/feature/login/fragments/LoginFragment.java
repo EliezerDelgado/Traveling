@@ -1,13 +1,16 @@
 package com.travel_world.traveling.feature.login.fragments;
 
 import static android.Manifest.permission.POST_NOTIFICATIONS;
+import static android.content.pm.PackageManager.PERMISSION_GRANTED;
+import static android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS;
 import static com.travel_world.traveling.data.constants.Keys.CHANNEL_NOTIFICATION;
 import static com.travel_world.traveling.data.constants.Keys.RESULT_LOGIN;
 
-import android.Manifest;
 import android.content.Context;
-import android.content.pm.PackageManager;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -27,6 +30,7 @@ import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 import com.travel_world.traveling.R;
 import com.travel_world.traveling.data.constants.Keys;
@@ -54,14 +58,6 @@ public class LoginFragment extends Fragment {
                 }
             });
 
-    private void showSettingDialog() {
-        //TODO
-    }
-
-    private void showNotificationPermissionRationale() {
-        //TODO
-    }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,6 +76,7 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        permissionLocation();
         buttonListener();
         inputListener();
     }
@@ -123,7 +120,6 @@ public class LoginFragment extends Fragment {
             if (binding.nameTextLogin.getText().toString().equals(user.getName())
                     && binding.passwordTextLogin.getText().toString().equals(user.getPassword())) {
                 LoginFragmentDirections.ActionLoginFragmentToHomeActivity action = LoginFragmentDirections.actionLoginFragmentToHomeActivity(user);
-                permissionLocation();
                 sendNotificationLoginSuccess();
                 NavHostFragment.findNavController(this).navigate(action);
             } else {
@@ -150,7 +146,7 @@ public class LoginFragment extends Fragment {
                         R.drawable.ic_login_success))
                 .setPriority(NotificationCompat.PRIORITY_HIGH);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(requireContext());
-        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(requireContext(), POST_NOTIFICATIONS) != PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
@@ -163,12 +159,38 @@ public class LoginFragment extends Fragment {
         notificationManager.notify(Keys.NOTIFICATION_ID_LOGIN_SUCCESS, builder.build());
     }
 
-    private void showErrorLoginMessage()
-    {
+    private void showErrorLoginMessage() {
         AlertDialogs.createSimpleInformativeDialog(requireActivity(),
                 getResources().getString(R.string.error_login_incorrect_login_or_password),
                 getResources().getString(R.string.confirm_message_login)
         ).show();
+    }
+
+
+    private void showSettingDialog() {
+        new MaterialAlertDialogBuilder(requireContext(), com.google.android.material.R.style.MaterialAlertDialog_Material3)
+                .setTitle(getString(R.string.alert_dialogo_permission_notification_setting_title))
+                .setMessage(getString(R.string.alert_dialogo_permission_notification_setting_message))
+                .setPositiveButton(getString(R.string.button_positive_text), (DialogInterface.OnClickListener) (dialog, which) -> {
+                    Intent intent = new Intent(ACTION_APPLICATION_DETAILS_SETTINGS);
+                    intent.setData(Uri.parse("package:"+getActivity().getPackageName()));
+                    startActivity(intent);
+
+                })
+                .setNegativeButton(getString(R.string.button_negative_text), null)
+                .show();
+    }
+
+    private void showNotificationPermissionRationale() {
+        new MaterialAlertDialogBuilder(requireContext(), com.google.android.material.R.style.MaterialAlertDialog_Material3)
+                .setTitle("Alert")
+                .setMessage(getString(R.string.alert_dialogo_permission_notification_rationale_title))
+                .setPositiveButton(getString(R.string.button_positive_text), (DialogInterface.OnClickListener) (dialog, which) -> {
+                    if (Build.VERSION.SDK_INT >= 33)
+                        notificationPermissionLauncher.launch(POST_NOTIFICATIONS);
+                })
+                .setNegativeButton(getString(R.string.button_negative_text), null)
+                .show();
     }
 
     private void inputListener() {
@@ -185,7 +207,7 @@ public class LoginFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(binding.passwordTextLogin.getText() != null) {
+                if (binding.passwordTextLogin.getText() != null) {
                     binding.buttonLogin.setEnabled(
                             !s.toString().isEmpty()
                                     && !binding.passwordTextLogin.getText().toString().isEmpty()
@@ -207,7 +229,7 @@ public class LoginFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(binding.nameTextLogin.getText() != null) {
+                if (binding.nameTextLogin.getText() != null) {
                     binding.buttonLogin.setEnabled(
                             !s.toString().isEmpty()
                                     && !binding.nameTextLogin.getText().toString().isEmpty()
@@ -216,6 +238,7 @@ public class LoginFragment extends Fragment {
             }
         });
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

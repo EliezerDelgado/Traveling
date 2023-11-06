@@ -56,4 +56,9 @@
     <string name="notification_login_success_text">Nos alegra verte en este paraíso.</string>
     <string name="channel_name">notification_channel_name</string>
     <string name="channel_description">notification_channel_description</string>
+    <string name="alert_dialogo_permission_notification_setting_title">Permiso de Notificación</string>
+    <string name="alert_dialogo_permission_notification_setting_message">El permiso de notificacion esta desabilitado, habilitalo para recibir notificacion en configuraciones</string>
+    <string name="button_positive_text">Ok</string>
+    <string name="button_negative_text">Cancelar</string>
+    <string name="alert_dialogo_permission_notification_rationale_title">El permiso de notificacion es necesario para recibir notificacion</string>
 </resources>
