@@ -1,5 +1,6 @@
 package com.travel_world.traveling.feature.login.fragments;
 
+import static android.Manifest.permission.POST_NOTIFICATIONS;
 import static com.travel_world.traveling.data.constants.Keys.CHANNEL_NOTIFICATION;
 import static com.travel_world.traveling.data.constants.Keys.RESULT_LOGIN;
 
@@ -7,6 +8,7 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,6 +17,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
@@ -35,6 +39,28 @@ public class LoginFragment extends Fragment {
     private FragmentLoginBinding binding;
     private OnListenerLogin listener;
     private User user;
+    private ActivityResultLauncher<String> notificationPermissionLauncher =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted ->
+            {
+                if (!isGranted) {
+                    if (Build.VERSION.SDK_INT >= 33) {
+                        if (shouldShowRequestPermissionRationale(POST_NOTIFICATIONS)) {
+                            showNotificationPermissionRationale();
+                        } else {
+                            showSettingDialog();
+                        }
+                    }
+                } else {
+                }
+            });
+
+    private void showSettingDialog() {
+        //TODO
+    }
+
+    private void showNotificationPermissionRationale() {
+        //TODO
+    }
 
 
     @Override
@@ -97,6 +123,7 @@ public class LoginFragment extends Fragment {
             if (binding.nameTextLogin.getText().toString().equals(user.getName())
                     && binding.passwordTextLogin.getText().toString().equals(user.getPassword())) {
                 LoginFragmentDirections.ActionLoginFragmentToHomeActivity action = LoginFragmentDirections.actionLoginFragmentToHomeActivity(user);
+                permissionLocation();
                 sendNotificationLoginSuccess();
                 NavHostFragment.findNavController(this).navigate(action);
             } else {
@@ -106,19 +133,36 @@ public class LoginFragment extends Fragment {
 
     }
 
+    private void permissionLocation() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            notificationPermissionLauncher.launch(
+                    POST_NOTIFICATIONS
+            );
+        }
+    }
+
     private void sendNotificationLoginSuccess() {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), CHANNEL_NOTIFICATION)
                 .setSmallIcon(R.drawable.ic_notifications_none)
                 .setContentTitle(getString(R.string.notification_login_success_title, user.getName()))
                 .setContentText(getString(R.string.notification_login_success_text))
-                .setLargeIcon( BitmapFactory.decodeResource(requireContext().getResources(),
+                .setLargeIcon(BitmapFactory.decodeResource(requireContext().getResources(),
                         R.drawable.ic_login_success))
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                .setPriority(NotificationCompat.PRIORITY_HIGH);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(requireContext());
-        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
-            notificationManager.notify(Keys.NOTIFICATION_ID_LOGIN_SUCCESS, builder.build());
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
         }
+        notificationManager.notify(Keys.NOTIFICATION_ID_LOGIN_SUCCESS, builder.build());
     }
+
     private void showErrorLoginMessage()
     {
         AlertDialogs.createSimpleInformativeDialog(requireActivity(),
