@@ -152,4 +152,4 @@ ACTIVIDAD 12 – Notificaciones
 
 -https://icon-icons.com/es/icono/iniciar-sesion/37128 icono notificacion del login.
 
--cuando haces el login recibes una notificación de bienvenida.
+-cuando haces el login recibes una notificación de bienvenida si aceptas el permiso de recibir notificaciones.
