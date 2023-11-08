@@ -9,6 +9,7 @@ import static com.travel_world.traveling.data.constants.Keys.RESULT_LOGIN;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
@@ -69,6 +70,16 @@ public class LoginFragment extends Fragment {
         super.onCreate(savedInstanceState);
         user = new User();
     }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = FragmentLoginBinding.inflate(inflater, container, false);
+        listener.ocultToolbar();
+        return binding.getRoot();
+    }
+
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -84,16 +95,6 @@ public class LoginFragment extends Fragment {
             );
         }
     }
-
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        binding = FragmentLoginBinding.inflate(inflater, container, false);
-        listener.ocultToolbar();
-        return binding.getRoot();
-    }
-
-
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -146,13 +147,18 @@ public class LoginFragment extends Fragment {
 
 
     private void sendNotificationLoginSuccess() {
+        Bitmap nullbm = null;
         NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), CHANNEL_NOTIFICATION)
                 .setSmallIcon(R.drawable.ic_notifications_none)
                 .setContentTitle(getString(R.string.notification_login_success_title, user.getName()))
                 .setContentText(getString(R.string.notification_login_success_text))
                 .setLargeIcon(BitmapFactory.decodeResource(requireContext().getResources(),
                         R.drawable.ic_login_success))
-                .setPriority(NotificationCompat.PRIORITY_HIGH);
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setStyle(new NotificationCompat.BigPictureStyle()
+                        .bigPicture(BitmapFactory.decodeResource(requireContext().getResources(),
+                                R.drawable.ic_login_success))
+                        .bigLargeIcon(nullbm));
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(requireContext());
         if (ActivityCompat.checkSelfPermission(requireContext(), POST_NOTIFICATIONS) == PERMISSION_GRANTED || Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
             notificationManager.notify(Keys.NOTIFICATION_ID_LOGIN_SUCCESS, builder.build());
