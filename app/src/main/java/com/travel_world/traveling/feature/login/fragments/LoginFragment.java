@@ -65,6 +65,9 @@ public class LoginFragment extends Fragment {
                 }
             });
 
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,8 +81,6 @@ public class LoginFragment extends Fragment {
         listener.ocultToolbar();
         return binding.getRoot();
     }
-
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -147,7 +148,6 @@ public class LoginFragment extends Fragment {
 
 
     private void sendNotificationLoginSuccess() {
-        Bitmap nullbm = null;
         NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), CHANNEL_NOTIFICATION)
                 .setSmallIcon(R.drawable.ic_notifications_none)
                 .setContentTitle(getString(R.string.notification_login_success_title, user.getName()))
@@ -158,7 +158,7 @@ public class LoginFragment extends Fragment {
                 .setStyle(new NotificationCompat.BigPictureStyle()
                         .bigPicture(BitmapFactory.decodeResource(requireContext().getResources(),
                                 R.drawable.ic_login_success))
-                        .bigLargeIcon(nullbm));
+                        .bigLargeIcon((Bitmap) null));
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(requireContext());
         if (ActivityCompat.checkSelfPermission(requireContext(), POST_NOTIFICATIONS) == PERMISSION_GRANTED || Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
             notificationManager.notify(Keys.NOTIFICATION_ID_LOGIN_SUCCESS, builder.build());
