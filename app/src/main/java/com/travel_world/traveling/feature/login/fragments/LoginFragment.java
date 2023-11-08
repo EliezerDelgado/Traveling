@@ -61,10 +61,14 @@ public class LoginFragment extends Fragment {
                             }
                         }
                     }
-                } else {
                 }
             });
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        user = new User();
+    }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -79,13 +83,6 @@ public class LoginFragment extends Fragment {
                     POST_NOTIFICATIONS
             );
         }
-    }
-
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        user = new User();
     }
 
     @Override
