@@ -45,7 +45,7 @@ public class LoginFragment extends Fragment {
     private OnListenerLogin listener;
     private User user;
     private boolean showDialogPermission = true;
-    private ActivityResultLauncher<String> notificationPermissionLauncher =
+    private final ActivityResultLauncher<String> notificationPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted ->
             {
                 if (!isGranted) {
