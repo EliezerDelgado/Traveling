@@ -65,6 +65,22 @@ public class LoginFragment extends Fragment {
                 }
             });
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        permissionLocation();
+        buttonListener();
+        inputListener();
+    }
+
+    private void permissionLocation() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            notificationPermissionLauncher.launch(
+                    POST_NOTIFICATIONS
+            );
+        }
+    }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,13 +96,7 @@ public class LoginFragment extends Fragment {
         return binding.getRoot();
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        permissionLocation();
-        buttonListener();
-        inputListener();
-    }
+
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -136,13 +146,7 @@ public class LoginFragment extends Fragment {
 
     }
 
-    private void permissionLocation() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            notificationPermissionLauncher.launch(
-                    POST_NOTIFICATIONS
-            );
-        }
-    }
+
 
     private void sendNotificationLoginSuccess() {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(), CHANNEL_NOTIFICATION)
@@ -153,7 +157,7 @@ public class LoginFragment extends Fragment {
                         R.drawable.ic_login_success))
                 .setPriority(NotificationCompat.PRIORITY_HIGH);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(requireContext());
-        if (ActivityCompat.checkSelfPermission(requireContext(), POST_NOTIFICATIONS) == PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(requireContext(), POST_NOTIFICATIONS) == PERMISSION_GRANTED || Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
             notificationManager.notify(Keys.NOTIFICATION_ID_LOGIN_SUCCESS, builder.build());
         }
     }
