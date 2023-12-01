@@ -20,7 +20,7 @@ public class UserHomeViewModel extends ViewModel {
     private UserHomeViewModel()
     {
         user = new MutableLiveData<>();
-        user.setValue(new User());
+        user.setValue(new User("",""));
     }
     public static UserHomeViewModel getInstance()
     {

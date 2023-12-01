@@ -38,7 +38,12 @@ import com.travel_world.traveling.data.constants.Keys;
 import com.travel_world.traveling.databinding.FragmentLoginBinding;
 import com.travel_world.traveling.domain.User;
 import com.travel_world.traveling.feature.login.interfaces.OnListenerLogin;
+import com.travel_world.traveling.io.MyApiAdapter;
 import com.travel_world.traveling.utils.AlertDialogs;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginFragment extends Fragment {
     private FragmentLoginBinding binding;
@@ -51,12 +56,12 @@ public class LoginFragment extends Fragment {
                 if (!isGranted) {
                     if (Build.VERSION.SDK_INT >= 33) {
                         if (shouldShowRequestPermissionRationale(POST_NOTIFICATIONS)) {
-                            if(showDialogPermission) {
+                            if (showDialogPermission) {
                                 showNotificationPermissionRationale();
                                 showDialogPermission = false;
                             }
                         } else {
-                            if(showDialogPermission) {
+                            if (showDialogPermission) {
                                 showSettingDialog();
                                 showDialogPermission = false;
                             }
@@ -64,8 +69,6 @@ public class LoginFragment extends Fragment {
                     }
                 }
             });
-
-
 
 
     @Override
@@ -81,6 +84,7 @@ public class LoginFragment extends Fragment {
         listener.ocultToolbar();
         return binding.getRoot();
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -116,21 +120,53 @@ public class LoginFragment extends Fragment {
         binding.buttonLoginRegister.setOnClickListener(v ->
         {
             NavHostFragment.findNavController(this).navigate(R.id.action_loginFragment_to_registerFragment);
-            NavHostFragment.findNavController(this).getCurrentBackStackEntry().getSavedStateHandle().getLiveData(RESULT_LOGIN).observe(requireActivity(), o -> {
-                user = (User) o;
-                if (user != null) {
-                    Log.d("ELI", user.getName());
-                }
-            });
+            NavHostFragment.findNavController(this).getCurrentBackStackEntry().getSavedStateHandle().getLiveData(RESULT_LOGIN).observe(requireActivity(), o ->
+                    user = (User) o
+            );
         });
         binding.buttonLogin.setOnClickListener(v ->
-                goToHomeActivity()
-        );
+        {
+            checkHost();
+            /*
+            Anterior a la practica 13
+            goToHomeActivity();
+             */
+        });
         binding.buttonLoginForgot.setOnClickListener(v ->
                 Snackbar.make(binding.constraintLayoutLoginFragment, getString(R.string.button_login_forgot_onclick), Snackbar.LENGTH_LONG).show()
         );
     }
 
+    private void checkHost() {
+        Call<User> call = MyApiAdapter.getApiService().getUser(binding.nameTextLogin.getText().toString(), binding.passwordTextLogin.getText().toString());
+        call.enqueue(new Callback<>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                user = response.body();
+                goToHomeActivityafterCheckHost(response.code());
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Log.e("LOGIN_ERROR", t.getMessage(), t);
+                showErrorLoginMessage();
+            }
+        });
+    }
+
+    private void goToHomeActivityafterCheckHost(int statuscode) {
+        if (statuscode == 200)
+        {
+            LoginFragmentDirections.ActionLoginFragmentToHomeActivity action = LoginFragmentDirections.actionLoginFragmentToHomeActivity(user);
+            sendNotificationLoginSuccess();
+            NavHostFragment.findNavController(this).navigate(action);
+        } else {
+            showErrorLoginMessage();
+        }
+    }
+
+    /*
+    Anterior a la practica 13
     private void goToHomeActivity() {
         if (binding.nameTextLogin.getText() != null && binding.passwordTextLogin.getText() != null) {
             if (binding.nameTextLogin.getText().toString().equals(user.getName())
@@ -142,9 +178,8 @@ public class LoginFragment extends Fragment {
                 showErrorLoginMessage();
             }
         }
-
     }
-
+     */
 
 
     private void sendNotificationLoginSuccess() {
@@ -179,7 +214,7 @@ public class LoginFragment extends Fragment {
                 .setMessage(getString(R.string.alert_dialogo_permission_notification_setting_message))
                 .setPositiveButton(getString(R.string.button_positive_text), (DialogInterface.OnClickListener) (dialog, which) -> {
                     Intent intent = new Intent(ACTION_APPLICATION_DETAILS_SETTINGS);
-                    intent.setData(Uri.parse("package:"+getActivity().getPackageName()));
+                    intent.setData(Uri.parse("package:" + getActivity().getPackageName()));
                     startActivity(intent);
 
                 })

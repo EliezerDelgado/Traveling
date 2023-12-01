@@ -5,17 +5,43 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class User implements Parcelable {
+    @SerializedName("nombre")
+    @Expose
     private String name;
     private String lastName;
+    @SerializedName("password")
+    @Expose
     private String password;
 
+    @SerializedName("edad")
+    @Expose
     private String ageRange;
+
+    @SerializedName("genero")
+    @Expose
+    private String gender;
+
+    @SerializedName("userToken")
+    @Expose
+    private String userToken;
+
+    @SerializedName("idBdReference")
+    @Expose
+    private Integer idBdReference;
 
     public User() {
         name = "";
         lastName = "";
         password = "";
+    }
+
+    public User(String name ,String password) {
+        this.name = name;
+        this.password = password;
     }
     public User(String name, String lastName, String password, String ageRange) {
         this.name = name;

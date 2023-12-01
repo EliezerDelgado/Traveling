@@ -18,6 +18,7 @@ import com.travel_world.traveling.feature.home.adapter.CardsCarsAdapter;
 public class HomeCarFragment extends Fragment implements CardsCarsAdapter.OnCardCarClickListener {
 
     private FragmentHomeCarBinding binding;
+    private CardsCarsAdapter adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,9 +35,9 @@ public class HomeCarFragment extends Fragment implements CardsCarsAdapter.OnCard
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        CardsCarsAdapter adapter1 = new CardsCarsAdapter(RepositoryCardsCars.getListCars(),this);
+        adapter = new CardsCarsAdapter(RepositoryCardsCars.getListCars(),this);
         binding.recyclerCardsCar.setHasFixedSize(true);
-        binding.recyclerCardsCar.setAdapter(adapter1);
+        binding.recyclerCardsCar.setAdapter(adapter);
     }
 
 

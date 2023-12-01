@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Traveling</string>
     <string name="title_onboarding_one_text">Tu App de Viajes</string>
-    <string name="bodytext_onboarding_one_text">Hola, estamos buscando a millones de usuarios con inquietudes y ganas de viajar. Si eres tu? No lo dudes accede a nuestra app y descubriras miles de destinos y facilidades para alquilar coches, ver el tiempo...</string>
+    <string name="bodytext_onboarding_one_text">Hola, estamos buscando a millones de usuarios con inquietudes y ganas de viajar. Si eres tu? No lo dudes accede a nuestra app y descubriras miles de destinos y facilidades para alquilar coches, ver el tiempo…</string>
     <string name="buttonOnBoarding_next_text">Next</string>
     <string name="title_home_text">Upcoming meetups</string>
     <string name="textview_body_home_los_angeles_text">USA, Los Angeles - 2 Weeks</string>
@@ -41,7 +41,7 @@
     <string name="ages_range_list_register_content_description">Lista de rango de años para el usuario</string>
     <string name="empty_text"> </string>
     <string name="title_onboarding_two_text">Find Your Match!</string>
-    <string name="bodytext_onboarding_two_text">We\'ve helped millions across the nation find their perfect match... and you\'re next!</string>
+    <string name="bodytext_onboarding_two_text">We\'ve helped millions across the nation find their perfect match… and you\'re next!</string>
     <string name="button_onboarding_skip_text">Skip</string>
     <string name="title_onboarding_three_text">Find the Perfect Roommate</string>
     <string name="bodytext_onboarding_three_text">"We've helped millions across the nation find their perfect match.. and you're next! "</string>
@@ -51,14 +51,17 @@
     <string name="home_mountain_position_text">2</string>
     <string name="home_car_name_text">Nombre</string>
     <string name="error_permission_location">Necesita el permiso de ubicación</string>
-    <string name="universal_message_ok">Ok</string>
+    <string name="universal_message_ok">OK</string>
     <string name="notification_login_success_title">Bienvenido %1$s</string>
     <string name="notification_login_success_text">Nos alegra verte en este paraíso.</string>
     <string name="channel_name">notification_channel_name</string>
     <string name="channel_description">notification_channel_description</string>
     <string name="alert_dialogo_permission_notification_setting_title">Permiso de Notificación</string>
     <string name="alert_dialogo_permission_notification_setting_message">El permiso de notificacion esta desabilitado, habilitalo para recibir notificacion en configuraciones</string>
-    <string name="button_positive_text">Ok</string>
+    <string name="button_positive_text">OK</string>
     <string name="button_negative_text">Cancelar</string>
     <string name="alert_dialogo_permission_notification_rationale_title">El permiso de notificacion es necesario para recibir notificacion</string>
+    <string name="item_hotel_name_empty">Sin Nombre</string>
+    <string name="item_hotel_address">Ubicado: %1$s,%2$s %3$s</string>
+    <string name="item_hotel_star_rating">Estrellas: %1$d</string>
 </resources>

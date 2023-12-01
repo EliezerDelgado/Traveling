@@ -12,6 +12,7 @@
     <color name="black_green">#B6F1C1</color>
     <color name="black">#FF000000</color>
     <color name="gray">#4A4A4A</color>
+    <color name="dim_grey">#6A6A6A</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue_light">#CDE3FF</color>
     <color name="purple_light">#D6CDFF</color>
