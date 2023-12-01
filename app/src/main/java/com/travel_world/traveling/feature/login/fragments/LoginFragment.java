@@ -141,13 +141,13 @@ public class LoginFragment extends Fragment {
         Call<User> call = MyApiAdapter.getApiService().getUser(binding.nameTextLogin.getText().toString(), binding.passwordTextLogin.getText().toString());
         call.enqueue(new Callback<>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
+            public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
                 user = response.body();
                 goToHomeActivityafterCheckHost(response.code());
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
+            public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
                 Log.e("LOGIN_ERROR", t.getMessage(), t);
                 showErrorLoginMessage();
             }

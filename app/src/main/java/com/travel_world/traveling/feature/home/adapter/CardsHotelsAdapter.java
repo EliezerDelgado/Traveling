@@ -7,8 +7,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.travel_world.traveling.BR;
 import com.travel_world.traveling.databinding.ItemListHotelBinding;
 import com.travel_world.traveling.domain.hotels.Result;
+import com.travel_world.traveling.utils.UtilsPictures;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,7 @@ public class CardsHotelsAdapter extends RecyclerView.Adapter<ItemGenericViewHold
     @Override
     public ItemGenericViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         @NonNull ItemListHotelBinding binding = ItemListHotelBinding.inflate(LayoutInflater.from(parent.getContext()));
+        binding.setVariable(BR.util, new UtilsPictures());
         return new ItemGenericViewHolder(binding);
     }
 
