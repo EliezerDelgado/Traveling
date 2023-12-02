@@ -1,7 +1,5 @@
 package com.travel_world.traveling.feature.home.adapter;
 
-import android.graphics.drawable.Drawable;
-
 import androidx.annotation.NonNull;
 import androidx.databinding.ViewDataBinding;
 import androidx.databinding.library.baseAdapters.BR;
@@ -17,11 +15,10 @@ public class ItemHotelsViewHolder extends ItemGenericViewHolder<Result>{
     @Override
     protected void onBindMethodCalled(Result item) {
         super.onBindMethodCalled(item);
-        binding.setVariable(BR.img, null);
         new Thread(() ->
-        {
-            Drawable d = UtilsPictures.loadImageFromWebOperations(item.getOptimizedThumbUrls().getSrpDesktop());
-            binding.setVariable(BR.img, d);
-        }).start();
+            binding.setVariable(BR.img,
+                    UtilsPictures.loadImageFromWebOperations(item.getOptimizedThumbUrls().getSrpDesktop())
+            )
+        ).start();
     }
 }
