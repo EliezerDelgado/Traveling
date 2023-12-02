@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.travel_world.traveling.BR;
 
 public class ItemGenericViewHolder<T> extends RecyclerView.ViewHolder {
-    private final ViewDataBinding binding;
+    protected final ViewDataBinding binding;
     public ItemGenericViewHolder(@NonNull ViewDataBinding binding) {
         super(binding.getRoot());
         this.binding = binding;
@@ -16,5 +16,11 @@ public class ItemGenericViewHolder<T> extends RecyclerView.ViewHolder {
     public void bind(T item) {
         binding.setVariable(BR.item,item);
         binding.executePendingBindings();
+        onBindMethodCalled(item);
+    }
+
+    protected void onBindMethodCalled(T item)
+    {
+        //mas funcionalidades
     }
 }

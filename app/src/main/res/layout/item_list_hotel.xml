@@ -9,8 +9,8 @@
         name="item"
         type="com.travel_world.traveling.domain.hotels.Result" />
         <variable
-            name="util"
-            type="com.travel_world.traveling.utils.UtilsPictures" />
+            name="img"
+            type="android.graphics.drawable.Drawable" />
         <import type="android.view.View"/>
     </data>
 
@@ -89,11 +89,12 @@
                 tools:text="@{@string/item_hotel_star_rating(item.starRating)}" />
 
             <ImageView
+                android:id="@+id/item_listhotel_image"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/item_listhotel_star_rating"
-                android:src="@{util.loadImageFromWebOperations(item.optimizedThumbUrls.srpDesktop)}"
+                android:src="@{img}"
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
