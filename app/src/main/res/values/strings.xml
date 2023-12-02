@@ -64,4 +64,5 @@
     <string name="item_hotel_name_empty">Sin Nombre</string>
     <string name="item_hotel_address">Ubicado: %1$s,%2$s %3$s</string>
     <string name="item_hotel_star_rating">Estrellas: %1$d</string>
+    <string name="error_no_found_hotels">No se ha podido encontrar los hoteles</string>
 </resources>

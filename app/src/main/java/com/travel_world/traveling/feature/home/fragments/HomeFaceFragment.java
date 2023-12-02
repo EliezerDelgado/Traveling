@@ -44,7 +44,7 @@ public class HomeFaceFragment extends Fragment {
     }
     private void getHotels() {
         Call<Hotels> call = MyApiAdapter.getApiService().getHotels();
-        call.enqueue(new Callback<Hotels>() {
+        call.enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<Hotels> call, Response<Hotels> response) {
                 Hotels hotels = response.body();
@@ -53,6 +53,8 @@ public class HomeFaceFragment extends Fragment {
 
             @Override
             public void onFailure(Call<Hotels> call, Throwable t) {
+                binding.recyclerCardsHotel.setVisibility(View.GONE);
+                binding.textNoFoundHotels.setVisibility(View.VISIBLE);
             }
         });
     }

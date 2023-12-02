@@ -6,7 +6,15 @@
     android:layout_height="match_parent"
     android:background="@color/yellow_light"
     tools:context=".feature.home.fragments.HomeCarFragment">
-
+    <TextView
+        android:id="@+id/text_no_found_hotels"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/error_no_found_hotels"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="34sp"
+        android:gravity="center"
+        android:visibility="gone"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_cards_hotel"
         android:layout_width="0dp"
