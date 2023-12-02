@@ -7,7 +7,7 @@ import androidx.databinding.library.baseAdapters.BR;
 import com.travel_world.traveling.domain.hotels.Result;
 import com.travel_world.traveling.utils.UtilsPictures;
 
-public class ItemHotelsViewHolder extends ItemGenericViewHolder<Result>{
+public class ItemHotelsViewHolder extends ItemGenericViewHolder<Result> {
     public ItemHotelsViewHolder(@NonNull ViewDataBinding binding) {
         super(binding);
     }
@@ -15,10 +15,11 @@ public class ItemHotelsViewHolder extends ItemGenericViewHolder<Result>{
     @Override
     protected void onBindMethodCalled(Result item) {
         super.onBindMethodCalled(item);
-        new Thread(() ->
+        binding.setVariable(BR.ioPB, true);
+        new Thread(() -> {
             binding.setVariable(BR.img,
-                    UtilsPictures.loadImageFromWebOperations(item.getOptimizedThumbUrls().getSrpDesktop())
-            )
-        ).start();
+                    UtilsPictures.loadImageFromWebOperations(item.getOptimizedThumbUrls().getSrpDesktop()));
+            binding.setVariable(BR.ioPB, false);
+        }).start();
     }
 }
