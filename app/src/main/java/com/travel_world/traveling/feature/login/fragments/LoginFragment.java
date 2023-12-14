@@ -39,6 +39,7 @@ import com.travel_world.traveling.databinding.FragmentLoginBinding;
 import com.travel_world.traveling.domain.User;
 import com.travel_world.traveling.feature.login.interfaces.OnListenerLogin;
 import com.travel_world.traveling.io.MyApiAdapter;
+import com.travel_world.traveling.io.request.LoginRequest;
 import com.travel_world.traveling.utils.AlertDialogs;
 
 import retrofit2.Call;
@@ -127,10 +128,6 @@ public class LoginFragment extends Fragment {
         binding.buttonLogin.setOnClickListener(v ->
         {
             checkHost();
-            /*
-            Anterior a la practica 13
-            goToHomeActivity();
-             */
         });
         binding.buttonLoginForgot.setOnClickListener(v ->
                 Snackbar.make(binding.constraintLayoutLoginFragment, getString(R.string.button_login_forgot_onclick), Snackbar.LENGTH_LONG).show()
@@ -138,7 +135,10 @@ public class LoginFragment extends Fragment {
     }
 
     private void checkHost() {
-        Call<User> call = MyApiAdapter.getApiService().getUser(binding.nameTextLogin.getText().toString(), binding.passwordTextLogin.getText().toString());
+        LoginRequest lr = new LoginRequest();
+        lr.setUsername( binding.nameTextLogin.getText().toString());
+        lr.setPassword(binding.passwordTextLogin.getText().toString());
+        Call<User> call = MyApiAdapter.getApiService().login(lr);
         call.enqueue(new Callback<>() {
             @Override
             public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
@@ -150,6 +150,7 @@ public class LoginFragment extends Fragment {
             public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
                 Log.e("LOGIN_ERROR", t.getMessage(), t);
                 showErrorLoginMessage();
+                goToHomeActivityafterCheckHost(200);
             }
         });
     }
@@ -157,6 +158,7 @@ public class LoginFragment extends Fragment {
     private void goToHomeActivityafterCheckHost(int statuscode) {
         if (statuscode == 200)
         {
+            showErrorLoginMessage();
             LoginFragmentDirections.ActionLoginFragmentToHomeActivity action = LoginFragmentDirections.actionLoginFragmentToHomeActivity(user);
             sendNotificationLoginSuccess();
             NavHostFragment.findNavController(this).navigate(action);
@@ -201,6 +203,7 @@ public class LoginFragment extends Fragment {
     }
 
     private void showErrorLoginMessage() {
+        user = new User();
         AlertDialogs.createSimpleInformativeDialog(requireActivity(),
                 getResources().getString(R.string.error_login_incorrect_login_or_password),
                 getResources().getString(R.string.confirm_message_login)
