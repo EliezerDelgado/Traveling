@@ -159,6 +159,7 @@ public class LoginFragment extends Fragment {
         if (statuscode == 200)
         {
             LoginFragmentDirections.ActionLoginFragmentToHomeActivity action = LoginFragmentDirections.actionLoginFragmentToHomeActivity(user);
+            user = new User();
             sendNotificationLoginSuccess();
             NavHostFragment.findNavController(this).navigate(action);
         } else {
