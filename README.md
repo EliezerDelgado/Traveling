@@ -156,7 +156,7 @@ ACTIVIDAD 12 – Notificaciones
 
 ACTIVIDAD 13 RETROFIT
 
--El login recibe siempre el usuario Jose Manuel Antonio ya que el php no tiene para recibir parametro
+-El login recibe siempre el usuario Jose Manuel Antonio ya que el php no tiene para recibir parámetro
 
--Los Hoteles se muestra en el recycler view de la posicion 3 del tabLayout
+-Los Hoteles se muestra en el recycler view de la posición 3 del tabLayout
 
