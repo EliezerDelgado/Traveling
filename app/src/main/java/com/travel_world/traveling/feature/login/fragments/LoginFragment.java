@@ -150,7 +150,7 @@ public class LoginFragment extends Fragment {
             public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
                 Log.e("LOGIN_ERROR", t.getMessage(), t);
                 showErrorLoginMessage();
-                goToHomeActivityafterCheckHost(200);
+                goToHomeActivityafterCheckHost(0);
             }
         });
     }
@@ -158,7 +158,6 @@ public class LoginFragment extends Fragment {
     private void goToHomeActivityafterCheckHost(int statuscode) {
         if (statuscode == 200)
         {
-            showErrorLoginMessage();
             LoginFragmentDirections.ActionLoginFragmentToHomeActivity action = LoginFragmentDirections.actionLoginFragmentToHomeActivity(user);
             sendNotificationLoginSuccess();
             NavHostFragment.findNavController(this).navigate(action);
@@ -166,22 +165,6 @@ public class LoginFragment extends Fragment {
             showErrorLoginMessage();
         }
     }
-
-    /*
-    Anterior a la practica 13
-    private void goToHomeActivity() {
-        if (binding.nameTextLogin.getText() != null && binding.passwordTextLogin.getText() != null) {
-            if (binding.nameTextLogin.getText().toString().equals(user.getName())
-                    && binding.passwordTextLogin.getText().toString().equals(user.getPassword())) {
-                LoginFragmentDirections.ActionLoginFragmentToHomeActivity action = LoginFragmentDirections.actionLoginFragmentToHomeActivity(user);
-                sendNotificationLoginSuccess();
-                NavHostFragment.findNavController(this).navigate(action);
-            } else {
-                showErrorLoginMessage();
-            }
-        }
-    }
-     */
 
 
     private void sendNotificationLoginSuccess() {

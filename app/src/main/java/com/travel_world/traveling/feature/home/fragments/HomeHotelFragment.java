@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.travel_world.traveling.databinding.FragmentHomeFaceBinding;
+import com.travel_world.traveling.databinding.FragmentHomeHotelBinding;
 import com.travel_world.traveling.domain.hotels.Hotels;
 import com.travel_world.traveling.feature.home.adapter.CardsHotelsAdapter;
 import com.travel_world.traveling.io.MyApiAdapter;
@@ -18,9 +18,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeFaceFragment extends Fragment {
+public class HomeHotelFragment extends Fragment {
     private CardsHotelsAdapter adapter;
-    private FragmentHomeFaceBinding binding;
+    private FragmentHomeHotelBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class HomeFaceFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentHomeFaceBinding.inflate(inflater,container,false);
+        binding = FragmentHomeHotelBinding.inflate(inflater,container,false);
         return binding.getRoot();
     }
 

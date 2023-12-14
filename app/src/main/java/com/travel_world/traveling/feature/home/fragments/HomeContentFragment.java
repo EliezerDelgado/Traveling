@@ -63,7 +63,7 @@ public class HomeContentFragment extends Fragment {
         pagerAdapter.addFragment(HomeCameraFragment.class);
         pagerAdapter.addFragment(HomeCarFragment.class);
         pagerAdapter.addFragment(HomeLandscapeFragment.class);
-        pagerAdapter.addFragment(HomeFaceFragment.class);
+        pagerAdapter.addFragment(HomeHotelFragment.class);
     }
     private void setContentView() {
         binding.homeContentViewpager2.setAdapter(pagerAdapter);
@@ -92,7 +92,7 @@ public class HomeContentFragment extends Fragment {
                    tab.view.setY(tab.view.getY()-4F);
                    break;
                case 3:
-                   tab.setIcon(R.drawable.ic_action_face);
+                   tab.setIcon(R.drawable.ic_action_hotel);
                    tab.view.setBackgroundColor(getResources().getColor(R.color.yellow_light, requireActivity().getTheme()));
                    tab.view.setY(tab.view.getY()-4F);
                    break;

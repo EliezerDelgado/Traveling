@@ -153,3 +153,10 @@ ACTIVIDAD 12 – Notificaciones
 -https://icon-icons.com/es/icono/iniciar-sesion/37128 icono notificacion del login.
 
 -cuando haces el login recibes una notificación de bienvenida si aceptas el permiso de recibir notificaciones.
+
+ACTIVIDAD 13 RETROFIT
+
+-El login recibe siempre el usuario Jose Manuel Antonio ya que el php no tiene para recibir parametro
+
+-Los Hoteles se muestra en el recycler view de la posicion 3 del tabLayout
+
