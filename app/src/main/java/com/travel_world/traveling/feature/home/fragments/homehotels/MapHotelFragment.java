@@ -7,12 +7,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.mapbox.geojson.Point;
+import com.mapbox.maps.AnnotatedFeature;
 import com.mapbox.maps.CameraOptions;
 import com.mapbox.maps.MapView;
+import com.mapbox.maps.ViewAnnotationOptions;
 import com.travel_world.traveling.R;
+import com.travel_world.traveling.databinding.HotelAnnotationViewBinding;
 import com.travel_world.traveling.domain.hotels.Result;
 
 public class MapHotelFragment extends Fragment {
@@ -40,11 +45,28 @@ public class MapHotelFragment extends Fragment {
                     new CameraOptions.Builder()
                             .center(Point.fromLngLat(hotel.getCoordinate().getLon(), hotel.getCoordinate().getLat()))
                             .pitch(0.0)
-                            .zoom(2.0)
+                            .zoom(20.0)
                             .bearing(0.0)
                             .build()
             );
         }
         return v;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        addAnnotation(hotel);
+    }
+
+    private void addAnnotation(Result hotel) {
+        HotelAnnotationViewBinding hotelView =  HotelAnnotationViewBinding.inflate(LayoutInflater.from(requireContext()),mapView,false);
+        ViewAnnotationOptions.Builder viewAnnotationOptionsBuild = new ViewAnnotationOptions.Builder();
+        viewAnnotationOptionsBuild.annotatedFeature(new AnnotatedFeature(Point.fromLngLat(hotel.getCoordinate().getLon(), hotel.getCoordinate().getLat())));
+        viewAnnotationOptionsBuild.selected(true);
+        viewAnnotationOptionsBuild.allowOverlap(true);
+        viewAnnotationOptionsBuild.ignoreCameraPadding(true);
+        mapView.getViewAnnotationManager().addViewAnnotation(hotelView.getRoot(),viewAnnotationOptionsBuild.build());
+        hotelView.nameHotel.setText(hotel.getName());
     }
 }
