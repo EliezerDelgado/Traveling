@@ -35,15 +35,16 @@ public class MapHotelFragment extends Fragment {
         if (getArguments() != null) {
             hotel= (Result) (getArguments().getSerializable(KEY_HOTEL));
         }
-        if(hotel!=null)
-        mapView.getMapboxMap().setCamera(
-                new CameraOptions.Builder()
-                        .center(Point.fromLngLat(hotel.getCoordinate().getLon(),hotel.getCoordinate().getLat()))
-                        .pitch(0.0)
-                        .zoom(2.0)
-                        .bearing(0.0)
-                        .build()
-        );
+        if(hotel!=null) {
+            mapView.getMapboxMap().setCamera(
+                    new CameraOptions.Builder()
+                            .center(Point.fromLngLat(hotel.getCoordinate().getLon(), hotel.getCoordinate().getLat()))
+                            .pitch(0.0)
+                            .zoom(2.0)
+                            .bearing(0.0)
+                            .build()
+            );
+        }
         return v;
     }
 }
