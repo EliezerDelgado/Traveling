@@ -20,6 +20,7 @@ import com.travel_world.traveling.R;
 import com.travel_world.traveling.databinding.FragmentHomeContentBinding;
 import com.travel_world.traveling.domain.User;
 import com.travel_world.traveling.feature.home.adapter.HomePagerAdapter;
+import com.travel_world.traveling.feature.home.fragments.homehotels.HomeHotelFragment;
 import com.travel_world.traveling.feature.home.viewmodel.UserHomeViewModel;
 
 public class HomeContentFragment extends Fragment {

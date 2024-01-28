@@ -14,8 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CardsHotelsAdapter extends RecyclerView.Adapter<ItemHotelsViewHolder> {
+    public interface MyotelsAdapterListener {
+        void onCick(Result hotel);
+    }
     private List<Result> items;
-    public CardsHotelsAdapter() {
+    private MyotelsAdapterListener listener;
+    public CardsHotelsAdapter(MyotelsAdapterListener listener) {
+        this.listener = listener;
         items = new ArrayList<>();
     }
     public CardsHotelsAdapter(List<Result> items) {
@@ -37,6 +42,9 @@ public class CardsHotelsAdapter extends RecyclerView.Adapter<ItemHotelsViewHolde
     @Override
     public void onBindViewHolder(@NonNull ItemHotelsViewHolder holder, int position) {
         holder.bind(items.get(position));
+        holder.itemView.setOnClickListener(v -> {
+            listener.onCick(items.get(position));
+        });
     }
 
     @Override

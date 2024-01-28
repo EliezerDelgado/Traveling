@@ -1,4 +1,6 @@
-package com.travel_world.traveling.feature.home.fragments;
+package com.travel_world.traveling.feature.home.fragments.homehotels;
+
+import static com.travel_world.traveling.data.constants.Keys.KEY_HOTEL;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,9 +10,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
+import com.travel_world.traveling.R;
 import com.travel_world.traveling.databinding.FragmentHomeHotelBinding;
 import com.travel_world.traveling.domain.hotels.Hotels;
+import com.travel_world.traveling.domain.hotels.Result;
 import com.travel_world.traveling.feature.home.adapter.CardsHotelsAdapter;
 import com.travel_world.traveling.io.MyApiAdapter;
 
@@ -18,7 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeHotelFragment extends Fragment {
+public class HomeHotelFragment extends Fragment implements CardsHotelsAdapter.MyotelsAdapterListener {
     private CardsHotelsAdapter adapter;
     private FragmentHomeHotelBinding binding;
 
@@ -37,7 +42,7 @@ public class HomeHotelFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        adapter = new CardsHotelsAdapter();
+        adapter = new CardsHotelsAdapter(this);
         getHotels();
         binding.recyclerCardsHotel.setHasFixedSize(true);
         binding.recyclerCardsHotel.setAdapter(adapter);
@@ -57,5 +62,12 @@ public class HomeHotelFragment extends Fragment {
                 binding.textNoFoundHotels.setVisibility(View.VISIBLE);
             }
         });
+    }
+
+    @Override
+    public void onCick(Result hotel) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(KEY_HOTEL,hotel);
+        NavHostFragment.findNavController(this).navigate(R.id.action_homeContentFragment_to_mapHotelFragment,bundle);
     }
 }

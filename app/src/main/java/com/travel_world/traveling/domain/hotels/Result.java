@@ -4,10 +4,12 @@ package com.travel_world.traveling.domain.hotels;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 import javax.annotation.Generated;
 
 @Generated("jsonschema2pojo")
-public class Result {
+public class Result implements Serializable {
 
     @SerializedName("id")
     @Expose

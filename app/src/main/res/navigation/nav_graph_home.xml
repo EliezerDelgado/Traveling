@@ -8,10 +8,19 @@
         android:id="@+id/homeContentFragment"
         android:name="com.travel_world.traveling.feature.home.fragments.HomeContentFragment"
         android:label="fragment_home_content"
-        tools:layout="@layout/fragment_home_content" />
+        tools:layout="@layout/fragment_home_content" >
+        <action
+            android:id="@+id/action_homeContentFragment_to_mapHotelFragment"
+            app:destination="@id/mapHotelFragment" />
+    </fragment>
     <fragment
         android:id="@+id/lilaFragment"
         android:name="com.travel_world.traveling.feature.home.fragments.LilaFragment"
         android:label="fragment_lila"
         tools:layout="@layout/fragment_lila" />
+    <fragment
+        android:id="@+id/mapHotelFragment"
+        android:name="com.travel_world.traveling.feature.home.fragments.homehotels.MapHotelFragment"
+        android:label="fragment_map_hotel"
+        tools:layout="@layout/fragment_map_hotel" />
 </navigation>
