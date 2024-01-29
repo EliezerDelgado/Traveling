@@ -52,7 +52,7 @@ class MapHotelFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if(arguments != null) {
-            addPoint(Point.fromLngLat(hotel.getCoordinate().getLon(), hotel.getCoordinate().getLat()),R.id.name_hotel,hotel.name);
+            addPoint(Point.fromLngLat(hotel.coordinate.lon, hotel.coordinate.lat),R.id.name_hotel,hotel.name);
         }
     }
     private fun createViewMapBox() {
@@ -61,8 +61,8 @@ class MapHotelFragment : Fragment() {
             CameraOptions.Builder()
                 .center(
                     Point.fromLngLat(
-                        hotel.getCoordinate().getLon(),
-                        hotel.getCoordinate().getLat()
+                        hotel.coordinate.lon,
+                        hotel.coordinate.lat
                     )
                 )
                 .pitch(0.0)
@@ -81,7 +81,7 @@ class MapHotelFragment : Fragment() {
     }
     private fun addPoint(point: Point, @IdRes textViewId : Int, text: String) {
 // add point annotation
-        var bitmap = BitmapFactory.decodeResource(requireContext().getResources(),
+        var bitmap = BitmapFactory.decodeResource(requireContext().resources,
             R.drawable.marcador_pos
         )
         bitmap = bitmap.scale(200,200,true)
