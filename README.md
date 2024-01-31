@@ -160,3 +160,8 @@ ACTIVIDAD 13 RETROFIT
 
 -Los Hoteles se muestra en el recycler view en la posición 3 del tabLayout
 
+ACTIVIDAD 12 - GoogleMaps
+
+-He creado una api-key de Mapbox(Similar a Google map pero si me acepto mi tarjeta)
+
+-Hay un fragment que muestra el hotel en el mapa con un point y muestra una anotación con el nombre del hotel
